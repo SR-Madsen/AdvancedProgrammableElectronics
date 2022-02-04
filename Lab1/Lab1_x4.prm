@@ -1,0 +1,11 @@
+===================================
+Configuration Memory information
+===================================
+File Format        MCS
+Interface          SPIX4
+Size               4M
+Start Address      0x00000000
+End Address        0x003FFFFF
+
+Addr1         Addr2         Date                    File(s)
+0x00000000    0x0021728B    Feb  1 14:02:48 2022    /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.runs/impl_1/my_inverter.bit

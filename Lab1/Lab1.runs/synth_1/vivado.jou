@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Tue Feb  1 14:00:45 2022
+# Process ID: 39390
+# Current directory: /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.runs/synth_1
+# Command line: vivado -log my_inverter.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source my_inverter.tcl
+# Log file: /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.runs/synth_1/my_inverter.vds
+# Journal file: /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source my_inverter.tcl -notrace
