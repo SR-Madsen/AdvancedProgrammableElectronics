@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Tue Feb  1 14:02:29 2022
+| Date         : Sun Feb  6 12:06:06 2022
 | Host         : sebastian-ZBook running 64-bit Linux Mint 20
 | Command      : report_methodology -file my_inverter_methodology_drc_routed.rpt -pb my_inverter_methodology_drc_routed.pb -rpx my_inverter_methodology_drc_routed.rpx
 | Design       : my_inverter
@@ -23,62 +23,68 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 7
-+--------+----------+------------------------------------------+------------+
-| Rule   | Severity | Description                              | Violations |
-+--------+----------+------------------------------------------+------------+
-| XDCH-2 | Warning  | Same min and max delay values on IO port | 7          |
-+--------+----------+------------------------------------------+------------+
+             Violations found: 8
++-----------+----------+------------------------------------------+------------+
+| Rule      | Severity | Description                              | Violations |
++-----------+----------+------------------------------------------+------------+
+| TIMING-18 | Warning  | Missing input or output delay            | 1          |
+| XDCH-2    | Warning  | Same min and max delay values on IO port | 7          |
++-----------+----------+------------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on U10_IO relative to clock(s) U13_I
+Related violations: <none>
+
 XDCH-2#1 Warning
 Same min and max delay values on IO port  
-The same output delay of 0.100 ns has been defined on port 'Q_O[0]' relative to clock CLK_I for both max and min. Make sure this reflects the design intent.
-set_output_delay -clock [get_clocks CLK_I] -max -add_delay 0.100 [get_ports {Q_O[*]}]
-/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.srcs/constrs_1/new/my_inverter.xdc (Line: 22)
+The same output delay of 0.100 ns has been defined on port 'LED_O[0]' relative to clock U13_I for both max and min. Make sure this reflects the design intent.
+set_output_delay -clock [get_clocks U13_I] -clock_fall -max -add_delay 0.100 [get_ports {LED_O[*]}]
+/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.srcs/constrs_1/new/my_inverter.xdc (Line: 27)
 Related violations: <none>
 
 XDCH-2#2 Warning
 Same min and max delay values on IO port  
-The same output delay of 0.100 ns has been defined on port 'Q_O[1]' relative to clock CLK_I for both max and min. Make sure this reflects the design intent.
-set_output_delay -clock [get_clocks CLK_I] -max -add_delay 0.100 [get_ports {Q_O[*]}]
-/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.srcs/constrs_1/new/my_inverter.xdc (Line: 22)
+The same output delay of 0.100 ns has been defined on port 'LED_O[1]' relative to clock U13_I for both max and min. Make sure this reflects the design intent.
+set_output_delay -clock [get_clocks U13_I] -clock_fall -max -add_delay 0.100 [get_ports {LED_O[*]}]
+/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.srcs/constrs_1/new/my_inverter.xdc (Line: 27)
 Related violations: <none>
 
 XDCH-2#3 Warning
 Same min and max delay values on IO port  
-The same output delay of 0.100 ns has been defined on port 'Q_O[2]' relative to clock CLK_I for both max and min. Make sure this reflects the design intent.
-set_output_delay -clock [get_clocks CLK_I] -max -add_delay 0.100 [get_ports {Q_O[*]}]
-/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.srcs/constrs_1/new/my_inverter.xdc (Line: 22)
+The same output delay of 0.100 ns has been defined on port 'LED_O[2]' relative to clock U13_I for both max and min. Make sure this reflects the design intent.
+set_output_delay -clock [get_clocks U13_I] -clock_fall -max -add_delay 0.100 [get_ports {LED_O[*]}]
+/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.srcs/constrs_1/new/my_inverter.xdc (Line: 27)
 Related violations: <none>
 
 XDCH-2#4 Warning
 Same min and max delay values on IO port  
-The same output delay of 0.100 ns has been defined on port 'Q_O[3]' relative to clock CLK_I for both max and min. Make sure this reflects the design intent.
-set_output_delay -clock [get_clocks CLK_I] -max -add_delay 0.100 [get_ports {Q_O[*]}]
-/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.srcs/constrs_1/new/my_inverter.xdc (Line: 22)
+The same output delay of 0.100 ns has been defined on port 'LED_O[3]' relative to clock U13_I for both max and min. Make sure this reflects the design intent.
+set_output_delay -clock [get_clocks U13_I] -clock_fall -max -add_delay 0.100 [get_ports {LED_O[*]}]
+/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.srcs/constrs_1/new/my_inverter.xdc (Line: 27)
 Related violations: <none>
 
 XDCH-2#5 Warning
 Same min and max delay values on IO port  
-The same output delay of 0.100 ns has been defined on port 'Q_O[4]' relative to clock CLK_I for both max and min. Make sure this reflects the design intent.
-set_output_delay -clock [get_clocks CLK_I] -max -add_delay 0.100 [get_ports {Q_O[*]}]
-/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.srcs/constrs_1/new/my_inverter.xdc (Line: 22)
+The same output delay of 0.100 ns has been defined on port 'LED_O[4]' relative to clock U13_I for both max and min. Make sure this reflects the design intent.
+set_output_delay -clock [get_clocks U13_I] -clock_fall -max -add_delay 0.100 [get_ports {LED_O[*]}]
+/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.srcs/constrs_1/new/my_inverter.xdc (Line: 27)
 Related violations: <none>
 
 XDCH-2#6 Warning
 Same min and max delay values on IO port  
-The same output delay of 0.100 ns has been defined on port 'Q_O[5]' relative to clock CLK_I for both max and min. Make sure this reflects the design intent.
-set_output_delay -clock [get_clocks CLK_I] -max -add_delay 0.100 [get_ports {Q_O[*]}]
-/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.srcs/constrs_1/new/my_inverter.xdc (Line: 22)
+The same output delay of 0.100 ns has been defined on port 'LED_O[5]' relative to clock U13_I for both max and min. Make sure this reflects the design intent.
+set_output_delay -clock [get_clocks U13_I] -clock_fall -max -add_delay 0.100 [get_ports {LED_O[*]}]
+/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.srcs/constrs_1/new/my_inverter.xdc (Line: 27)
 Related violations: <none>
 
 XDCH-2#7 Warning
 Same min and max delay values on IO port  
-The same output delay of 0.100 ns has been defined on port 'Q_O[6]' relative to clock CLK_I for both max and min. Make sure this reflects the design intent.
-set_output_delay -clock [get_clocks CLK_I] -max -add_delay 0.100 [get_ports {Q_O[*]}]
-/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.srcs/constrs_1/new/my_inverter.xdc (Line: 22)
+The same output delay of 0.100 ns has been defined on port 'LED_O[6]' relative to clock U13_I for both max and min. Make sure this reflects the design intent.
+set_output_delay -clock [get_clocks U13_I] -clock_fall -max -add_delay 0.100 [get_ports {LED_O[*]}]
+/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab1/Lab1.srcs/constrs_1/new/my_inverter.xdc (Line: 27)
 Related violations: <none>
 
 
