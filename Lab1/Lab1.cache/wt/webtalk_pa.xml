@@ -3,7 +3,7 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pa" timeStamp="Sun Feb  6 12:09:47 2022">
+<application name="pa" timeStamp="Mon Feb  7 14:51:47 2022">
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="d7997ed678ad4d1f9e4fbb9473ceccc6" type="ProjectID"/>
 <property name="ProjectIteration" value="28" type="ProjectIteration"/>
@@ -21,7 +21,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="AddSources" value="1" type="JavaHandler"/>
 <property name="AutoConnectTarget" value="11" type="JavaHandler"/>
 <property name="CloseDesign" value="10" type="JavaHandler"/>
-<property name="FileExit" value="3" type="JavaHandler"/>
+<property name="FileExit" value="4" type="JavaHandler"/>
 <property name="LaunchProgramFpga" value="20" type="JavaHandler"/>
 <property name="NewProject" value="1" type="JavaHandler"/>
 <property name="OpenHardwareManager" value="14" type="JavaHandler"/>
@@ -100,7 +100,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="StaleRunDialog_NO" value="1" type="GuiHandlerData"/>
 <property name="StaleRunDialog_OPEN_DESIGN" value="3" type="GuiHandlerData"/>
 <property name="StateMonitor_RESET_RUN" value="1" type="GuiHandlerData"/>
-<property name="SyntheticaGettingStartedView_RECENT_PROJECTS" value="2" type="GuiHandlerData"/>
+<property name="SyntheticaGettingStartedView_RECENT_PROJECTS" value="3" type="GuiHandlerData"/>
 <property name="SyntheticaStateMonitor_CANCEL" value="4" type="GuiHandlerData"/>
 <property name="WriteCfgMemFileDialog_INTERFACE" value="1" type="GuiHandlerData"/>
 <property name="WriteCfgMemFileDialog_LOAD_BITSTREAM_FILES" value="1" type="GuiHandlerData"/>
@@ -110,9 +110,9 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="WriteCfgMemFileDialog_SPECIFY_CONFIGURATION_FILENAME" value="2" type="GuiHandlerData"/>
 </item>
 <item name="Other">
-<property name="GuiMode" value="86" type="GuiMode"/>
+<property name="GuiMode" value="87" type="GuiMode"/>
 <property name="BatchMode" value="0" type="BatchMode"/>
-<property name="TclMode" value="82" type="TclMode"/>
+<property name="TclMode" value="83" type="TclMode"/>
 </item>
 </section>
 </application>
