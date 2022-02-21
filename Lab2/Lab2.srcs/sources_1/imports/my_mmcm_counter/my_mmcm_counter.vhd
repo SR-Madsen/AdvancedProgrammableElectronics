@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity counter_mod is
-  Generic (N : positive := 33);
+  Generic (N : positive := 32);
   -- MSB: 100Mhz/2^32 ~0.023 Hz 
   -- LSB: 100MHz/2^25 ~3 Hz
   Port (CLK_I : in  STD_LOGIC;

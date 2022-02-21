@@ -1,0 +1,10 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../Lab3.srcs/sources_1/new/binary_cnt.vhd" \
+"../../../../Lab3.srcs/sources_1/new/counter_top.vhd" \
+"../../../../Lab3.srcs/sources_1/new/onehot_cnt.vhd" \
+"../../../../Lab3.srcs/sources_1/new/ripple_cnt.vhd" \
+"../../../../Lab3.srcs/sim_1/new/counter_bench.vhd" \
+
+# Do not sort compile order
+nosort
