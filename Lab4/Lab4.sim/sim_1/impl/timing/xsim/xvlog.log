@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab4/Lab4.sim/sim_1/impl/timing/xsim/uart_tx_time_impl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module lab4_top
+INFO: [VRFC 10-311] analyzing module mmcm
+INFO: [VRFC 10-311] analyzing module uart_master
+INFO: [VRFC 10-311] analyzing module uart_tx
+INFO: [VRFC 10-311] analyzing module glbl

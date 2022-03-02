@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-// Date        : Mon Feb 21 21:28:46 2022
+// Date        : Tue Feb 22 09:42:45 2022
 // Host        : Ubuntu-ZBook-15-G2 running 64-bit Ubuntu 18.04.6 LTS
 // Command     : write_verilog -mode timesim -nolib -sdf_anno true -force -file
 //               /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab3/Lab3.sim/sim_1/impl/timing/xsim/counter_bench_time_impl.v
