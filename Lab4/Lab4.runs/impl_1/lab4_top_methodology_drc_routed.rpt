@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Tue Mar  1 14:57:55 2022
+| Date         : Fri Mar  4 13:06:24 2022
 | Host         : Ubuntu-ZBook-15-G2 running 64-bit Ubuntu 18.04.6 LTS
 | Command      : report_methodology -file lab4_top_methodology_drc_routed.rpt -pb lab4_top_methodology_drc_routed.pb -rpx lab4_top_methodology_drc_routed.rpx
 | Design       : lab4_top
@@ -23,46 +23,88 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 7
-+-----------+----------+-------------------+------------+
-| Rule      | Severity | Description       | Violations |
-+-----------+----------+-------------------+------------+
-| TIMING-20 | Warning  | Non-clocked latch | 7          |
-+-----------+----------+-------------------+------------+
+             Violations found: 15
++-----------+----------+------------------------------+------------+
+| Rule      | Severity | Description                  | Violations |
++-----------+----------+------------------------------+------------+
+| LUTAR-1   | Warning  | LUT drives async reset alert | 1          |
+| TIMING-20 | Warning  | Non-clocked latch            | 14         |
++-----------+----------+------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+LUTAR-1#1 Warning
+LUT drives async reset alert  
+LUT cell rx_slave/LEDS_reg[6]_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) rx_slave/baud_counter_reg[0]/CLR, rx_slave/baud_counter_reg[1]/CLR,
+rx_slave/baud_counter_reg[2]/CLR, rx_slave/baud_counter_reg[3]/PRE. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
 TIMING-20#1 Warning
 Non-clocked latch  
-The latch rx_slave/DATA_reg[0] cannot be properly analyzed as its control pin rx_slave/DATA_reg[0]/G is not reached by a timing clock
+The latch comm_master/LEDS_reg[0] cannot be properly analyzed as its control pin comm_master/LEDS_reg[0]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#2 Warning
 Non-clocked latch  
-The latch rx_slave/DATA_reg[1] cannot be properly analyzed as its control pin rx_slave/DATA_reg[1]/G is not reached by a timing clock
+The latch comm_master/LEDS_reg[1] cannot be properly analyzed as its control pin comm_master/LEDS_reg[1]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#3 Warning
 Non-clocked latch  
-The latch rx_slave/DATA_reg[2] cannot be properly analyzed as its control pin rx_slave/DATA_reg[2]/G is not reached by a timing clock
+The latch comm_master/LEDS_reg[2] cannot be properly analyzed as its control pin comm_master/LEDS_reg[2]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#4 Warning
 Non-clocked latch  
-The latch rx_slave/DATA_reg[3] cannot be properly analyzed as its control pin rx_slave/DATA_reg[3]/G is not reached by a timing clock
+The latch comm_master/LEDS_reg[3] cannot be properly analyzed as its control pin comm_master/LEDS_reg[3]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#5 Warning
 Non-clocked latch  
-The latch rx_slave/DATA_reg[4] cannot be properly analyzed as its control pin rx_slave/DATA_reg[4]/G is not reached by a timing clock
+The latch comm_master/LEDS_reg[4] cannot be properly analyzed as its control pin comm_master/LEDS_reg[4]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#6 Warning
 Non-clocked latch  
-The latch rx_slave/DATA_reg[5] cannot be properly analyzed as its control pin rx_slave/DATA_reg[5]/G is not reached by a timing clock
+The latch comm_master/LEDS_reg[5] cannot be properly analyzed as its control pin comm_master/LEDS_reg[5]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#7 Warning
+Non-clocked latch  
+The latch comm_master/LEDS_reg[6] cannot be properly analyzed as its control pin comm_master/LEDS_reg[6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#8 Warning
+Non-clocked latch  
+The latch rx_slave/DATA_reg[0] cannot be properly analyzed as its control pin rx_slave/DATA_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#9 Warning
+Non-clocked latch  
+The latch rx_slave/DATA_reg[1] cannot be properly analyzed as its control pin rx_slave/DATA_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#10 Warning
+Non-clocked latch  
+The latch rx_slave/DATA_reg[2] cannot be properly analyzed as its control pin rx_slave/DATA_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#11 Warning
+Non-clocked latch  
+The latch rx_slave/DATA_reg[3] cannot be properly analyzed as its control pin rx_slave/DATA_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#12 Warning
+Non-clocked latch  
+The latch rx_slave/DATA_reg[4] cannot be properly analyzed as its control pin rx_slave/DATA_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#13 Warning
+Non-clocked latch  
+The latch rx_slave/DATA_reg[5] cannot be properly analyzed as its control pin rx_slave/DATA_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#14 Warning
 Non-clocked latch  
 The latch rx_slave/DATA_reg[6] cannot be properly analyzed as its control pin rx_slave/DATA_reg[6]/G is not reached by a timing clock
 Related violations: <none>

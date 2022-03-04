@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Tue Mar  1 14:57:56 2022
+| Date         : Fri Mar  4 13:06:25 2022
 | Host         : Ubuntu-ZBook-15-G2 running 64-bit Ubuntu 18.04.6 LTS
 | Command      : report_timing_summary -max_paths 10 -file lab4_top_timing_summary_routed.rpt -pb lab4_top_timing_summary_routed.pb -rpx lab4_top_timing_summary_routed.rpx -warn_on_violation
 | Design       : lab4_top
@@ -39,10 +39,10 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (14)
+1. checking no_clock (53)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (7)
+4. checking unconstrained_internal_endpoints (14)
 5. checking no_input_delay (1)
 6. checking no_output_delay (8)
 7. checking multiple_clock (0)
@@ -52,23 +52,15 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (14)
+1. checking no_clock (53)
 -------------------------
- There are 7 register/latch pins with no clock driven by root clock pin: rx_slave/FSM_onehot_state_reg[1]/Q (HIGH)
+ There are 14 register/latch pins with no clock driven by root clock pin: rx_slave/FSM_sequential_state_reg[0]/Q (HIGH)
 
- There is 1 register/latch pin with no clock driven by root clock pin: rx_slave/FSM_onehot_state_reg[2]/Q (HIGH)
+ There are 13 register/latch pins with no clock driven by root clock pin: rx_slave/FSM_sequential_state_reg[1]/Q (HIGH)
 
- There is 1 register/latch pin with no clock driven by root clock pin: rx_slave/FSM_onehot_state_reg[3]/Q (HIGH)
+ There are 13 register/latch pins with no clock driven by root clock pin: rx_slave/FSM_sequential_state_reg[2]/Q (HIGH)
 
- There is 1 register/latch pin with no clock driven by root clock pin: rx_slave/FSM_onehot_state_reg[4]/Q (HIGH)
-
- There is 1 register/latch pin with no clock driven by root clock pin: rx_slave/FSM_onehot_state_reg[5]/Q (HIGH)
-
- There is 1 register/latch pin with no clock driven by root clock pin: rx_slave/FSM_onehot_state_reg[6]/Q (HIGH)
-
- There is 1 register/latch pin with no clock driven by root clock pin: rx_slave/FSM_onehot_state_reg[7]/Q (HIGH)
-
- There is 1 register/latch pin with no clock driven by root clock pin: rx_slave/FSM_onehot_state_reg[8]/Q (HIGH)
+ There are 13 register/latch pins with no clock driven by root clock pin: rx_slave/FSM_sequential_state_reg[3]/Q (HIGH)
 
 
 2. checking constant_clock (0)
@@ -81,9 +73,9 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (7)
-------------------------------------------------
- There are 7 pins that are not constrained for maximum delay. (HIGH)
+4. checking unconstrained_internal_endpoints (14)
+-------------------------------------------------
+ There are 14 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
@@ -142,7 +134,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-     59.075        0.000                      0                   95        0.155        0.000                      0                   95       16.667        0.000                       0                    54  
+     58.983        0.000                      0                   84        0.172        0.000                      0                   84       16.667        0.000                       0                    46  
 
 
 All user specified timing constraints are met.
@@ -168,7 +160,7 @@ CLK_I           {0.000 41.667}     83.333          12.000
 Clock               WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----               -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
 CLK_I                                                                                                                                                            16.667        0.000                       0                     1  
-  clk16              59.075        0.000                      0                   95        0.155        0.000                      0                   95       30.750        0.000                       0                    51  
+  clk16              58.983        0.000                      0                   80        0.172        0.000                      0                   80       30.750        0.000                       0                    43  
   clk_feedback                                                                                                                                                   16.667        0.000                       0                     2  
 
 
@@ -186,8 +178,9 @@ From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS
 | -----------------------
 ------------------------------------------------------------------------------------------------
 
-Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
-----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+Path Group         From Clock         To Clock               WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------         ----------         --------               -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+**async_default**  clk16              clk16                   60.032        0.000                      0                    4        0.748        0.000                      0                    4  
 
 
 ------------------------------------------------------------------------------------------------
@@ -227,28 +220,28 @@ High Pulse Width  Fast    MMCME2_ADV/CLKIN1  n/a            10.000        41.667
 From Clock:  clk16
   To Clock:  clk16
 
-Setup :            0  Failing Endpoints,  Worst Slack       59.075ns,  Total Violation        0.000ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.155ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack       58.983ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.172ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack       30.750ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             59.075ns  (required time - arrival time)
-  Source:                 rx_slave/baud_counter_reg[0]/C
+Slack (MET) :             58.983ns  (required time - arrival time)
+  Source:                 tx_slave/FSM_onehot_state_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            rx_slave/FSM_onehot_state_reg[2]/CE
+  Destination:            tx_slave/FSM_onehot_state_reg[0]/CE
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
   Path Group:             clk16
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            62.500ns  (clk16 rise@62.500ns - clk16 rise@0.000ns)
-  Data Path Delay:        3.184ns  (logic 0.937ns (29.427%)  route 2.247ns (70.573%))
+  Data Path Delay:        3.250ns  (logic 0.704ns (21.664%)  route 2.546ns (78.336%))
   Logic Levels:           2  (LUT5=2)
-  Clock Path Skew:        -0.036ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.822ns = ( 68.322 - 62.500 ) 
-    Source Clock Delay      (SCD):    6.168ns
-    Clock Pessimism Removal (CPR):    0.309ns
+  Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.843ns = ( 68.343 - 62.500 ) 
+    Source Clock Delay      (SCD):    6.194ns
+    Clock Pessimism Removal (CPR):    0.325ns
   Clock Uncertainty:      0.036ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.011ns
@@ -265,16 +258,16 @@ Slack (MET) :             59.075ns  (required time - arrival time)
                                                       0.088     2.797 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.666     4.464    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     4.560 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.608     6.168    rx_slave/clk16_BUFG
-    SLICE_X63Y73         FDRE                                         r  rx_slave/baud_counter_reg[0]/C
+                         net (fo=41, routed)          1.634     6.194    tx_slave/clk16_BUFG
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X63Y73         FDRE (Prop_fdre_C_Q)         0.456     6.624 f  rx_slave/baud_counter_reg[0]/Q
-                         net (fo=7, routed)           0.880     7.503    rx_slave/baud_counter_reg_n_0_[0]
-    SLICE_X63Y73         LUT5 (Prop_lut5_I0_O)        0.154     7.657 r  rx_slave/FSM_onehot_state[9]_i_2__0/O
-                         net (fo=2, routed)           0.853     8.510    rx_slave/FSM_onehot_state[9]_i_2__0_n_0
-    SLICE_X64Y73         LUT5 (Prop_lut5_I0_O)        0.327     8.837 r  rx_slave/FSM_onehot_state[9]_i_1__0/O
-                         net (fo=10, routed)          0.514     9.352    rx_slave/FSM_onehot_state[9]_i_1__0_n_0
-    SLICE_X64Y76         FDRE                                         r  rx_slave/FSM_onehot_state_reg[2]/CE
+    SLICE_X1Y37          FDRE (Prop_fdre_C_Q)         0.456     6.650 r  tx_slave/FSM_onehot_state_reg[3]/Q
+                         net (fo=3, routed)           1.442     8.092    tx_slave/FSM_onehot_state_reg_n_0_[3]
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.216 r  tx_slave/FSM_onehot_state[9]_i_3/O
+                         net (fo=1, routed)           0.433     8.649    tx_slave/FSM_onehot_state[9]_i_3_n_0
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.773 r  tx_slave/FSM_onehot_state[9]_i_1/O
+                         net (fo=10, routed)          0.671     9.444    tx_slave/FSM_onehot_state[9]_i_1_n_0
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[0]/CE
   -------------------------------------------------------------------    -------------------
 
                          (clock clk16 rise edge)     62.500    62.500 r  
@@ -286,31 +279,31 @@ Slack (MET) :             59.075ns  (required time - arrival time)
                                                       0.083    65.150 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.587    66.737    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    66.828 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.494    68.322    rx_slave/clk16_BUFG
-    SLICE_X64Y76         FDRE                                         r  rx_slave/FSM_onehot_state_reg[2]/C
-                         clock pessimism              0.309    68.631    
-                         clock uncertainty           -0.036    68.596    
-    SLICE_X64Y76         FDRE (Setup_fdre_C_CE)      -0.169    68.427    rx_slave/FSM_onehot_state_reg[2]
+                         net (fo=41, routed)          1.514    68.343    tx_slave/clk16_BUFG
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[0]/C
+                         clock pessimism              0.325    68.668    
+                         clock uncertainty           -0.036    68.632    
+    SLICE_X1Y35          FDRE (Setup_fdre_C_CE)      -0.205    68.427    tx_slave/FSM_onehot_state_reg[0]
   -------------------------------------------------------------------
                          required time                         68.427    
-                         arrival time                          -9.352    
+                         arrival time                          -9.444    
   -------------------------------------------------------------------
-                         slack                                 59.075    
+                         slack                                 58.983    
 
-Slack (MET) :             59.075ns  (required time - arrival time)
-  Source:                 rx_slave/baud_counter_reg[0]/C
+Slack (MET) :             58.983ns  (required time - arrival time)
+  Source:                 tx_slave/FSM_onehot_state_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            rx_slave/FSM_onehot_state_reg[3]/CE
+  Destination:            tx_slave/FSM_onehot_state_reg[1]/CE
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
   Path Group:             clk16
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            62.500ns  (clk16 rise@62.500ns - clk16 rise@0.000ns)
-  Data Path Delay:        3.184ns  (logic 0.937ns (29.427%)  route 2.247ns (70.573%))
+  Data Path Delay:        3.250ns  (logic 0.704ns (21.664%)  route 2.546ns (78.336%))
   Logic Levels:           2  (LUT5=2)
-  Clock Path Skew:        -0.036ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.822ns = ( 68.322 - 62.500 ) 
-    Source Clock Delay      (SCD):    6.168ns
-    Clock Pessimism Removal (CPR):    0.309ns
+  Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.843ns = ( 68.343 - 62.500 ) 
+    Source Clock Delay      (SCD):    6.194ns
+    Clock Pessimism Removal (CPR):    0.325ns
   Clock Uncertainty:      0.036ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.011ns
@@ -327,16 +320,16 @@ Slack (MET) :             59.075ns  (required time - arrival time)
                                                       0.088     2.797 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.666     4.464    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     4.560 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.608     6.168    rx_slave/clk16_BUFG
-    SLICE_X63Y73         FDRE                                         r  rx_slave/baud_counter_reg[0]/C
+                         net (fo=41, routed)          1.634     6.194    tx_slave/clk16_BUFG
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X63Y73         FDRE (Prop_fdre_C_Q)         0.456     6.624 f  rx_slave/baud_counter_reg[0]/Q
-                         net (fo=7, routed)           0.880     7.503    rx_slave/baud_counter_reg_n_0_[0]
-    SLICE_X63Y73         LUT5 (Prop_lut5_I0_O)        0.154     7.657 r  rx_slave/FSM_onehot_state[9]_i_2__0/O
-                         net (fo=2, routed)           0.853     8.510    rx_slave/FSM_onehot_state[9]_i_2__0_n_0
-    SLICE_X64Y73         LUT5 (Prop_lut5_I0_O)        0.327     8.837 r  rx_slave/FSM_onehot_state[9]_i_1__0/O
-                         net (fo=10, routed)          0.514     9.352    rx_slave/FSM_onehot_state[9]_i_1__0_n_0
-    SLICE_X64Y76         FDRE                                         r  rx_slave/FSM_onehot_state_reg[3]/CE
+    SLICE_X1Y37          FDRE (Prop_fdre_C_Q)         0.456     6.650 r  tx_slave/FSM_onehot_state_reg[3]/Q
+                         net (fo=3, routed)           1.442     8.092    tx_slave/FSM_onehot_state_reg_n_0_[3]
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.216 r  tx_slave/FSM_onehot_state[9]_i_3/O
+                         net (fo=1, routed)           0.433     8.649    tx_slave/FSM_onehot_state[9]_i_3_n_0
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.773 r  tx_slave/FSM_onehot_state[9]_i_1/O
+                         net (fo=10, routed)          0.671     9.444    tx_slave/FSM_onehot_state[9]_i_1_n_0
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[1]/CE
   -------------------------------------------------------------------    -------------------
 
                          (clock clk16 rise edge)     62.500    62.500 r  
@@ -348,31 +341,31 @@ Slack (MET) :             59.075ns  (required time - arrival time)
                                                       0.083    65.150 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.587    66.737    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    66.828 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.494    68.322    rx_slave/clk16_BUFG
-    SLICE_X64Y76         FDRE                                         r  rx_slave/FSM_onehot_state_reg[3]/C
-                         clock pessimism              0.309    68.631    
-                         clock uncertainty           -0.036    68.596    
-    SLICE_X64Y76         FDRE (Setup_fdre_C_CE)      -0.169    68.427    rx_slave/FSM_onehot_state_reg[3]
+                         net (fo=41, routed)          1.514    68.343    tx_slave/clk16_BUFG
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[1]/C
+                         clock pessimism              0.325    68.668    
+                         clock uncertainty           -0.036    68.632    
+    SLICE_X1Y35          FDRE (Setup_fdre_C_CE)      -0.205    68.427    tx_slave/FSM_onehot_state_reg[1]
   -------------------------------------------------------------------
                          required time                         68.427    
-                         arrival time                          -9.352    
+                         arrival time                          -9.444    
   -------------------------------------------------------------------
-                         slack                                 59.075    
+                         slack                                 58.983    
 
-Slack (MET) :             59.075ns  (required time - arrival time)
-  Source:                 rx_slave/baud_counter_reg[0]/C
+Slack (MET) :             58.983ns  (required time - arrival time)
+  Source:                 tx_slave/FSM_onehot_state_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            rx_slave/FSM_onehot_state_reg[4]/CE
+  Destination:            tx_slave/FSM_onehot_state_reg[2]/CE
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
   Path Group:             clk16
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            62.500ns  (clk16 rise@62.500ns - clk16 rise@0.000ns)
-  Data Path Delay:        3.184ns  (logic 0.937ns (29.427%)  route 2.247ns (70.573%))
+  Data Path Delay:        3.250ns  (logic 0.704ns (21.664%)  route 2.546ns (78.336%))
   Logic Levels:           2  (LUT5=2)
-  Clock Path Skew:        -0.036ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.822ns = ( 68.322 - 62.500 ) 
-    Source Clock Delay      (SCD):    6.168ns
-    Clock Pessimism Removal (CPR):    0.309ns
+  Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.843ns = ( 68.343 - 62.500 ) 
+    Source Clock Delay      (SCD):    6.194ns
+    Clock Pessimism Removal (CPR):    0.325ns
   Clock Uncertainty:      0.036ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.011ns
@@ -389,16 +382,16 @@ Slack (MET) :             59.075ns  (required time - arrival time)
                                                       0.088     2.797 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.666     4.464    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     4.560 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.608     6.168    rx_slave/clk16_BUFG
-    SLICE_X63Y73         FDRE                                         r  rx_slave/baud_counter_reg[0]/C
+                         net (fo=41, routed)          1.634     6.194    tx_slave/clk16_BUFG
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X63Y73         FDRE (Prop_fdre_C_Q)         0.456     6.624 f  rx_slave/baud_counter_reg[0]/Q
-                         net (fo=7, routed)           0.880     7.503    rx_slave/baud_counter_reg_n_0_[0]
-    SLICE_X63Y73         LUT5 (Prop_lut5_I0_O)        0.154     7.657 r  rx_slave/FSM_onehot_state[9]_i_2__0/O
-                         net (fo=2, routed)           0.853     8.510    rx_slave/FSM_onehot_state[9]_i_2__0_n_0
-    SLICE_X64Y73         LUT5 (Prop_lut5_I0_O)        0.327     8.837 r  rx_slave/FSM_onehot_state[9]_i_1__0/O
-                         net (fo=10, routed)          0.514     9.352    rx_slave/FSM_onehot_state[9]_i_1__0_n_0
-    SLICE_X64Y76         FDRE                                         r  rx_slave/FSM_onehot_state_reg[4]/CE
+    SLICE_X1Y37          FDRE (Prop_fdre_C_Q)         0.456     6.650 r  tx_slave/FSM_onehot_state_reg[3]/Q
+                         net (fo=3, routed)           1.442     8.092    tx_slave/FSM_onehot_state_reg_n_0_[3]
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.216 r  tx_slave/FSM_onehot_state[9]_i_3/O
+                         net (fo=1, routed)           0.433     8.649    tx_slave/FSM_onehot_state[9]_i_3_n_0
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.773 r  tx_slave/FSM_onehot_state[9]_i_1/O
+                         net (fo=10, routed)          0.671     9.444    tx_slave/FSM_onehot_state[9]_i_1_n_0
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[2]/CE
   -------------------------------------------------------------------    -------------------
 
                          (clock clk16 rise edge)     62.500    62.500 r  
@@ -410,31 +403,31 @@ Slack (MET) :             59.075ns  (required time - arrival time)
                                                       0.083    65.150 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.587    66.737    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    66.828 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.494    68.322    rx_slave/clk16_BUFG
-    SLICE_X64Y76         FDRE                                         r  rx_slave/FSM_onehot_state_reg[4]/C
-                         clock pessimism              0.309    68.631    
-                         clock uncertainty           -0.036    68.596    
-    SLICE_X64Y76         FDRE (Setup_fdre_C_CE)      -0.169    68.427    rx_slave/FSM_onehot_state_reg[4]
+                         net (fo=41, routed)          1.514    68.343    tx_slave/clk16_BUFG
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[2]/C
+                         clock pessimism              0.325    68.668    
+                         clock uncertainty           -0.036    68.632    
+    SLICE_X1Y35          FDRE (Setup_fdre_C_CE)      -0.205    68.427    tx_slave/FSM_onehot_state_reg[2]
   -------------------------------------------------------------------
                          required time                         68.427    
-                         arrival time                          -9.352    
+                         arrival time                          -9.444    
   -------------------------------------------------------------------
-                         slack                                 59.075    
+                         slack                                 58.983    
 
-Slack (MET) :             59.075ns  (required time - arrival time)
-  Source:                 rx_slave/baud_counter_reg[0]/C
+Slack (MET) :             58.983ns  (required time - arrival time)
+  Source:                 tx_slave/FSM_onehot_state_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            rx_slave/FSM_onehot_state_reg[5]/CE
+  Destination:            tx_slave/FSM_onehot_state_reg[7]/CE
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
   Path Group:             clk16
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            62.500ns  (clk16 rise@62.500ns - clk16 rise@0.000ns)
-  Data Path Delay:        3.184ns  (logic 0.937ns (29.427%)  route 2.247ns (70.573%))
+  Data Path Delay:        3.250ns  (logic 0.704ns (21.664%)  route 2.546ns (78.336%))
   Logic Levels:           2  (LUT5=2)
-  Clock Path Skew:        -0.036ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.822ns = ( 68.322 - 62.500 ) 
-    Source Clock Delay      (SCD):    6.168ns
-    Clock Pessimism Removal (CPR):    0.309ns
+  Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.843ns = ( 68.343 - 62.500 ) 
+    Source Clock Delay      (SCD):    6.194ns
+    Clock Pessimism Removal (CPR):    0.325ns
   Clock Uncertainty:      0.036ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.011ns
@@ -451,16 +444,16 @@ Slack (MET) :             59.075ns  (required time - arrival time)
                                                       0.088     2.797 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.666     4.464    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     4.560 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.608     6.168    rx_slave/clk16_BUFG
-    SLICE_X63Y73         FDRE                                         r  rx_slave/baud_counter_reg[0]/C
+                         net (fo=41, routed)          1.634     6.194    tx_slave/clk16_BUFG
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X63Y73         FDRE (Prop_fdre_C_Q)         0.456     6.624 f  rx_slave/baud_counter_reg[0]/Q
-                         net (fo=7, routed)           0.880     7.503    rx_slave/baud_counter_reg_n_0_[0]
-    SLICE_X63Y73         LUT5 (Prop_lut5_I0_O)        0.154     7.657 r  rx_slave/FSM_onehot_state[9]_i_2__0/O
-                         net (fo=2, routed)           0.853     8.510    rx_slave/FSM_onehot_state[9]_i_2__0_n_0
-    SLICE_X64Y73         LUT5 (Prop_lut5_I0_O)        0.327     8.837 r  rx_slave/FSM_onehot_state[9]_i_1__0/O
-                         net (fo=10, routed)          0.514     9.352    rx_slave/FSM_onehot_state[9]_i_1__0_n_0
-    SLICE_X64Y76         FDRE                                         r  rx_slave/FSM_onehot_state_reg[5]/CE
+    SLICE_X1Y37          FDRE (Prop_fdre_C_Q)         0.456     6.650 r  tx_slave/FSM_onehot_state_reg[3]/Q
+                         net (fo=3, routed)           1.442     8.092    tx_slave/FSM_onehot_state_reg_n_0_[3]
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.216 r  tx_slave/FSM_onehot_state[9]_i_3/O
+                         net (fo=1, routed)           0.433     8.649    tx_slave/FSM_onehot_state[9]_i_3_n_0
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.773 r  tx_slave/FSM_onehot_state[9]_i_1/O
+                         net (fo=10, routed)          0.671     9.444    tx_slave/FSM_onehot_state[9]_i_1_n_0
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[7]/CE
   -------------------------------------------------------------------    -------------------
 
                          (clock clk16 rise edge)     62.500    62.500 r  
@@ -472,31 +465,31 @@ Slack (MET) :             59.075ns  (required time - arrival time)
                                                       0.083    65.150 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.587    66.737    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    66.828 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.494    68.322    rx_slave/clk16_BUFG
-    SLICE_X64Y76         FDRE                                         r  rx_slave/FSM_onehot_state_reg[5]/C
-                         clock pessimism              0.309    68.631    
-                         clock uncertainty           -0.036    68.596    
-    SLICE_X64Y76         FDRE (Setup_fdre_C_CE)      -0.169    68.427    rx_slave/FSM_onehot_state_reg[5]
+                         net (fo=41, routed)          1.514    68.343    tx_slave/clk16_BUFG
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[7]/C
+                         clock pessimism              0.325    68.668    
+                         clock uncertainty           -0.036    68.632    
+    SLICE_X1Y35          FDRE (Setup_fdre_C_CE)      -0.205    68.427    tx_slave/FSM_onehot_state_reg[7]
   -------------------------------------------------------------------
                          required time                         68.427    
-                         arrival time                          -9.352    
+                         arrival time                          -9.444    
   -------------------------------------------------------------------
-                         slack                                 59.075    
+                         slack                                 58.983    
 
-Slack (MET) :             59.075ns  (required time - arrival time)
-  Source:                 rx_slave/baud_counter_reg[0]/C
+Slack (MET) :             58.983ns  (required time - arrival time)
+  Source:                 tx_slave/FSM_onehot_state_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            rx_slave/FSM_onehot_state_reg[6]/CE
+  Destination:            tx_slave/FSM_onehot_state_reg[8]/CE
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
   Path Group:             clk16
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            62.500ns  (clk16 rise@62.500ns - clk16 rise@0.000ns)
-  Data Path Delay:        3.184ns  (logic 0.937ns (29.427%)  route 2.247ns (70.573%))
+  Data Path Delay:        3.250ns  (logic 0.704ns (21.664%)  route 2.546ns (78.336%))
   Logic Levels:           2  (LUT5=2)
-  Clock Path Skew:        -0.036ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.822ns = ( 68.322 - 62.500 ) 
-    Source Clock Delay      (SCD):    6.168ns
-    Clock Pessimism Removal (CPR):    0.309ns
+  Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.843ns = ( 68.343 - 62.500 ) 
+    Source Clock Delay      (SCD):    6.194ns
+    Clock Pessimism Removal (CPR):    0.325ns
   Clock Uncertainty:      0.036ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.011ns
@@ -513,16 +506,16 @@ Slack (MET) :             59.075ns  (required time - arrival time)
                                                       0.088     2.797 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.666     4.464    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     4.560 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.608     6.168    rx_slave/clk16_BUFG
-    SLICE_X63Y73         FDRE                                         r  rx_slave/baud_counter_reg[0]/C
+                         net (fo=41, routed)          1.634     6.194    tx_slave/clk16_BUFG
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X63Y73         FDRE (Prop_fdre_C_Q)         0.456     6.624 f  rx_slave/baud_counter_reg[0]/Q
-                         net (fo=7, routed)           0.880     7.503    rx_slave/baud_counter_reg_n_0_[0]
-    SLICE_X63Y73         LUT5 (Prop_lut5_I0_O)        0.154     7.657 r  rx_slave/FSM_onehot_state[9]_i_2__0/O
-                         net (fo=2, routed)           0.853     8.510    rx_slave/FSM_onehot_state[9]_i_2__0_n_0
-    SLICE_X64Y73         LUT5 (Prop_lut5_I0_O)        0.327     8.837 r  rx_slave/FSM_onehot_state[9]_i_1__0/O
-                         net (fo=10, routed)          0.514     9.352    rx_slave/FSM_onehot_state[9]_i_1__0_n_0
-    SLICE_X64Y76         FDRE                                         r  rx_slave/FSM_onehot_state_reg[6]/CE
+    SLICE_X1Y37          FDRE (Prop_fdre_C_Q)         0.456     6.650 r  tx_slave/FSM_onehot_state_reg[3]/Q
+                         net (fo=3, routed)           1.442     8.092    tx_slave/FSM_onehot_state_reg_n_0_[3]
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.216 r  tx_slave/FSM_onehot_state[9]_i_3/O
+                         net (fo=1, routed)           0.433     8.649    tx_slave/FSM_onehot_state[9]_i_3_n_0
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.773 r  tx_slave/FSM_onehot_state[9]_i_1/O
+                         net (fo=10, routed)          0.671     9.444    tx_slave/FSM_onehot_state[9]_i_1_n_0
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[8]/CE
   -------------------------------------------------------------------    -------------------
 
                          (clock clk16 rise edge)     62.500    62.500 r  
@@ -534,31 +527,31 @@ Slack (MET) :             59.075ns  (required time - arrival time)
                                                       0.083    65.150 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.587    66.737    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    66.828 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.494    68.322    rx_slave/clk16_BUFG
-    SLICE_X64Y76         FDRE                                         r  rx_slave/FSM_onehot_state_reg[6]/C
-                         clock pessimism              0.309    68.631    
-                         clock uncertainty           -0.036    68.596    
-    SLICE_X64Y76         FDRE (Setup_fdre_C_CE)      -0.169    68.427    rx_slave/FSM_onehot_state_reg[6]
+                         net (fo=41, routed)          1.514    68.343    tx_slave/clk16_BUFG
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[8]/C
+                         clock pessimism              0.325    68.668    
+                         clock uncertainty           -0.036    68.632    
+    SLICE_X1Y35          FDRE (Setup_fdre_C_CE)      -0.205    68.427    tx_slave/FSM_onehot_state_reg[8]
   -------------------------------------------------------------------
                          required time                         68.427    
-                         arrival time                          -9.352    
+                         arrival time                          -9.444    
   -------------------------------------------------------------------
-                         slack                                 59.075    
+                         slack                                 58.983    
 
-Slack (MET) :             59.075ns  (required time - arrival time)
-  Source:                 rx_slave/baud_counter_reg[0]/C
+Slack (MET) :             58.983ns  (required time - arrival time)
+  Source:                 tx_slave/FSM_onehot_state_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            rx_slave/FSM_onehot_state_reg[7]/CE
+  Destination:            tx_slave/FSM_onehot_state_reg[9]/CE
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
   Path Group:             clk16
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            62.500ns  (clk16 rise@62.500ns - clk16 rise@0.000ns)
-  Data Path Delay:        3.184ns  (logic 0.937ns (29.427%)  route 2.247ns (70.573%))
+  Data Path Delay:        3.250ns  (logic 0.704ns (21.664%)  route 2.546ns (78.336%))
   Logic Levels:           2  (LUT5=2)
-  Clock Path Skew:        -0.036ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.822ns = ( 68.322 - 62.500 ) 
-    Source Clock Delay      (SCD):    6.168ns
-    Clock Pessimism Removal (CPR):    0.309ns
+  Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.843ns = ( 68.343 - 62.500 ) 
+    Source Clock Delay      (SCD):    6.194ns
+    Clock Pessimism Removal (CPR):    0.325ns
   Clock Uncertainty:      0.036ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.011ns
@@ -575,16 +568,16 @@ Slack (MET) :             59.075ns  (required time - arrival time)
                                                       0.088     2.797 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.666     4.464    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     4.560 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.608     6.168    rx_slave/clk16_BUFG
-    SLICE_X63Y73         FDRE                                         r  rx_slave/baud_counter_reg[0]/C
+                         net (fo=41, routed)          1.634     6.194    tx_slave/clk16_BUFG
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X63Y73         FDRE (Prop_fdre_C_Q)         0.456     6.624 f  rx_slave/baud_counter_reg[0]/Q
-                         net (fo=7, routed)           0.880     7.503    rx_slave/baud_counter_reg_n_0_[0]
-    SLICE_X63Y73         LUT5 (Prop_lut5_I0_O)        0.154     7.657 r  rx_slave/FSM_onehot_state[9]_i_2__0/O
-                         net (fo=2, routed)           0.853     8.510    rx_slave/FSM_onehot_state[9]_i_2__0_n_0
-    SLICE_X64Y73         LUT5 (Prop_lut5_I0_O)        0.327     8.837 r  rx_slave/FSM_onehot_state[9]_i_1__0/O
-                         net (fo=10, routed)          0.514     9.352    rx_slave/FSM_onehot_state[9]_i_1__0_n_0
-    SLICE_X64Y76         FDRE                                         r  rx_slave/FSM_onehot_state_reg[7]/CE
+    SLICE_X1Y37          FDRE (Prop_fdre_C_Q)         0.456     6.650 r  tx_slave/FSM_onehot_state_reg[3]/Q
+                         net (fo=3, routed)           1.442     8.092    tx_slave/FSM_onehot_state_reg_n_0_[3]
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.216 r  tx_slave/FSM_onehot_state[9]_i_3/O
+                         net (fo=1, routed)           0.433     8.649    tx_slave/FSM_onehot_state[9]_i_3_n_0
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.773 r  tx_slave/FSM_onehot_state[9]_i_1/O
+                         net (fo=10, routed)          0.671     9.444    tx_slave/FSM_onehot_state[9]_i_1_n_0
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[9]/CE
   -------------------------------------------------------------------    -------------------
 
                          (clock clk16 rise edge)     62.500    62.500 r  
@@ -596,31 +589,31 @@ Slack (MET) :             59.075ns  (required time - arrival time)
                                                       0.083    65.150 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.587    66.737    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    66.828 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.494    68.322    rx_slave/clk16_BUFG
-    SLICE_X64Y76         FDRE                                         r  rx_slave/FSM_onehot_state_reg[7]/C
-                         clock pessimism              0.309    68.631    
-                         clock uncertainty           -0.036    68.596    
-    SLICE_X64Y76         FDRE (Setup_fdre_C_CE)      -0.169    68.427    rx_slave/FSM_onehot_state_reg[7]
+                         net (fo=41, routed)          1.514    68.343    tx_slave/clk16_BUFG
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[9]/C
+                         clock pessimism              0.325    68.668    
+                         clock uncertainty           -0.036    68.632    
+    SLICE_X1Y35          FDRE (Setup_fdre_C_CE)      -0.205    68.427    tx_slave/FSM_onehot_state_reg[9]
   -------------------------------------------------------------------
                          required time                         68.427    
-                         arrival time                          -9.352    
+                         arrival time                          -9.444    
   -------------------------------------------------------------------
-                         slack                                 59.075    
+                         slack                                 58.983    
 
-Slack (MET) :             59.176ns  (required time - arrival time)
-  Source:                 rx_slave/baud_counter_reg[0]/C
+Slack (MET) :             59.058ns  (required time - arrival time)
+  Source:                 tx_slave/FSM_onehot_state_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            rx_slave/FSM_onehot_state_reg[0]/CE
+  Destination:            tx_slave/FSM_onehot_state_reg[3]/CE
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
   Path Group:             clk16
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            62.500ns  (clk16 rise@62.500ns - clk16 rise@0.000ns)
-  Data Path Delay:        3.061ns  (logic 0.937ns (30.614%)  route 2.124ns (69.386%))
+  Data Path Delay:        3.201ns  (logic 0.704ns (21.996%)  route 2.497ns (78.004%))
   Logic Levels:           2  (LUT5=2)
-  Clock Path Skew:        -0.022ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.822ns = ( 68.322 - 62.500 ) 
-    Source Clock Delay      (SCD):    6.168ns
-    Clock Pessimism Removal (CPR):    0.323ns
+  Clock Path Skew:        0.000ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.844ns = ( 68.344 - 62.500 ) 
+    Source Clock Delay      (SCD):    6.194ns
+    Clock Pessimism Removal (CPR):    0.350ns
   Clock Uncertainty:      0.036ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.011ns
@@ -637,16 +630,16 @@ Slack (MET) :             59.176ns  (required time - arrival time)
                                                       0.088     2.797 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.666     4.464    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     4.560 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.608     6.168    rx_slave/clk16_BUFG
-    SLICE_X63Y73         FDRE                                         r  rx_slave/baud_counter_reg[0]/C
+                         net (fo=41, routed)          1.634     6.194    tx_slave/clk16_BUFG
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X63Y73         FDRE (Prop_fdre_C_Q)         0.456     6.624 f  rx_slave/baud_counter_reg[0]/Q
-                         net (fo=7, routed)           0.880     7.503    rx_slave/baud_counter_reg_n_0_[0]
-    SLICE_X63Y73         LUT5 (Prop_lut5_I0_O)        0.154     7.657 r  rx_slave/FSM_onehot_state[9]_i_2__0/O
-                         net (fo=2, routed)           0.853     8.510    rx_slave/FSM_onehot_state[9]_i_2__0_n_0
-    SLICE_X64Y73         LUT5 (Prop_lut5_I0_O)        0.327     8.837 r  rx_slave/FSM_onehot_state[9]_i_1__0/O
-                         net (fo=10, routed)          0.391     9.228    rx_slave/FSM_onehot_state[9]_i_1__0_n_0
-    SLICE_X65Y73         FDRE                                         r  rx_slave/FSM_onehot_state_reg[0]/CE
+    SLICE_X1Y37          FDRE (Prop_fdre_C_Q)         0.456     6.650 r  tx_slave/FSM_onehot_state_reg[3]/Q
+                         net (fo=3, routed)           1.442     8.092    tx_slave/FSM_onehot_state_reg_n_0_[3]
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.216 r  tx_slave/FSM_onehot_state[9]_i_3/O
+                         net (fo=1, routed)           0.433     8.649    tx_slave/FSM_onehot_state[9]_i_3_n_0
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.773 r  tx_slave/FSM_onehot_state[9]_i_1/O
+                         net (fo=10, routed)          0.622     9.395    tx_slave/FSM_onehot_state[9]_i_1_n_0
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[3]/CE
   -------------------------------------------------------------------    -------------------
 
                          (clock clk16 rise edge)     62.500    62.500 r  
@@ -658,31 +651,31 @@ Slack (MET) :             59.176ns  (required time - arrival time)
                                                       0.083    65.150 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.587    66.737    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    66.828 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.494    68.322    rx_slave/clk16_BUFG
-    SLICE_X65Y73         FDRE                                         r  rx_slave/FSM_onehot_state_reg[0]/C
-                         clock pessimism              0.323    68.645    
-                         clock uncertainty           -0.036    68.610    
-    SLICE_X65Y73         FDRE (Setup_fdre_C_CE)      -0.205    68.405    rx_slave/FSM_onehot_state_reg[0]
+                         net (fo=41, routed)          1.515    68.344    tx_slave/clk16_BUFG
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[3]/C
+                         clock pessimism              0.350    68.694    
+                         clock uncertainty           -0.036    68.658    
+    SLICE_X1Y37          FDRE (Setup_fdre_C_CE)      -0.205    68.453    tx_slave/FSM_onehot_state_reg[3]
   -------------------------------------------------------------------
-                         required time                         68.405    
-                         arrival time                          -9.228    
+                         required time                         68.453    
+                         arrival time                          -9.395    
   -------------------------------------------------------------------
-                         slack                                 59.176    
+                         slack                                 59.058    
 
-Slack (MET) :             59.176ns  (required time - arrival time)
-  Source:                 rx_slave/baud_counter_reg[0]/C
+Slack (MET) :             59.058ns  (required time - arrival time)
+  Source:                 tx_slave/FSM_onehot_state_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            rx_slave/FSM_onehot_state_reg[1]/CE
+  Destination:            tx_slave/FSM_onehot_state_reg[4]/CE
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
   Path Group:             clk16
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            62.500ns  (clk16 rise@62.500ns - clk16 rise@0.000ns)
-  Data Path Delay:        3.061ns  (logic 0.937ns (30.614%)  route 2.124ns (69.386%))
+  Data Path Delay:        3.201ns  (logic 0.704ns (21.996%)  route 2.497ns (78.004%))
   Logic Levels:           2  (LUT5=2)
-  Clock Path Skew:        -0.022ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.822ns = ( 68.322 - 62.500 ) 
-    Source Clock Delay      (SCD):    6.168ns
-    Clock Pessimism Removal (CPR):    0.323ns
+  Clock Path Skew:        0.000ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.844ns = ( 68.344 - 62.500 ) 
+    Source Clock Delay      (SCD):    6.194ns
+    Clock Pessimism Removal (CPR):    0.350ns
   Clock Uncertainty:      0.036ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.011ns
@@ -699,16 +692,16 @@ Slack (MET) :             59.176ns  (required time - arrival time)
                                                       0.088     2.797 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.666     4.464    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     4.560 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.608     6.168    rx_slave/clk16_BUFG
-    SLICE_X63Y73         FDRE                                         r  rx_slave/baud_counter_reg[0]/C
+                         net (fo=41, routed)          1.634     6.194    tx_slave/clk16_BUFG
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X63Y73         FDRE (Prop_fdre_C_Q)         0.456     6.624 f  rx_slave/baud_counter_reg[0]/Q
-                         net (fo=7, routed)           0.880     7.503    rx_slave/baud_counter_reg_n_0_[0]
-    SLICE_X63Y73         LUT5 (Prop_lut5_I0_O)        0.154     7.657 r  rx_slave/FSM_onehot_state[9]_i_2__0/O
-                         net (fo=2, routed)           0.853     8.510    rx_slave/FSM_onehot_state[9]_i_2__0_n_0
-    SLICE_X64Y73         LUT5 (Prop_lut5_I0_O)        0.327     8.837 r  rx_slave/FSM_onehot_state[9]_i_1__0/O
-                         net (fo=10, routed)          0.391     9.228    rx_slave/FSM_onehot_state[9]_i_1__0_n_0
-    SLICE_X65Y73         FDRE                                         r  rx_slave/FSM_onehot_state_reg[1]/CE
+    SLICE_X1Y37          FDRE (Prop_fdre_C_Q)         0.456     6.650 r  tx_slave/FSM_onehot_state_reg[3]/Q
+                         net (fo=3, routed)           1.442     8.092    tx_slave/FSM_onehot_state_reg_n_0_[3]
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.216 r  tx_slave/FSM_onehot_state[9]_i_3/O
+                         net (fo=1, routed)           0.433     8.649    tx_slave/FSM_onehot_state[9]_i_3_n_0
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.773 r  tx_slave/FSM_onehot_state[9]_i_1/O
+                         net (fo=10, routed)          0.622     9.395    tx_slave/FSM_onehot_state[9]_i_1_n_0
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[4]/CE
   -------------------------------------------------------------------    -------------------
 
                          (clock clk16 rise edge)     62.500    62.500 r  
@@ -720,31 +713,31 @@ Slack (MET) :             59.176ns  (required time - arrival time)
                                                       0.083    65.150 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.587    66.737    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    66.828 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.494    68.322    rx_slave/clk16_BUFG
-    SLICE_X65Y73         FDRE                                         r  rx_slave/FSM_onehot_state_reg[1]/C
-                         clock pessimism              0.323    68.645    
-                         clock uncertainty           -0.036    68.610    
-    SLICE_X65Y73         FDRE (Setup_fdre_C_CE)      -0.205    68.405    rx_slave/FSM_onehot_state_reg[1]
+                         net (fo=41, routed)          1.515    68.344    tx_slave/clk16_BUFG
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[4]/C
+                         clock pessimism              0.350    68.694    
+                         clock uncertainty           -0.036    68.658    
+    SLICE_X1Y37          FDRE (Setup_fdre_C_CE)      -0.205    68.453    tx_slave/FSM_onehot_state_reg[4]
   -------------------------------------------------------------------
-                         required time                         68.405    
-                         arrival time                          -9.228    
+                         required time                         68.453    
+                         arrival time                          -9.395    
   -------------------------------------------------------------------
-                         slack                                 59.176    
+                         slack                                 59.058    
 
-Slack (MET) :             59.176ns  (required time - arrival time)
-  Source:                 rx_slave/baud_counter_reg[0]/C
+Slack (MET) :             59.058ns  (required time - arrival time)
+  Source:                 tx_slave/FSM_onehot_state_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            rx_slave/FSM_onehot_state_reg[8]/CE
+  Destination:            tx_slave/FSM_onehot_state_reg[5]/CE
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
   Path Group:             clk16
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            62.500ns  (clk16 rise@62.500ns - clk16 rise@0.000ns)
-  Data Path Delay:        3.061ns  (logic 0.937ns (30.614%)  route 2.124ns (69.386%))
+  Data Path Delay:        3.201ns  (logic 0.704ns (21.996%)  route 2.497ns (78.004%))
   Logic Levels:           2  (LUT5=2)
-  Clock Path Skew:        -0.022ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.822ns = ( 68.322 - 62.500 ) 
-    Source Clock Delay      (SCD):    6.168ns
-    Clock Pessimism Removal (CPR):    0.323ns
+  Clock Path Skew:        0.000ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.844ns = ( 68.344 - 62.500 ) 
+    Source Clock Delay      (SCD):    6.194ns
+    Clock Pessimism Removal (CPR):    0.350ns
   Clock Uncertainty:      0.036ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.011ns
@@ -761,16 +754,16 @@ Slack (MET) :             59.176ns  (required time - arrival time)
                                                       0.088     2.797 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.666     4.464    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     4.560 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.608     6.168    rx_slave/clk16_BUFG
-    SLICE_X63Y73         FDRE                                         r  rx_slave/baud_counter_reg[0]/C
+                         net (fo=41, routed)          1.634     6.194    tx_slave/clk16_BUFG
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X63Y73         FDRE (Prop_fdre_C_Q)         0.456     6.624 f  rx_slave/baud_counter_reg[0]/Q
-                         net (fo=7, routed)           0.880     7.503    rx_slave/baud_counter_reg_n_0_[0]
-    SLICE_X63Y73         LUT5 (Prop_lut5_I0_O)        0.154     7.657 r  rx_slave/FSM_onehot_state[9]_i_2__0/O
-                         net (fo=2, routed)           0.853     8.510    rx_slave/FSM_onehot_state[9]_i_2__0_n_0
-    SLICE_X64Y73         LUT5 (Prop_lut5_I0_O)        0.327     8.837 r  rx_slave/FSM_onehot_state[9]_i_1__0/O
-                         net (fo=10, routed)          0.391     9.228    rx_slave/FSM_onehot_state[9]_i_1__0_n_0
-    SLICE_X65Y73         FDRE                                         r  rx_slave/FSM_onehot_state_reg[8]/CE
+    SLICE_X1Y37          FDRE (Prop_fdre_C_Q)         0.456     6.650 r  tx_slave/FSM_onehot_state_reg[3]/Q
+                         net (fo=3, routed)           1.442     8.092    tx_slave/FSM_onehot_state_reg_n_0_[3]
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.216 r  tx_slave/FSM_onehot_state[9]_i_3/O
+                         net (fo=1, routed)           0.433     8.649    tx_slave/FSM_onehot_state[9]_i_3_n_0
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.773 r  tx_slave/FSM_onehot_state[9]_i_1/O
+                         net (fo=10, routed)          0.622     9.395    tx_slave/FSM_onehot_state[9]_i_1_n_0
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[5]/CE
   -------------------------------------------------------------------    -------------------
 
                          (clock clk16 rise edge)     62.500    62.500 r  
@@ -782,31 +775,31 @@ Slack (MET) :             59.176ns  (required time - arrival time)
                                                       0.083    65.150 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.587    66.737    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    66.828 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.494    68.322    rx_slave/clk16_BUFG
-    SLICE_X65Y73         FDRE                                         r  rx_slave/FSM_onehot_state_reg[8]/C
-                         clock pessimism              0.323    68.645    
-                         clock uncertainty           -0.036    68.610    
-    SLICE_X65Y73         FDRE (Setup_fdre_C_CE)      -0.205    68.405    rx_slave/FSM_onehot_state_reg[8]
+                         net (fo=41, routed)          1.515    68.344    tx_slave/clk16_BUFG
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[5]/C
+                         clock pessimism              0.350    68.694    
+                         clock uncertainty           -0.036    68.658    
+    SLICE_X1Y37          FDRE (Setup_fdre_C_CE)      -0.205    68.453    tx_slave/FSM_onehot_state_reg[5]
   -------------------------------------------------------------------
-                         required time                         68.405    
-                         arrival time                          -9.228    
+                         required time                         68.453    
+                         arrival time                          -9.395    
   -------------------------------------------------------------------
-                         slack                                 59.176    
+                         slack                                 59.058    
 
-Slack (MET) :             59.176ns  (required time - arrival time)
-  Source:                 rx_slave/baud_counter_reg[0]/C
+Slack (MET) :             59.058ns  (required time - arrival time)
+  Source:                 tx_slave/FSM_onehot_state_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            rx_slave/FSM_onehot_state_reg[9]/CE
+  Destination:            tx_slave/FSM_onehot_state_reg[6]/CE
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
   Path Group:             clk16
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            62.500ns  (clk16 rise@62.500ns - clk16 rise@0.000ns)
-  Data Path Delay:        3.061ns  (logic 0.937ns (30.614%)  route 2.124ns (69.386%))
+  Data Path Delay:        3.201ns  (logic 0.704ns (21.996%)  route 2.497ns (78.004%))
   Logic Levels:           2  (LUT5=2)
-  Clock Path Skew:        -0.022ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.822ns = ( 68.322 - 62.500 ) 
-    Source Clock Delay      (SCD):    6.168ns
-    Clock Pessimism Removal (CPR):    0.323ns
+  Clock Path Skew:        0.000ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.844ns = ( 68.344 - 62.500 ) 
+    Source Clock Delay      (SCD):    6.194ns
+    Clock Pessimism Removal (CPR):    0.350ns
   Clock Uncertainty:      0.036ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.011ns
@@ -823,16 +816,16 @@ Slack (MET) :             59.176ns  (required time - arrival time)
                                                       0.088     2.797 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.666     4.464    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     4.560 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.608     6.168    rx_slave/clk16_BUFG
-    SLICE_X63Y73         FDRE                                         r  rx_slave/baud_counter_reg[0]/C
+                         net (fo=41, routed)          1.634     6.194    tx_slave/clk16_BUFG
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X63Y73         FDRE (Prop_fdre_C_Q)         0.456     6.624 f  rx_slave/baud_counter_reg[0]/Q
-                         net (fo=7, routed)           0.880     7.503    rx_slave/baud_counter_reg_n_0_[0]
-    SLICE_X63Y73         LUT5 (Prop_lut5_I0_O)        0.154     7.657 r  rx_slave/FSM_onehot_state[9]_i_2__0/O
-                         net (fo=2, routed)           0.853     8.510    rx_slave/FSM_onehot_state[9]_i_2__0_n_0
-    SLICE_X64Y73         LUT5 (Prop_lut5_I0_O)        0.327     8.837 r  rx_slave/FSM_onehot_state[9]_i_1__0/O
-                         net (fo=10, routed)          0.391     9.228    rx_slave/FSM_onehot_state[9]_i_1__0_n_0
-    SLICE_X65Y73         FDRE                                         r  rx_slave/FSM_onehot_state_reg[9]/CE
+    SLICE_X1Y37          FDRE (Prop_fdre_C_Q)         0.456     6.650 r  tx_slave/FSM_onehot_state_reg[3]/Q
+                         net (fo=3, routed)           1.442     8.092    tx_slave/FSM_onehot_state_reg_n_0_[3]
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.216 r  tx_slave/FSM_onehot_state[9]_i_3/O
+                         net (fo=1, routed)           0.433     8.649    tx_slave/FSM_onehot_state[9]_i_3_n_0
+    SLICE_X1Y35          LUT5 (Prop_lut5_I1_O)        0.124     8.773 r  tx_slave/FSM_onehot_state[9]_i_1/O
+                         net (fo=10, routed)          0.622     9.395    tx_slave/FSM_onehot_state[9]_i_1_n_0
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[6]/CE
   -------------------------------------------------------------------    -------------------
 
                          (clock clk16 rise edge)     62.500    62.500 r  
@@ -844,16 +837,16 @@ Slack (MET) :             59.176ns  (required time - arrival time)
                                                       0.083    65.150 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           1.587    66.737    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    66.828 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          1.494    68.322    rx_slave/clk16_BUFG
-    SLICE_X65Y73         FDRE                                         r  rx_slave/FSM_onehot_state_reg[9]/C
-                         clock pessimism              0.323    68.645    
-                         clock uncertainty           -0.036    68.610    
-    SLICE_X65Y73         FDRE (Setup_fdre_C_CE)      -0.205    68.405    rx_slave/FSM_onehot_state_reg[9]
+                         net (fo=41, routed)          1.515    68.344    tx_slave/clk16_BUFG
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[6]/C
+                         clock pessimism              0.350    68.694    
+                         clock uncertainty           -0.036    68.658    
+    SLICE_X1Y37          FDRE (Setup_fdre_C_CE)      -0.205    68.453    tx_slave/FSM_onehot_state_reg[6]
   -------------------------------------------------------------------
-                         required time                         68.405    
-                         arrival time                          -9.228    
+                         required time                         68.453    
+                         arrival time                          -9.395    
   -------------------------------------------------------------------
-                         slack                                 59.176    
+                         slack                                 59.058    
 
 
 
@@ -861,276 +854,7 @@ Slack (MET) :             59.176ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.155ns  (arrival time - required time)
-  Source:                 comm_master/FSM_onehot_state_reg[0]/C
-                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            comm_master/DATA_OUT_reg[3]/D
-                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Path Group:             clk16
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
-  Data Path Delay:        0.289ns  (logic 0.186ns (64.307%)  route 0.103ns (35.693%))
-  Logic Levels:           1  (LUT5=1)
-  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.388ns
-    Source Clock Delay      (SCD):    1.840ns
-    Clock Pessimism Removal (CPR):    0.535ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk16 rise edge)      0.000     0.000 r  
-    L17                                               0.000     0.000 r  CLK_I (IN)
-                         net (fo=0)                   0.000     0.000    CLK_I
-    L17                  IBUF (Prop_ibuf_I_O)         0.244     0.244 r  CLK_I_IBUF_inst/O
-                         net (fo=1, routed)           0.440     0.684    clock/CLK_I_IBUF
-    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
-                                                      0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
-                         net (fo=1, routed)           0.489     1.223    clk16
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.591     1.840    comm_master/clk16_BUFG
-    SLICE_X3Y35          FDRE                                         r  comm_master/FSM_onehot_state_reg[0]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X3Y35          FDRE (Prop_fdre_C_Q)         0.141     1.981 r  comm_master/FSM_onehot_state_reg[0]/Q
-                         net (fo=3, routed)           0.103     2.084    comm_master/FSM_onehot_state_reg_n_0_[0]
-    SLICE_X2Y35          LUT5 (Prop_lut5_I1_O)        0.045     2.129 r  comm_master/DATA_OUT[3]_i_1/O
-                         net (fo=1, routed)           0.000     2.129    comm_master/DATA_OUT[3]
-    SLICE_X2Y35          FDRE                                         r  comm_master/DATA_OUT_reg[3]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk16 rise edge)      0.000     0.000 r  
-    L17                                               0.000     0.000 r  CLK_I (IN)
-                         net (fo=0)                   0.000     0.000    CLK_I
-    L17                  IBUF (Prop_ibuf_I_O)         0.432     0.432 r  CLK_I_IBUF_inst/O
-                         net (fo=1, routed)           0.480     0.912    clock/CLK_I_IBUF
-    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
-                                                      0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
-                         net (fo=1, routed)           0.534     1.498    clk16
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.861     2.388    comm_master/clk16_BUFG
-    SLICE_X2Y35          FDRE                                         r  comm_master/DATA_OUT_reg[3]/C
-                         clock pessimism             -0.535     1.853    
-    SLICE_X2Y35          FDRE (Hold_fdre_C_D)         0.121     1.974    comm_master/DATA_OUT_reg[3]
-  -------------------------------------------------------------------
-                         required time                         -1.974    
-                         arrival time                           2.129    
-  -------------------------------------------------------------------
-                         slack                                  0.155    
-
-Slack (MET) :             0.198ns  (arrival time - required time)
-  Source:                 comm_master/FSM_onehot_state_reg[3]/C
-                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            comm_master/FSM_onehot_state_reg[4]/D
-                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Path Group:             clk16
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
-  Data Path Delay:        0.269ns  (logic 0.141ns (52.358%)  route 0.128ns (47.642%))
-  Logic Levels:           0  
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.388ns
-    Source Clock Delay      (SCD):    1.840ns
-    Clock Pessimism Removal (CPR):    0.548ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk16 rise edge)      0.000     0.000 r  
-    L17                                               0.000     0.000 r  CLK_I (IN)
-                         net (fo=0)                   0.000     0.000    CLK_I
-    L17                  IBUF (Prop_ibuf_I_O)         0.244     0.244 r  CLK_I_IBUF_inst/O
-                         net (fo=1, routed)           0.440     0.684    clock/CLK_I_IBUF
-    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
-                                                      0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
-                         net (fo=1, routed)           0.489     1.223    clk16
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.591     1.840    comm_master/clk16_BUFG
-    SLICE_X3Y35          FDRE                                         r  comm_master/FSM_onehot_state_reg[3]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X3Y35          FDRE (Prop_fdre_C_Q)         0.141     1.981 r  comm_master/FSM_onehot_state_reg[3]/Q
-                         net (fo=3, routed)           0.128     2.109    comm_master/FSM_onehot_state_reg_n_0_[3]
-    SLICE_X3Y35          FDRE                                         r  comm_master/FSM_onehot_state_reg[4]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk16 rise edge)      0.000     0.000 r  
-    L17                                               0.000     0.000 r  CLK_I (IN)
-                         net (fo=0)                   0.000     0.000    CLK_I
-    L17                  IBUF (Prop_ibuf_I_O)         0.432     0.432 r  CLK_I_IBUF_inst/O
-                         net (fo=1, routed)           0.480     0.912    clock/CLK_I_IBUF
-    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
-                                                      0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
-                         net (fo=1, routed)           0.534     1.498    clk16
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.861     2.388    comm_master/clk16_BUFG
-    SLICE_X3Y35          FDRE                                         r  comm_master/FSM_onehot_state_reg[4]/C
-                         clock pessimism             -0.548     1.840    
-    SLICE_X3Y35          FDRE (Hold_fdre_C_D)         0.071     1.911    comm_master/FSM_onehot_state_reg[4]
-  -------------------------------------------------------------------
-                         required time                         -1.911    
-                         arrival time                           2.109    
-  -------------------------------------------------------------------
-                         slack                                  0.198    
-
-Slack (MET) :             0.211ns  (arrival time - required time)
-  Source:                 tx_slave/FSM_onehot_state_reg[0]/C
-                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            comm_master/TX_READY_reg/D
-                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Path Group:             clk16
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
-  Data Path Delay:        0.296ns  (logic 0.141ns (47.652%)  route 0.155ns (52.348%))
-  Logic Levels:           0  
-  Clock Path Skew:        0.015ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.386ns
-    Source Clock Delay      (SCD):    1.838ns
-    Clock Pessimism Removal (CPR):    0.533ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk16 rise edge)      0.000     0.000 r  
-    L17                                               0.000     0.000 r  CLK_I (IN)
-                         net (fo=0)                   0.000     0.000    CLK_I
-    L17                  IBUF (Prop_ibuf_I_O)         0.244     0.244 r  CLK_I_IBUF_inst/O
-                         net (fo=1, routed)           0.440     0.684    clock/CLK_I_IBUF
-    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
-                                                      0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
-                         net (fo=1, routed)           0.489     1.223    clk16
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.589     1.838    tx_slave/clk16_BUFG
-    SLICE_X4Y36          FDRE                                         r  tx_slave/FSM_onehot_state_reg[0]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X4Y36          FDRE (Prop_fdre_C_Q)         0.141     1.979 r  tx_slave/FSM_onehot_state_reg[0]/Q
-                         net (fo=12, routed)          0.155     2.134    comm_master/TX_DONE
-    SLICE_X5Y35          FDRE                                         r  comm_master/TX_READY_reg/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk16 rise edge)      0.000     0.000 r  
-    L17                                               0.000     0.000 r  CLK_I (IN)
-                         net (fo=0)                   0.000     0.000    CLK_I
-    L17                  IBUF (Prop_ibuf_I_O)         0.432     0.432 r  CLK_I_IBUF_inst/O
-                         net (fo=1, routed)           0.480     0.912    clock/CLK_I_IBUF
-    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
-                                                      0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
-                         net (fo=1, routed)           0.534     1.498    clk16
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.859     2.386    comm_master/clk16_BUFG
-    SLICE_X5Y35          FDRE                                         r  comm_master/TX_READY_reg/C
-                         clock pessimism             -0.533     1.853    
-    SLICE_X5Y35          FDRE (Hold_fdre_C_D)         0.070     1.923    comm_master/TX_READY_reg
-  -------------------------------------------------------------------
-                         required time                         -1.923    
-                         arrival time                           2.134    
-  -------------------------------------------------------------------
-                         slack                                  0.211    
-
-Slack (MET) :             0.213ns  (arrival time - required time)
-  Source:                 comm_master/FSM_onehot_state_reg[8]/C
-                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            comm_master/DATA_OUT_reg[2]/D
-                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Path Group:             clk16
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
-  Data Path Delay:        0.348ns  (logic 0.209ns (60.032%)  route 0.139ns (39.968%))
-  Logic Levels:           1  (LUT5=1)
-  Clock Path Skew:        0.015ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.388ns
-    Source Clock Delay      (SCD):    1.840ns
-    Clock Pessimism Removal (CPR):    0.533ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk16 rise edge)      0.000     0.000 r  
-    L17                                               0.000     0.000 r  CLK_I (IN)
-                         net (fo=0)                   0.000     0.000    CLK_I
-    L17                  IBUF (Prop_ibuf_I_O)         0.244     0.244 r  CLK_I_IBUF_inst/O
-                         net (fo=1, routed)           0.440     0.684    clock/CLK_I_IBUF
-    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
-                                                      0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
-                         net (fo=1, routed)           0.489     1.223    clk16
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.591     1.840    comm_master/clk16_BUFG
-    SLICE_X2Y36          FDRE                                         r  comm_master/FSM_onehot_state_reg[8]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X2Y36          FDRE (Prop_fdre_C_Q)         0.164     2.004 r  comm_master/FSM_onehot_state_reg[8]/Q
-                         net (fo=4, routed)           0.139     2.143    comm_master/FSM_onehot_state_reg_n_0_[8]
-    SLICE_X2Y35          LUT5 (Prop_lut5_I4_O)        0.045     2.188 r  comm_master/DATA_OUT[2]_i_1/O
-                         net (fo=1, routed)           0.000     2.188    comm_master/DATA_OUT[2]
-    SLICE_X2Y35          FDRE                                         r  comm_master/DATA_OUT_reg[2]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk16 rise edge)      0.000     0.000 r  
-    L17                                               0.000     0.000 r  CLK_I (IN)
-                         net (fo=0)                   0.000     0.000    CLK_I
-    L17                  IBUF (Prop_ibuf_I_O)         0.432     0.432 r  CLK_I_IBUF_inst/O
-                         net (fo=1, routed)           0.480     0.912    clock/CLK_I_IBUF
-    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
-                                                      0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
-                         net (fo=1, routed)           0.534     1.498    clk16
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.861     2.388    comm_master/clk16_BUFG
-    SLICE_X2Y35          FDRE                                         r  comm_master/DATA_OUT_reg[2]/C
-                         clock pessimism             -0.533     1.855    
-    SLICE_X2Y35          FDRE (Hold_fdre_C_D)         0.120     1.975    comm_master/DATA_OUT_reg[2]
-  -------------------------------------------------------------------
-                         required time                         -1.975    
-                         arrival time                           2.188    
-  -------------------------------------------------------------------
-                         slack                                  0.213    
-
-Slack (MET) :             0.218ns  (arrival time - required time)
-  Source:                 comm_master/FSM_onehot_state_reg[0]/C
-                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            comm_master/FSM_onehot_state_reg[1]/D
-                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Path Group:             clk16
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
-  Data Path Delay:        0.265ns  (logic 0.141ns (53.145%)  route 0.124ns (46.855%))
-  Logic Levels:           0  
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.388ns
-    Source Clock Delay      (SCD):    1.840ns
-    Clock Pessimism Removal (CPR):    0.548ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk16 rise edge)      0.000     0.000 r  
-    L17                                               0.000     0.000 r  CLK_I (IN)
-                         net (fo=0)                   0.000     0.000    CLK_I
-    L17                  IBUF (Prop_ibuf_I_O)         0.244     0.244 r  CLK_I_IBUF_inst/O
-                         net (fo=1, routed)           0.440     0.684    clock/CLK_I_IBUF
-    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
-                                                      0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
-                         net (fo=1, routed)           0.489     1.223    clk16
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.591     1.840    comm_master/clk16_BUFG
-    SLICE_X3Y35          FDRE                                         r  comm_master/FSM_onehot_state_reg[0]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X3Y35          FDRE (Prop_fdre_C_Q)         0.141     1.981 r  comm_master/FSM_onehot_state_reg[0]/Q
-                         net (fo=3, routed)           0.124     2.105    comm_master/FSM_onehot_state_reg_n_0_[0]
-    SLICE_X3Y35          FDRE                                         r  comm_master/FSM_onehot_state_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock clk16 rise edge)      0.000     0.000 r  
-    L17                                               0.000     0.000 r  CLK_I (IN)
-                         net (fo=0)                   0.000     0.000    CLK_I
-    L17                  IBUF (Prop_ibuf_I_O)         0.432     0.432 r  CLK_I_IBUF_inst/O
-                         net (fo=1, routed)           0.480     0.912    clock/CLK_I_IBUF
-    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
-                                                      0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
-                         net (fo=1, routed)           0.534     1.498    clk16
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.861     2.388    comm_master/clk16_BUFG
-    SLICE_X3Y35          FDRE                                         r  comm_master/FSM_onehot_state_reg[1]/C
-                         clock pessimism             -0.548     1.840    
-    SLICE_X3Y35          FDRE (Hold_fdre_C_D)         0.047     1.887    comm_master/FSM_onehot_state_reg[1]
-  -------------------------------------------------------------------
-                         required time                         -1.887    
-                         arrival time                           2.105    
-  -------------------------------------------------------------------
-                         slack                                  0.218    
-
-Slack (MET) :             0.219ns  (arrival time - required time)
+Slack (MET) :             0.172ns  (arrival time - required time)
   Source:                 comm_master/FSM_onehot_state_reg[10]/C
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
   Destination:            comm_master/FSM_onehot_state_reg[0]/D
@@ -1138,8 +862,222 @@ Slack (MET) :             0.219ns  (arrival time - required time)
   Path Group:             clk16
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
-  Data Path Delay:        0.304ns  (logic 0.164ns (53.909%)  route 0.140ns (46.091%))
+  Data Path Delay:        0.256ns  (logic 0.141ns (55.088%)  route 0.115ns (44.912%))
   Logic Levels:           0  
+  Clock Path Skew:        0.014ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.388ns
+    Source Clock Delay      (SCD):    1.841ns
+    Clock Pessimism Removal (CPR):    0.533ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.244     0.244 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.440     0.684    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.489     1.223    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.592     1.841    comm_master/clk16_BUFG
+    SLICE_X0Y37          FDRE                                         r  comm_master/FSM_onehot_state_reg[10]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y37          FDRE (Prop_fdre_C_Q)         0.141     1.982 r  comm_master/FSM_onehot_state_reg[10]/Q
+                         net (fo=4, routed)           0.115     2.097    comm_master/FSM_onehot_state_reg_n_0_[10]
+    SLICE_X3Y36          FDRE                                         r  comm_master/FSM_onehot_state_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.432     0.432 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.480     0.912    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.534     1.498    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.861     2.388    comm_master/clk16_BUFG
+    SLICE_X3Y36          FDRE                                         r  comm_master/FSM_onehot_state_reg[0]/C
+                         clock pessimism             -0.533     1.855    
+    SLICE_X3Y36          FDRE (Hold_fdre_C_D)         0.070     1.925    comm_master/FSM_onehot_state_reg[0]
+  -------------------------------------------------------------------
+                         required time                         -1.925    
+                         arrival time                           2.097    
+  -------------------------------------------------------------------
+                         slack                                  0.172    
+
+Slack (MET) :             0.192ns  (arrival time - required time)
+  Source:                 tx_slave/FSM_onehot_state_reg[6]/C
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Destination:            tx_slave/FSM_onehot_state_reg[7]/D
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Path Group:             clk16
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
+  Data Path Delay:        0.278ns  (logic 0.141ns (50.794%)  route 0.137ns (49.206%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.014ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.388ns
+    Source Clock Delay      (SCD):    1.841ns
+    Clock Pessimism Removal (CPR):    0.533ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.244     0.244 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.440     0.684    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.489     1.223    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.592     1.841    tx_slave/clk16_BUFG
+    SLICE_X1Y37          FDRE                                         r  tx_slave/FSM_onehot_state_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y37          FDRE (Prop_fdre_C_Q)         0.141     1.982 r  tx_slave/FSM_onehot_state_reg[6]/Q
+                         net (fo=3, routed)           0.137     2.118    tx_slave/FSM_onehot_state_reg[6]_0
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.432     0.432 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.480     0.912    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.534     1.498    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.861     2.388    tx_slave/clk16_BUFG
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[7]/C
+                         clock pessimism             -0.533     1.855    
+    SLICE_X1Y35          FDRE (Hold_fdre_C_D)         0.072     1.927    tx_slave/FSM_onehot_state_reg[7]
+  -------------------------------------------------------------------
+                         required time                         -1.927    
+                         arrival time                           2.118    
+  -------------------------------------------------------------------
+                         slack                                  0.192    
+
+Slack (MET) :             0.202ns  (arrival time - required time)
+  Source:                 comm_master/FSM_onehot_state_reg[9]/C
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Destination:            comm_master/FSM_onehot_state_reg[10]/D
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Path Group:             clk16
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
+  Data Path Delay:        0.272ns  (logic 0.141ns (51.911%)  route 0.131ns (48.089%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.389ns
+    Source Clock Delay      (SCD):    1.841ns
+    Clock Pessimism Removal (CPR):    0.548ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.244     0.244 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.440     0.684    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.489     1.223    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.592     1.841    comm_master/clk16_BUFG
+    SLICE_X0Y37          FDRE                                         r  comm_master/FSM_onehot_state_reg[9]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y37          FDRE (Prop_fdre_C_Q)         0.141     1.982 r  comm_master/FSM_onehot_state_reg[9]/Q
+                         net (fo=3, routed)           0.131     2.112    comm_master/FSM_onehot_state_reg_n_0_[9]
+    SLICE_X0Y37          FDRE                                         r  comm_master/FSM_onehot_state_reg[10]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.432     0.432 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.480     0.912    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.534     1.498    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.862     2.389    comm_master/clk16_BUFG
+    SLICE_X0Y37          FDRE                                         r  comm_master/FSM_onehot_state_reg[10]/C
+                         clock pessimism             -0.548     1.841    
+    SLICE_X0Y37          FDRE (Hold_fdre_C_D)         0.070     1.911    comm_master/FSM_onehot_state_reg[10]
+  -------------------------------------------------------------------
+                         required time                         -1.911    
+                         arrival time                           2.112    
+  -------------------------------------------------------------------
+                         slack                                  0.202    
+
+Slack (MET) :             0.226ns  (arrival time - required time)
+  Source:                 comm_master/FSM_onehot_state_reg[8]/C
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Destination:            comm_master/DATA_OUT_reg[3]/D
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Path Group:             clk16
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
+  Data Path Delay:        0.332ns  (logic 0.186ns (56.021%)  route 0.146ns (43.979%))
+  Logic Levels:           1  (LUT5=1)
+  Clock Path Skew:        0.014ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.388ns
+    Source Clock Delay      (SCD):    1.841ns
+    Clock Pessimism Removal (CPR):    0.533ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.244     0.244 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.440     0.684    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.489     1.223    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.592     1.841    comm_master/clk16_BUFG
+    SLICE_X0Y37          FDRE                                         r  comm_master/FSM_onehot_state_reg[8]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y37          FDRE (Prop_fdre_C_Q)         0.141     1.982 r  comm_master/FSM_onehot_state_reg[8]/Q
+                         net (fo=4, routed)           0.146     2.128    comm_master/FSM_onehot_state_reg_n_0_[8]
+    SLICE_X0Y36          LUT5 (Prop_lut5_I4_O)        0.045     2.173 r  comm_master/DATA_OUT[3]_i_1/O
+                         net (fo=1, routed)           0.000     2.173    comm_master/DATA_OUT[3]
+    SLICE_X0Y36          FDRE                                         r  comm_master/DATA_OUT_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.432     0.432 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.480     0.912    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.534     1.498    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.861     2.388    comm_master/clk16_BUFG
+    SLICE_X0Y36          FDRE                                         r  comm_master/DATA_OUT_reg[3]/C
+                         clock pessimism             -0.533     1.855    
+    SLICE_X0Y36          FDRE (Hold_fdre_C_D)         0.092     1.947    comm_master/DATA_OUT_reg[3]
+  -------------------------------------------------------------------
+                         required time                         -1.947    
+                         arrival time                           2.173    
+  -------------------------------------------------------------------
+                         slack                                  0.226    
+
+Slack (MET) :             0.227ns  (arrival time - required time)
+  Source:                 comm_master/FSM_onehot_state_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Destination:            comm_master/DATA_OUT_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Path Group:             clk16
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
+  Data Path Delay:        0.334ns  (logic 0.186ns (55.663%)  route 0.148ns (44.337%))
+  Logic Levels:           1  (LUT5=1)
   Clock Path Skew:        0.015ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    2.388ns
     Source Clock Delay      (SCD):    1.840ns
@@ -1156,12 +1094,14 @@ Slack (MET) :             0.219ns  (arrival time - required time)
                                                       0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           0.489     1.223    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.591     1.840    comm_master/clk16_BUFG
-    SLICE_X2Y36          FDRE                                         r  comm_master/FSM_onehot_state_reg[10]/C
+                         net (fo=41, routed)          0.591     1.840    comm_master/clk16_BUFG
+    SLICE_X3Y36          FDRE                                         r  comm_master/FSM_onehot_state_reg[1]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X2Y36          FDRE (Prop_fdre_C_Q)         0.164     2.004 r  comm_master/FSM_onehot_state_reg[10]/Q
-                         net (fo=4, routed)           0.140     2.144    comm_master/FSM_onehot_state_reg_n_0_[10]
-    SLICE_X3Y35          FDRE                                         r  comm_master/FSM_onehot_state_reg[0]/D
+    SLICE_X3Y36          FDRE (Prop_fdre_C_Q)         0.141     1.981 r  comm_master/FSM_onehot_state_reg[1]/Q
+                         net (fo=3, routed)           0.148     2.129    comm_master/FSM_onehot_state_reg_n_0_[1]
+    SLICE_X1Y36          LUT5 (Prop_lut5_I1_O)        0.045     2.174 r  comm_master/DATA_OUT[0]_i_1/O
+                         net (fo=1, routed)           0.000     2.174    comm_master/DATA_OUT[0]
+    SLICE_X1Y36          FDRE                                         r  comm_master/DATA_OUT_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk16 rise edge)      0.000     0.000 r  
@@ -1173,29 +1113,29 @@ Slack (MET) :             0.219ns  (arrival time - required time)
                                                       0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           0.534     1.498    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.861     2.388    comm_master/clk16_BUFG
-    SLICE_X3Y35          FDRE                                         r  comm_master/FSM_onehot_state_reg[0]/C
+                         net (fo=41, routed)          0.861     2.388    comm_master/clk16_BUFG
+    SLICE_X1Y36          FDRE                                         r  comm_master/DATA_OUT_reg[0]/C
                          clock pessimism             -0.533     1.855    
-    SLICE_X3Y35          FDRE (Hold_fdre_C_D)         0.070     1.925    comm_master/FSM_onehot_state_reg[0]
+    SLICE_X1Y36          FDRE (Hold_fdre_C_D)         0.092     1.947    comm_master/DATA_OUT_reg[0]
   -------------------------------------------------------------------
-                         required time                         -1.925    
-                         arrival time                           2.144    
+                         required time                         -1.947    
+                         arrival time                           2.174    
   -------------------------------------------------------------------
-                         slack                                  0.219    
+                         slack                                  0.227    
 
-Slack (MET) :             0.222ns  (arrival time - required time)
-  Source:                 tx_slave/FSM_onehot_state_reg[4]/C
+Slack (MET) :             0.228ns  (arrival time - required time)
+  Source:                 comm_master/FSM_onehot_state_reg[8]/C
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            tx_slave/FSM_onehot_state_reg[5]/D
+  Destination:            comm_master/DATA_OUT_reg[2]/D
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
   Path Group:             clk16
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
-  Data Path Delay:        0.284ns  (logic 0.141ns (49.676%)  route 0.143ns (50.324%))
-  Logic Levels:           0  
-  Clock Path Skew:        0.015ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.386ns
-    Source Clock Delay      (SCD):    1.838ns
+  Data Path Delay:        0.333ns  (logic 0.186ns (55.853%)  route 0.147ns (44.147%))
+  Logic Levels:           1  (LUT5=1)
+  Clock Path Skew:        0.014ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.388ns
+    Source Clock Delay      (SCD):    1.841ns
     Clock Pessimism Removal (CPR):    0.533ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
@@ -1209,12 +1149,14 @@ Slack (MET) :             0.222ns  (arrival time - required time)
                                                       0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           0.489     1.223    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.589     1.838    tx_slave/clk16_BUFG
-    SLICE_X4Y34          FDRE                                         r  tx_slave/FSM_onehot_state_reg[4]/C
+                         net (fo=41, routed)          0.592     1.841    comm_master/clk16_BUFG
+    SLICE_X0Y37          FDRE                                         r  comm_master/FSM_onehot_state_reg[8]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X4Y34          FDRE (Prop_fdre_C_Q)         0.141     1.979 r  tx_slave/FSM_onehot_state_reg[4]/Q
-                         net (fo=3, routed)           0.143     2.121    tx_slave/FSM_onehot_state_reg_n_0_[4]
-    SLICE_X4Y36          FDRE                                         r  tx_slave/FSM_onehot_state_reg[5]/D
+    SLICE_X0Y37          FDRE (Prop_fdre_C_Q)         0.141     1.982 r  comm_master/FSM_onehot_state_reg[8]/Q
+                         net (fo=4, routed)           0.147     2.129    comm_master/FSM_onehot_state_reg_n_0_[8]
+    SLICE_X0Y36          LUT5 (Prop_lut5_I4_O)        0.045     2.174 r  comm_master/DATA_OUT[2]_i_1/O
+                         net (fo=1, routed)           0.000     2.174    comm_master/DATA_OUT[2]
+    SLICE_X0Y36          FDRE                                         r  comm_master/DATA_OUT_reg[2]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk16 rise edge)      0.000     0.000 r  
@@ -1226,29 +1168,29 @@ Slack (MET) :             0.222ns  (arrival time - required time)
                                                       0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           0.534     1.498    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.859     2.386    tx_slave/clk16_BUFG
-    SLICE_X4Y36          FDRE                                         r  tx_slave/FSM_onehot_state_reg[5]/C
-                         clock pessimism             -0.533     1.853    
-    SLICE_X4Y36          FDRE (Hold_fdre_C_D)         0.047     1.900    tx_slave/FSM_onehot_state_reg[5]
+                         net (fo=41, routed)          0.861     2.388    comm_master/clk16_BUFG
+    SLICE_X0Y36          FDRE                                         r  comm_master/DATA_OUT_reg[2]/C
+                         clock pessimism             -0.533     1.855    
+    SLICE_X0Y36          FDRE (Hold_fdre_C_D)         0.091     1.946    comm_master/DATA_OUT_reg[2]
   -------------------------------------------------------------------
-                         required time                         -1.900    
-                         arrival time                           2.121    
+                         required time                         -1.946    
+                         arrival time                           2.174    
   -------------------------------------------------------------------
-                         slack                                  0.222    
+                         slack                                  0.228    
 
-Slack (MET) :             0.224ns  (arrival time - required time)
-  Source:                 tx_slave/FSM_onehot_state_reg[9]/C
+Slack (MET) :             0.249ns  (arrival time - required time)
+  Source:                 tx_slave/baud_counter_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            tx_slave/FSM_onehot_state_reg[0]/D
+  Destination:            tx_slave/baud_counter_reg[3]/D
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
   Path Group:             clk16
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
-  Data Path Delay:        0.228ns  (logic 0.128ns (56.148%)  route 0.100ns (43.852%))
-  Logic Levels:           0  
+  Data Path Delay:        0.382ns  (logic 0.207ns (54.155%)  route 0.175ns (45.845%))
+  Logic Levels:           1  (LUT4=1)
   Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.386ns
-    Source Clock Delay      (SCD):    1.838ns
+    Destination Clock Delay (DCD):    2.388ns
+    Source Clock Delay      (SCD):    1.840ns
     Clock Pessimism Removal (CPR):    0.548ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
@@ -1262,12 +1204,14 @@ Slack (MET) :             0.224ns  (arrival time - required time)
                                                       0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           0.489     1.223    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.589     1.838    tx_slave/clk16_BUFG
-    SLICE_X4Y36          FDRE                                         r  tx_slave/FSM_onehot_state_reg[9]/C
+                         net (fo=41, routed)          0.591     1.840    tx_slave/clk16_BUFG
+    SLICE_X2Y35          FDRE                                         r  tx_slave/baud_counter_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X4Y36          FDRE (Prop_fdre_C_Q)         0.128     1.966 r  tx_slave/FSM_onehot_state_reg[9]/Q
-                         net (fo=2, routed)           0.100     2.066    tx_slave/FSM_onehot_state_reg_n_0_[9]
-    SLICE_X4Y36          FDRE                                         r  tx_slave/FSM_onehot_state_reg[0]/D
+    SLICE_X2Y35          FDRE (Prop_fdre_C_Q)         0.164     2.004 r  tx_slave/baud_counter_reg[3]/Q
+                         net (fo=3, routed)           0.175     2.179    tx_slave/baud_counter_reg[3]
+    SLICE_X2Y35          LUT4 (Prop_lut4_I3_O)        0.043     2.222 r  tx_slave/baud_counter[3]_i_2/O
+                         net (fo=1, routed)           0.000     2.222    tx_slave/baud_counter0[3]
+    SLICE_X2Y35          FDRE                                         r  tx_slave/baud_counter_reg[3]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk16 rise edge)      0.000     0.000 r  
@@ -1279,30 +1223,30 @@ Slack (MET) :             0.224ns  (arrival time - required time)
                                                       0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           0.534     1.498    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.859     2.386    tx_slave/clk16_BUFG
-    SLICE_X4Y36          FDRE                                         r  tx_slave/FSM_onehot_state_reg[0]/C
-                         clock pessimism             -0.548     1.838    
-    SLICE_X4Y36          FDRE (Hold_fdre_C_D)         0.004     1.842    tx_slave/FSM_onehot_state_reg[0]
+                         net (fo=41, routed)          0.861     2.388    tx_slave/clk16_BUFG
+    SLICE_X2Y35          FDRE                                         r  tx_slave/baud_counter_reg[3]/C
+                         clock pessimism             -0.548     1.840    
+    SLICE_X2Y35          FDRE (Hold_fdre_C_D)         0.133     1.973    tx_slave/baud_counter_reg[3]
   -------------------------------------------------------------------
-                         required time                         -1.842    
-                         arrival time                           2.066    
+                         required time                         -1.973    
+                         arrival time                           2.222    
   -------------------------------------------------------------------
-                         slack                                  0.224    
+                         slack                                  0.249    
 
-Slack (MET) :             0.224ns  (arrival time - required time)
-  Source:                 rx_slave/FSM_onehot_state_reg[4]/C
+Slack (MET) :             0.250ns  (arrival time - required time)
+  Source:                 tx_slave/FSM_onehot_state_reg[0]/C
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            rx_slave/FSM_onehot_state_reg[5]/D
+  Destination:            tx_slave/FSM_onehot_state_reg[1]/D
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
   Path Group:             clk16
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
-  Data Path Delay:        0.300ns  (logic 0.164ns (54.667%)  route 0.136ns (45.333%))
+  Data Path Delay:        0.311ns  (logic 0.141ns (45.303%)  route 0.170ns (54.697%))
   Logic Levels:           0  
   Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.376ns
-    Source Clock Delay      (SCD):    1.830ns
-    Clock Pessimism Removal (CPR):    0.546ns
+    Destination Clock Delay (DCD):    2.388ns
+    Source Clock Delay      (SCD):    1.840ns
+    Clock Pessimism Removal (CPR):    0.548ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1315,12 +1259,12 @@ Slack (MET) :             0.224ns  (arrival time - required time)
                                                       0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           0.489     1.223    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.581     1.830    rx_slave/clk16_BUFG
-    SLICE_X64Y76         FDRE                                         r  rx_slave/FSM_onehot_state_reg[4]/C
+                         net (fo=41, routed)          0.591     1.840    tx_slave/clk16_BUFG
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[0]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X64Y76         FDRE (Prop_fdre_C_Q)         0.164     1.994 r  rx_slave/FSM_onehot_state_reg[4]/Q
-                         net (fo=4, routed)           0.136     2.130    rx_slave/FSM_onehot_state_reg_n_0_[4]
-    SLICE_X64Y76         FDRE                                         r  rx_slave/FSM_onehot_state_reg[5]/D
+    SLICE_X1Y35          FDRE (Prop_fdre_C_Q)         0.141     1.981 r  tx_slave/FSM_onehot_state_reg[0]/Q
+                         net (fo=12, routed)          0.170     2.151    tx_slave/TX_DONE
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[1]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk16 rise edge)      0.000     0.000 r  
@@ -1332,30 +1276,30 @@ Slack (MET) :             0.224ns  (arrival time - required time)
                                                       0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           0.534     1.498    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.848     2.376    rx_slave/clk16_BUFG
-    SLICE_X64Y76         FDRE                                         r  rx_slave/FSM_onehot_state_reg[5]/C
-                         clock pessimism             -0.546     1.830    
-    SLICE_X64Y76         FDRE (Hold_fdre_C_D)         0.076     1.906    rx_slave/FSM_onehot_state_reg[5]
+                         net (fo=41, routed)          0.861     2.388    tx_slave/clk16_BUFG
+    SLICE_X1Y35          FDRE                                         r  tx_slave/FSM_onehot_state_reg[1]/C
+                         clock pessimism             -0.548     1.840    
+    SLICE_X1Y35          FDRE (Hold_fdre_C_D)         0.061     1.901    tx_slave/FSM_onehot_state_reg[1]
   -------------------------------------------------------------------
-                         required time                         -1.906    
-                         arrival time                           2.130    
+                         required time                         -1.901    
+                         arrival time                           2.151    
   -------------------------------------------------------------------
-                         slack                                  0.224    
+                         slack                                  0.250    
 
-Slack (MET) :             0.227ns  (arrival time - required time)
-  Source:                 rx_slave/FSM_onehot_state_reg[9]/C
+Slack (MET) :             0.254ns  (arrival time - required time)
+  Source:                 comm_master/FSM_onehot_state_reg[7]/C
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
-  Destination:            rx_slave/FSM_onehot_state_reg[0]/D
+  Destination:            comm_master/FSM_onehot_state_reg[8]/D
                             (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
   Path Group:             clk16
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
-  Data Path Delay:        0.297ns  (logic 0.141ns (47.436%)  route 0.156ns (52.564%))
+  Data Path Delay:        0.324ns  (logic 0.141ns (43.519%)  route 0.183ns (56.481%))
   Logic Levels:           0  
   Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.376ns
-    Source Clock Delay      (SCD):    1.830ns
-    Clock Pessimism Removal (CPR):    0.546ns
+    Destination Clock Delay (DCD):    2.389ns
+    Source Clock Delay      (SCD):    1.841ns
+    Clock Pessimism Removal (CPR):    0.548ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1368,12 +1312,12 @@ Slack (MET) :             0.227ns  (arrival time - required time)
                                                       0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           0.489     1.223    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.581     1.830    rx_slave/clk16_BUFG
-    SLICE_X65Y73         FDRE                                         r  rx_slave/FSM_onehot_state_reg[9]/C
+                         net (fo=41, routed)          0.592     1.841    comm_master/clk16_BUFG
+    SLICE_X0Y37          FDRE                                         r  comm_master/FSM_onehot_state_reg[7]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y73         FDRE (Prop_fdre_C_Q)         0.141     1.971 r  rx_slave/FSM_onehot_state_reg[9]/Q
-                         net (fo=2, routed)           0.156     2.127    rx_slave/FSM_onehot_state_reg_n_0_[9]
-    SLICE_X65Y73         FDRE                                         r  rx_slave/FSM_onehot_state_reg[0]/D
+    SLICE_X0Y37          FDRE (Prop_fdre_C_Q)         0.141     1.982 r  comm_master/FSM_onehot_state_reg[7]/Q
+                         net (fo=4, routed)           0.183     2.165    comm_master/FSM_onehot_state_reg_n_0_[7]
+    SLICE_X0Y37          FDRE                                         r  comm_master/FSM_onehot_state_reg[8]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk16 rise edge)      0.000     0.000 r  
@@ -1385,15 +1329,68 @@ Slack (MET) :             0.227ns  (arrival time - required time)
                                                       0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
                          net (fo=1, routed)           0.534     1.498    clk16
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
-                         net (fo=49, routed)          0.848     2.376    rx_slave/clk16_BUFG
-    SLICE_X65Y73         FDRE                                         r  rx_slave/FSM_onehot_state_reg[0]/C
-                         clock pessimism             -0.546     1.830    
-    SLICE_X65Y73         FDRE (Hold_fdre_C_D)         0.070     1.900    rx_slave/FSM_onehot_state_reg[0]
+                         net (fo=41, routed)          0.862     2.389    comm_master/clk16_BUFG
+    SLICE_X0Y37          FDRE                                         r  comm_master/FSM_onehot_state_reg[8]/C
+                         clock pessimism             -0.548     1.841    
+    SLICE_X0Y37          FDRE (Hold_fdre_C_D)         0.070     1.911    comm_master/FSM_onehot_state_reg[8]
   -------------------------------------------------------------------
-                         required time                         -1.900    
-                         arrival time                           2.127    
+                         required time                         -1.911    
+                         arrival time                           2.165    
   -------------------------------------------------------------------
-                         slack                                  0.227    
+                         slack                                  0.254    
+
+Slack (MET) :             0.256ns  (arrival time - required time)
+  Source:                 comm_master/FSM_onehot_state_reg[6]/C
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Destination:            comm_master/FSM_onehot_state_reg[7]/D
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Path Group:             clk16
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
+  Data Path Delay:        0.338ns  (logic 0.164ns (48.572%)  route 0.174ns (51.428%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.016ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.389ns
+    Source Clock Delay      (SCD):    1.840ns
+    Clock Pessimism Removal (CPR):    0.533ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.244     0.244 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.440     0.684    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.489     1.223    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.591     1.840    comm_master/clk16_BUFG
+    SLICE_X2Y36          FDRE                                         r  comm_master/FSM_onehot_state_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y36          FDRE (Prop_fdre_C_Q)         0.164     2.004 r  comm_master/FSM_onehot_state_reg[6]/Q
+                         net (fo=6, routed)           0.174     2.177    comm_master/FSM_onehot_state_reg_n_0_[6]
+    SLICE_X0Y37          FDRE                                         r  comm_master/FSM_onehot_state_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.432     0.432 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.480     0.912    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.534     1.498    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.862     2.389    comm_master/clk16_BUFG
+    SLICE_X0Y37          FDRE                                         r  comm_master/FSM_onehot_state_reg[7]/C
+                         clock pessimism             -0.533     1.856    
+    SLICE_X0Y37          FDRE (Hold_fdre_C_D)         0.066     1.922    comm_master/FSM_onehot_state_reg[7]
+  -------------------------------------------------------------------
+                         required time                         -1.922    
+                         arrival time                           2.177    
+  -------------------------------------------------------------------
+                         slack                                  0.256    
 
 
 
@@ -1409,35 +1406,35 @@ Sources:            { clock/MMCME2_BASE_inst/CLKOUT0 }
 Check Type        Corner  Lib Pin             Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location         Pin
 Min Period        n/a     BUFG/I              n/a            2.155         62.500      60.345     BUFGCTRL_X0Y0    clk16_BUFG_inst/I
 Min Period        n/a     MMCME2_ADV/CLKOUT0  n/a            1.249         62.500      61.251     MMCME2_ADV_X0Y0  clock/MMCME2_BASE_inst/CLKOUT0
-Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X4Y35      comm_master/DATA_OUT_reg[0]/C
-Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X4Y35      comm_master/DATA_OUT_reg[1]/C
-Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X2Y35      comm_master/DATA_OUT_reg[2]/C
-Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X2Y35      comm_master/DATA_OUT_reg[3]/C
-Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X4Y35      comm_master/DATA_OUT_reg[4]/C
-Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X2Y35      comm_master/DATA_OUT_reg[6]/C
-Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X3Y35      comm_master/FSM_onehot_state_reg[0]/C
-Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X2Y36      comm_master/FSM_onehot_state_reg[10]/C
+Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X1Y36      comm_master/DATA_OUT_reg[0]/C
+Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X1Y36      comm_master/DATA_OUT_reg[1]/C
+Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X0Y36      comm_master/DATA_OUT_reg[2]/C
+Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X0Y36      comm_master/DATA_OUT_reg[3]/C
+Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X1Y36      comm_master/DATA_OUT_reg[4]/C
+Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X0Y36      comm_master/DATA_OUT_reg[6]/C
+Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X3Y36      comm_master/FSM_onehot_state_reg[0]/C
+Min Period        n/a     FDRE/C              n/a            1.000         62.500      61.500     SLICE_X0Y37      comm_master/FSM_onehot_state_reg[10]/C
 Max Period        n/a     MMCME2_ADV/CLKOUT0  n/a            213.360       62.500      150.860    MMCME2_ADV_X0Y0  clock/MMCME2_BASE_inst/CLKOUT0
-Low Pulse Width   Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X4Y35      comm_master/DATA_OUT_reg[0]/C
-Low Pulse Width   Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X4Y35      comm_master/DATA_OUT_reg[1]/C
-Low Pulse Width   Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X2Y35      comm_master/DATA_OUT_reg[2]/C
-Low Pulse Width   Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X2Y35      comm_master/DATA_OUT_reg[2]/C
-Low Pulse Width   Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X2Y35      comm_master/DATA_OUT_reg[3]/C
-Low Pulse Width   Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X2Y35      comm_master/DATA_OUT_reg[3]/C
-Low Pulse Width   Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X4Y35      comm_master/DATA_OUT_reg[4]/C
-Low Pulse Width   Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X2Y35      comm_master/DATA_OUT_reg[6]/C
-Low Pulse Width   Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X2Y35      comm_master/DATA_OUT_reg[6]/C
-Low Pulse Width   Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X3Y35      comm_master/FSM_onehot_state_reg[0]/C
-High Pulse Width  Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X4Y35      comm_master/DATA_OUT_reg[0]/C
-High Pulse Width  Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X4Y35      comm_master/DATA_OUT_reg[0]/C
-High Pulse Width  Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X4Y35      comm_master/DATA_OUT_reg[1]/C
-High Pulse Width  Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X4Y35      comm_master/DATA_OUT_reg[1]/C
-High Pulse Width  Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X2Y35      comm_master/DATA_OUT_reg[2]/C
-High Pulse Width  Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X2Y35      comm_master/DATA_OUT_reg[2]/C
-High Pulse Width  Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X2Y35      comm_master/DATA_OUT_reg[3]/C
-High Pulse Width  Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X2Y35      comm_master/DATA_OUT_reg[3]/C
-High Pulse Width  Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X4Y35      comm_master/DATA_OUT_reg[4]/C
-High Pulse Width  Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X4Y35      comm_master/DATA_OUT_reg[4]/C
+Low Pulse Width   Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X1Y36      comm_master/DATA_OUT_reg[0]/C
+Low Pulse Width   Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X1Y36      comm_master/DATA_OUT_reg[0]/C
+Low Pulse Width   Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X1Y36      comm_master/DATA_OUT_reg[1]/C
+Low Pulse Width   Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X1Y36      comm_master/DATA_OUT_reg[1]/C
+Low Pulse Width   Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X0Y36      comm_master/DATA_OUT_reg[2]/C
+Low Pulse Width   Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X0Y36      comm_master/DATA_OUT_reg[2]/C
+Low Pulse Width   Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X0Y36      comm_master/DATA_OUT_reg[3]/C
+Low Pulse Width   Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X0Y36      comm_master/DATA_OUT_reg[3]/C
+Low Pulse Width   Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X1Y36      comm_master/DATA_OUT_reg[4]/C
+Low Pulse Width   Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X1Y36      comm_master/DATA_OUT_reg[4]/C
+High Pulse Width  Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X1Y36      comm_master/DATA_OUT_reg[0]/C
+High Pulse Width  Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X1Y36      comm_master/DATA_OUT_reg[0]/C
+High Pulse Width  Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X1Y36      comm_master/DATA_OUT_reg[1]/C
+High Pulse Width  Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X1Y36      comm_master/DATA_OUT_reg[1]/C
+High Pulse Width  Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X0Y36      comm_master/DATA_OUT_reg[2]/C
+High Pulse Width  Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X0Y36      comm_master/DATA_OUT_reg[2]/C
+High Pulse Width  Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X0Y36      comm_master/DATA_OUT_reg[3]/C
+High Pulse Width  Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X0Y36      comm_master/DATA_OUT_reg[3]/C
+High Pulse Width  Slow    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X1Y36      comm_master/DATA_OUT_reg[4]/C
+High Pulse Width  Fast    FDRE/C              n/a            0.500         31.250      30.750     SLICE_X1Y36      comm_master/DATA_OUT_reg[4]/C
 
 
 
@@ -1463,6 +1460,488 @@ Min Period  n/a     MMCME2_ADV/CLKFBOUT  n/a            1.249         83.333    
 Min Period  n/a     MMCME2_ADV/CLKFBIN   n/a            1.249         83.333      82.084     MMCME2_ADV_X0Y0  clock/MMCME2_BASE_inst/CLKFBIN
 Max Period  n/a     MMCME2_ADV/CLKFBIN   n/a            100.000       83.333      16.667     MMCME2_ADV_X0Y0  clock/MMCME2_BASE_inst/CLKFBIN
 Max Period  n/a     MMCME2_ADV/CLKFBOUT  n/a            213.360       83.333      130.027    MMCME2_ADV_X0Y0  clock/MMCME2_BASE_inst/CLKFBOUT
+
+
+
+---------------------------------------------------------------------------------------------------
+Path Group:  **async_default**
+From Clock:  clk16
+  To Clock:  clk16
+
+Setup :            0  Failing Endpoints,  Worst Slack       60.032ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.748ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             60.032ns  (required time - arrival time)
+  Source:                 rx_slave/FSM_sequential_state_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Destination:            rx_slave/baud_counter_reg[0]/CLR
+                            (recovery check against rising-edge clock clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            62.500ns  (clk16 rise@62.500ns - clk16 rise@0.000ns)
+  Data Path Delay:        2.006ns  (logic 0.580ns (28.907%)  route 1.426ns (71.093%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        -0.021ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.823ns = ( 68.323 - 62.500 ) 
+    Source Clock Delay      (SCD):    6.168ns
+    Clock Pessimism Removal (CPR):    0.323ns
+  Clock Uncertainty:      0.036ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.011ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         1.476     1.476 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           1.233     2.709    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.088     2.797 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           1.666     4.464    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     4.560 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          1.608     6.168    rx_slave/clk16_BUFG
+    SLICE_X62Y76         FDRE                                         r  rx_slave/FSM_sequential_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y76         FDRE (Prop_fdre_C_Q)         0.456     6.624 r  rx_slave/FSM_sequential_state_reg[0]/Q
+                         net (fo=14, routed)          0.869     7.492    rx_slave/state__0[0]
+    SLICE_X62Y77         LUT4 (Prop_lut4_I2_O)        0.124     7.616 f  rx_slave/LEDS_reg[6]_i_1/O
+                         net (fo=11, routed)          0.558     8.174    rx_slave/RX_READY
+    SLICE_X62Y77         FDCE                                         f  rx_slave/baud_counter_reg[0]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk16 rise edge)     62.500    62.500 r  
+    L17                                               0.000    62.500 r  CLK_I (IN)
+                         net (fo=0)                   0.000    62.500    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         1.406    63.905 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           1.162    65.067    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.083    65.150 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           1.587    66.737    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    66.828 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          1.495    68.323    rx_slave/clk16_BUFG
+    SLICE_X62Y77         FDCE                                         r  rx_slave/baud_counter_reg[0]/C
+                         clock pessimism              0.323    68.646    
+                         clock uncertainty           -0.036    68.611    
+    SLICE_X62Y77         FDCE (Recov_fdce_C_CLR)     -0.405    68.206    rx_slave/baud_counter_reg[0]
+  -------------------------------------------------------------------
+                         required time                         68.206    
+                         arrival time                          -8.174    
+  -------------------------------------------------------------------
+                         slack                                 60.032    
+
+Slack (MET) :             60.032ns  (required time - arrival time)
+  Source:                 rx_slave/FSM_sequential_state_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Destination:            rx_slave/baud_counter_reg[1]/CLR
+                            (recovery check against rising-edge clock clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            62.500ns  (clk16 rise@62.500ns - clk16 rise@0.000ns)
+  Data Path Delay:        2.006ns  (logic 0.580ns (28.907%)  route 1.426ns (71.093%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        -0.021ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.823ns = ( 68.323 - 62.500 ) 
+    Source Clock Delay      (SCD):    6.168ns
+    Clock Pessimism Removal (CPR):    0.323ns
+  Clock Uncertainty:      0.036ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.011ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         1.476     1.476 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           1.233     2.709    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.088     2.797 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           1.666     4.464    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     4.560 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          1.608     6.168    rx_slave/clk16_BUFG
+    SLICE_X62Y76         FDRE                                         r  rx_slave/FSM_sequential_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y76         FDRE (Prop_fdre_C_Q)         0.456     6.624 r  rx_slave/FSM_sequential_state_reg[0]/Q
+                         net (fo=14, routed)          0.869     7.492    rx_slave/state__0[0]
+    SLICE_X62Y77         LUT4 (Prop_lut4_I2_O)        0.124     7.616 f  rx_slave/LEDS_reg[6]_i_1/O
+                         net (fo=11, routed)          0.558     8.174    rx_slave/RX_READY
+    SLICE_X62Y77         FDCE                                         f  rx_slave/baud_counter_reg[1]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk16 rise edge)     62.500    62.500 r  
+    L17                                               0.000    62.500 r  CLK_I (IN)
+                         net (fo=0)                   0.000    62.500    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         1.406    63.905 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           1.162    65.067    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.083    65.150 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           1.587    66.737    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    66.828 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          1.495    68.323    rx_slave/clk16_BUFG
+    SLICE_X62Y77         FDCE                                         r  rx_slave/baud_counter_reg[1]/C
+                         clock pessimism              0.323    68.646    
+                         clock uncertainty           -0.036    68.611    
+    SLICE_X62Y77         FDCE (Recov_fdce_C_CLR)     -0.405    68.206    rx_slave/baud_counter_reg[1]
+  -------------------------------------------------------------------
+                         required time                         68.206    
+                         arrival time                          -8.174    
+  -------------------------------------------------------------------
+                         slack                                 60.032    
+
+Slack (MET) :             60.032ns  (required time - arrival time)
+  Source:                 rx_slave/FSM_sequential_state_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Destination:            rx_slave/baud_counter_reg[2]/CLR
+                            (recovery check against rising-edge clock clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            62.500ns  (clk16 rise@62.500ns - clk16 rise@0.000ns)
+  Data Path Delay:        2.006ns  (logic 0.580ns (28.907%)  route 1.426ns (71.093%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        -0.021ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.823ns = ( 68.323 - 62.500 ) 
+    Source Clock Delay      (SCD):    6.168ns
+    Clock Pessimism Removal (CPR):    0.323ns
+  Clock Uncertainty:      0.036ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.011ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         1.476     1.476 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           1.233     2.709    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.088     2.797 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           1.666     4.464    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     4.560 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          1.608     6.168    rx_slave/clk16_BUFG
+    SLICE_X62Y76         FDRE                                         r  rx_slave/FSM_sequential_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y76         FDRE (Prop_fdre_C_Q)         0.456     6.624 r  rx_slave/FSM_sequential_state_reg[0]/Q
+                         net (fo=14, routed)          0.869     7.492    rx_slave/state__0[0]
+    SLICE_X62Y77         LUT4 (Prop_lut4_I2_O)        0.124     7.616 f  rx_slave/LEDS_reg[6]_i_1/O
+                         net (fo=11, routed)          0.558     8.174    rx_slave/RX_READY
+    SLICE_X62Y77         FDCE                                         f  rx_slave/baud_counter_reg[2]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk16 rise edge)     62.500    62.500 r  
+    L17                                               0.000    62.500 r  CLK_I (IN)
+                         net (fo=0)                   0.000    62.500    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         1.406    63.905 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           1.162    65.067    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.083    65.150 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           1.587    66.737    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    66.828 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          1.495    68.323    rx_slave/clk16_BUFG
+    SLICE_X62Y77         FDCE                                         r  rx_slave/baud_counter_reg[2]/C
+                         clock pessimism              0.323    68.646    
+                         clock uncertainty           -0.036    68.611    
+    SLICE_X62Y77         FDCE (Recov_fdce_C_CLR)     -0.405    68.206    rx_slave/baud_counter_reg[2]
+  -------------------------------------------------------------------
+                         required time                         68.206    
+                         arrival time                          -8.174    
+  -------------------------------------------------------------------
+                         slack                                 60.032    
+
+Slack (MET) :             60.078ns  (required time - arrival time)
+  Source:                 rx_slave/FSM_sequential_state_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Destination:            rx_slave/baud_counter_reg[3]/PRE
+                            (recovery check against rising-edge clock clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            62.500ns  (clk16 rise@62.500ns - clk16 rise@0.000ns)
+  Data Path Delay:        2.006ns  (logic 0.580ns (28.907%)  route 1.426ns (71.093%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        -0.021ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.823ns = ( 68.323 - 62.500 ) 
+    Source Clock Delay      (SCD):    6.168ns
+    Clock Pessimism Removal (CPR):    0.323ns
+  Clock Uncertainty:      0.036ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.011ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         1.476     1.476 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           1.233     2.709    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.088     2.797 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           1.666     4.464    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     4.560 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          1.608     6.168    rx_slave/clk16_BUFG
+    SLICE_X62Y76         FDRE                                         r  rx_slave/FSM_sequential_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y76         FDRE (Prop_fdre_C_Q)         0.456     6.624 r  rx_slave/FSM_sequential_state_reg[0]/Q
+                         net (fo=14, routed)          0.869     7.492    rx_slave/state__0[0]
+    SLICE_X62Y77         LUT4 (Prop_lut4_I2_O)        0.124     7.616 f  rx_slave/LEDS_reg[6]_i_1/O
+                         net (fo=11, routed)          0.558     8.174    rx_slave/RX_READY
+    SLICE_X62Y77         FDPE                                         f  rx_slave/baud_counter_reg[3]/PRE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk16 rise edge)     62.500    62.500 r  
+    L17                                               0.000    62.500 r  CLK_I (IN)
+                         net (fo=0)                   0.000    62.500    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         1.406    63.905 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           1.162    65.067    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.083    65.150 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           1.587    66.737    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    66.828 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          1.495    68.323    rx_slave/clk16_BUFG
+    SLICE_X62Y77         FDPE                                         r  rx_slave/baud_counter_reg[3]/C
+                         clock pessimism              0.323    68.646    
+                         clock uncertainty           -0.036    68.611    
+    SLICE_X62Y77         FDPE (Recov_fdpe_C_PRE)     -0.359    68.252    rx_slave/baud_counter_reg[3]
+  -------------------------------------------------------------------
+                         required time                         68.252    
+                         arrival time                          -8.174    
+  -------------------------------------------------------------------
+                         slack                                 60.078    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.748ns  (arrival time - required time)
+  Source:                 rx_slave/FSM_sequential_state_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Destination:            rx_slave/baud_counter_reg[0]/CLR
+                            (removal check against rising-edge clock clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Path Group:             **async_default**
+  Path Type:              Removal (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
+  Data Path Delay:        0.671ns  (logic 0.186ns (27.719%)  route 0.485ns (72.281%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.015ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.378ns
+    Source Clock Delay      (SCD):    1.830ns
+    Clock Pessimism Removal (CPR):    0.533ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.244     0.244 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.440     0.684    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.489     1.223    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.581     1.830    rx_slave/clk16_BUFG
+    SLICE_X62Y76         FDRE                                         r  rx_slave/FSM_sequential_state_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y76         FDRE (Prop_fdre_C_Q)         0.141     1.971 r  rx_slave/FSM_sequential_state_reg[1]/Q
+                         net (fo=14, routed)          0.281     2.252    rx_slave/state__0[1]
+    SLICE_X62Y77         LUT4 (Prop_lut4_I0_O)        0.045     2.297 f  rx_slave/LEDS_reg[6]_i_1/O
+                         net (fo=11, routed)          0.204     2.501    rx_slave/RX_READY
+    SLICE_X62Y77         FDCE                                         f  rx_slave/baud_counter_reg[0]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.432     0.432 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.480     0.912    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.534     1.498    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.850     2.378    rx_slave/clk16_BUFG
+    SLICE_X62Y77         FDCE                                         r  rx_slave/baud_counter_reg[0]/C
+                         clock pessimism             -0.533     1.845    
+    SLICE_X62Y77         FDCE (Remov_fdce_C_CLR)     -0.092     1.753    rx_slave/baud_counter_reg[0]
+  -------------------------------------------------------------------
+                         required time                         -1.753    
+                         arrival time                           2.501    
+  -------------------------------------------------------------------
+                         slack                                  0.748    
+
+Slack (MET) :             0.748ns  (arrival time - required time)
+  Source:                 rx_slave/FSM_sequential_state_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Destination:            rx_slave/baud_counter_reg[1]/CLR
+                            (removal check against rising-edge clock clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Path Group:             **async_default**
+  Path Type:              Removal (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
+  Data Path Delay:        0.671ns  (logic 0.186ns (27.719%)  route 0.485ns (72.281%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.015ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.378ns
+    Source Clock Delay      (SCD):    1.830ns
+    Clock Pessimism Removal (CPR):    0.533ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.244     0.244 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.440     0.684    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.489     1.223    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.581     1.830    rx_slave/clk16_BUFG
+    SLICE_X62Y76         FDRE                                         r  rx_slave/FSM_sequential_state_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y76         FDRE (Prop_fdre_C_Q)         0.141     1.971 r  rx_slave/FSM_sequential_state_reg[1]/Q
+                         net (fo=14, routed)          0.281     2.252    rx_slave/state__0[1]
+    SLICE_X62Y77         LUT4 (Prop_lut4_I0_O)        0.045     2.297 f  rx_slave/LEDS_reg[6]_i_1/O
+                         net (fo=11, routed)          0.204     2.501    rx_slave/RX_READY
+    SLICE_X62Y77         FDCE                                         f  rx_slave/baud_counter_reg[1]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.432     0.432 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.480     0.912    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.534     1.498    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.850     2.378    rx_slave/clk16_BUFG
+    SLICE_X62Y77         FDCE                                         r  rx_slave/baud_counter_reg[1]/C
+                         clock pessimism             -0.533     1.845    
+    SLICE_X62Y77         FDCE (Remov_fdce_C_CLR)     -0.092     1.753    rx_slave/baud_counter_reg[1]
+  -------------------------------------------------------------------
+                         required time                         -1.753    
+                         arrival time                           2.501    
+  -------------------------------------------------------------------
+                         slack                                  0.748    
+
+Slack (MET) :             0.748ns  (arrival time - required time)
+  Source:                 rx_slave/FSM_sequential_state_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Destination:            rx_slave/baud_counter_reg[2]/CLR
+                            (removal check against rising-edge clock clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Path Group:             **async_default**
+  Path Type:              Removal (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
+  Data Path Delay:        0.671ns  (logic 0.186ns (27.719%)  route 0.485ns (72.281%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.015ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.378ns
+    Source Clock Delay      (SCD):    1.830ns
+    Clock Pessimism Removal (CPR):    0.533ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.244     0.244 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.440     0.684    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.489     1.223    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.581     1.830    rx_slave/clk16_BUFG
+    SLICE_X62Y76         FDRE                                         r  rx_slave/FSM_sequential_state_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y76         FDRE (Prop_fdre_C_Q)         0.141     1.971 r  rx_slave/FSM_sequential_state_reg[1]/Q
+                         net (fo=14, routed)          0.281     2.252    rx_slave/state__0[1]
+    SLICE_X62Y77         LUT4 (Prop_lut4_I0_O)        0.045     2.297 f  rx_slave/LEDS_reg[6]_i_1/O
+                         net (fo=11, routed)          0.204     2.501    rx_slave/RX_READY
+    SLICE_X62Y77         FDCE                                         f  rx_slave/baud_counter_reg[2]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.432     0.432 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.480     0.912    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.534     1.498    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.850     2.378    rx_slave/clk16_BUFG
+    SLICE_X62Y77         FDCE                                         r  rx_slave/baud_counter_reg[2]/C
+                         clock pessimism             -0.533     1.845    
+    SLICE_X62Y77         FDCE (Remov_fdce_C_CLR)     -0.092     1.753    rx_slave/baud_counter_reg[2]
+  -------------------------------------------------------------------
+                         required time                         -1.753    
+                         arrival time                           2.501    
+  -------------------------------------------------------------------
+                         slack                                  0.748    
+
+Slack (MET) :             0.751ns  (arrival time - required time)
+  Source:                 rx_slave/FSM_sequential_state_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Destination:            rx_slave/baud_counter_reg[3]/PRE
+                            (removal check against rising-edge clock clk16  {rise@0.000ns fall@31.250ns period=62.500ns})
+  Path Group:             **async_default**
+  Path Type:              Removal (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk16 rise@0.000ns - clk16 rise@0.000ns)
+  Data Path Delay:        0.671ns  (logic 0.186ns (27.719%)  route 0.485ns (72.281%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.015ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.378ns
+    Source Clock Delay      (SCD):    1.830ns
+    Clock Pessimism Removal (CPR):    0.533ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.244     0.244 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.440     0.684    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.050     0.734 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.489     1.223    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.249 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.581     1.830    rx_slave/clk16_BUFG
+    SLICE_X62Y76         FDRE                                         r  rx_slave/FSM_sequential_state_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y76         FDRE (Prop_fdre_C_Q)         0.141     1.971 r  rx_slave/FSM_sequential_state_reg[1]/Q
+                         net (fo=14, routed)          0.281     2.252    rx_slave/state__0[1]
+    SLICE_X62Y77         LUT4 (Prop_lut4_I0_O)        0.045     2.297 f  rx_slave/LEDS_reg[6]_i_1/O
+                         net (fo=11, routed)          0.204     2.501    rx_slave/RX_READY
+    SLICE_X62Y77         FDPE                                         f  rx_slave/baud_counter_reg[3]/PRE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk16 rise edge)      0.000     0.000 r  
+    L17                                               0.000     0.000 r  CLK_I (IN)
+                         net (fo=0)                   0.000     0.000    CLK_I
+    L17                  IBUF (Prop_ibuf_I_O)         0.432     0.432 r  CLK_I_IBUF_inst/O
+                         net (fo=1, routed)           0.480     0.912    clock/CLK_I_IBUF
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                      0.053     0.965 r  clock/MMCME2_BASE_inst/CLKOUT0
+                         net (fo=1, routed)           0.534     1.498    clk16
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.527 r  clk16_BUFG_inst/O
+                         net (fo=41, routed)          0.850     2.378    rx_slave/clk16_BUFG
+    SLICE_X62Y77         FDPE                                         r  rx_slave/baud_counter_reg[3]/C
+                         clock pessimism             -0.533     1.845    
+    SLICE_X62Y77         FDPE (Remov_fdpe_C_PRE)     -0.095     1.750    rx_slave/baud_counter_reg[3]
+  -------------------------------------------------------------------
+                         required time                         -1.750    
+                         arrival time                           2.501    
+  -------------------------------------------------------------------
+                         slack                                  0.751    
+
+
 
 
 
