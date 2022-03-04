@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Fri Mar  4 13:06:09 2022
+| Date         : Fri Mar  4 18:09:23 2022
 | Host         : Ubuntu-ZBook-15-G2 running 64-bit Ubuntu 18.04.6 LTS
 | Command      : report_control_sets -verbose -file lab4_top_control_sets_placed.rpt
 | Design       : lab4_top
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    15 |
-|    Minimum number of control sets                        |    15 |
+| Total control sets                                       |     9 |
+|    Minimum number of control sets                        |     9 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    81 |
+| Unused register locations in slices containing registers |    34 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,11 +39,11 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    15 |
-| >= 0 to < 4        |     8 |
+| Total control sets |     9 |
+| >= 0 to < 4        |     0 |
 | >= 4 to < 6        |     3 |
-| >= 6 to < 8        |     2 |
-| >= 8 to < 10       |     0 |
+| >= 6 to < 8        |     3 |
+| >= 8 to < 10       |     1 |
 | >= 10 to < 12      |     2 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
@@ -58,10 +58,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              16 |           11 |
+| No           | No                    | No                     |              16 |            5 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |               4 |            1 |
-| Yes          | No                    | No                     |              31 |            8 |
+| Yes          | No                    | No                     |              38 |            9 |
 | Yes          | No                    | Yes                    |               4 |            1 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
@@ -70,24 +70,18 @@ Table of Contents
 4. Detailed Control Set Information
 -----------------------------------
 
-+-------------------------------+------------------------------------------+-------------------+------------------+----------------+--------------+
-|          Clock Signal         |               Enable Signal              |  Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
-+-------------------------------+------------------------------------------+-------------------+------------------+----------------+--------------+
-|  rx_slave/DATA_reg[0]_i_2_n_0 |                                          |                   |                1 |              1 |         1.00 |
-|  rx_slave/DATA_reg[1]_i_1_n_0 |                                          |                   |                1 |              1 |         1.00 |
-|  rx_slave/DATA_reg[2]_i_1_n_0 |                                          |                   |                1 |              1 |         1.00 |
-|  rx_slave/DATA_reg[3]_i_1_n_0 |                                          |                   |                1 |              1 |         1.00 |
-|  rx_slave/DATA_reg[4]_i_2_n_0 |                                          |                   |                1 |              1 |         1.00 |
-|  rx_slave/DATA_reg[5]_i_1_n_0 |                                          |                   |                1 |              1 |         1.00 |
-|  rx_slave/DATA_reg[6]_i_2_n_0 |                                          |                   |                1 |              1 |         1.00 |
-|  clk16_BUFG                   |                                          |                   |                1 |              2 |         2.00 |
-|  clk16_BUFG                   |                                          | tx_slave/load     |                1 |              4 |         4.00 |
-|  clk16_BUFG                   | rx_slave/baud_counter[2]_i_1__0_n_0      | rx_slave/RX_READY |                1 |              4 |         4.00 |
-|  clk16_BUFG                   | rx_slave/FSM_sequential_state[3]_i_1_n_0 |                   |                1 |              4 |         4.00 |
-|  clk16_BUFG                   | tx_slave/TX_DONE                         |                   |                2 |              6 |         3.00 |
-|  rx_slave/RX_READY            |                                          |                   |                3 |              7 |         2.33 |
-|  clk16_BUFG                   | tx_slave/FSM_onehot_state[9]_i_1_n_0     |                   |                2 |             10 |         5.00 |
-|  clk16_BUFG                   | comm_master/data_sent1                   |                   |                3 |             11 |         3.67 |
-+-------------------------------+------------------------------------------+-------------------+------------------+----------------+--------------+
++--------------------+------------------------------------------+-------------------+------------------+----------------+--------------+
+|    Clock Signal    |               Enable Signal              |  Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++--------------------+------------------------------------------+-------------------+------------------+----------------+--------------+
+|  clk16_BUFG        |                                          | tx_slave/load     |                1 |              4 |         4.00 |
+|  clk16_BUFG        | rx_slave/baud_counter[2]_i_1__0_n_0      | rx_slave/RX_READY |                1 |              4 |         4.00 |
+|  clk16_BUFG        | rx_slave/FSM_sequential_state[3]_i_1_n_0 |                   |                1 |              4 |         4.00 |
+|  clk16_BUFG        | tx_slave/TX_DONE                         |                   |                2 |              6 |         3.00 |
+|  clk16_BUFG        | rx_slave/DATA[6]_i_1_n_0                 |                   |                1 |              7 |         7.00 |
+|  rx_slave/RX_READY |                                          |                   |                2 |              7 |         3.50 |
+|  clk16_BUFG        |                                          |                   |                3 |              9 |         3.00 |
+|  clk16_BUFG        | tx_slave/FSM_onehot_state[9]_i_1_n_0     |                   |                2 |             10 |         5.00 |
+|  clk16_BUFG        | comm_master/data_sent1                   |                   |                3 |             11 |         3.67 |
++--------------------+------------------------------------------+-------------------+------------------+----------------+--------------+
 
 

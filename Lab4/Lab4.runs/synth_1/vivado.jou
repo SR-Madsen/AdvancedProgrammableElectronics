@@ -2,8 +2,8 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Fri Mar  4 13:04:38 2022
-# Process ID: 6917
+# Start of session at: Fri Mar  4 18:08:11 2022
+# Process ID: 29825
 # Current directory: /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab4/Lab4.runs/synth_1
 # Command line: vivado -log lab4_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source lab4_top.tcl
 # Log file: /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab4/Lab4.runs/synth_1/lab4_top.vds

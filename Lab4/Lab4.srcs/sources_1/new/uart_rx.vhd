@@ -12,11 +12,12 @@ end uart_rx;
 
 architecture Behavioral of uart_rx is
 
-signal baud_counter : integer range 0 to 15 := 8;
+signal baud_counter : integer range 0 to 15 := 9;
 
 type STATE_TYPE is (Idle, Stop, Start, Bit0, Bit1, Bit2, Bit3, Bit4, Bit5, Bit6, Bit7);
 signal state : STATE_TYPE := Idle;
 
+signal rx_data : STD_LOGIC_VECTOR(7 downto 0) := x"00";
 
 begin
 
@@ -33,7 +34,7 @@ begin
             end if;
         end if;
         if state = Idle then
-            baud_counter <= 8;
+            baud_counter <= 9;
         end if;
     end process;
     
@@ -45,42 +46,36 @@ begin
     begin
         if RESET = '1' then
             state <= Idle;
+            rx_data <= x"00";
+            DATA <= x"00";
         elsif CLK'event and CLK = '1' then
             if state = Idle and RX = '0' then
                 state <= Start;
-            end if;
-            if baud_counter = 0 then
+            elsif baud_counter = 0 then
                 case state is
                     when Idle  => null;
                     when Start => state <= Bit0;
+                                  rx_data <= x"00";
                     when Bit0  => state <= Bit1;
+                                  rx_data(0) <= RX;
                     when Bit1  => state <= Bit2;
+                                  rx_data(1) <= RX;
                     when Bit2  => state <= Bit3;
-                    When Bit3  => state <= Bit4;
-                    When Bit4  => state <= Bit5;
-                    When Bit5  => state <= Bit6;
-                    When Bit6  => state <= Bit7;
-                    When Bit7  => state <= Stop;
+                                  rx_data(2) <= RX;
+                    when Bit3  => state <= Bit4;
+                                  rx_data(3) <= RX;
+                    when Bit4  => state <= Bit5;
+                                  rx_data(4) <= RX;
+                    when Bit5  => state <= Bit6;
+                                  rx_data(5) <= RX;
+                    when Bit6  => state <= Bit7;
+                                  rx_data(6) <= RX;
+                    when Bit7  => state <= Stop;
+                                  rx_data(7) <= RX;
                     when Stop  => state <= Idle;
+                                  DATA <= rx_data;
                 end case;
             end if;
         end if;
-    end process;
-
-    -- Output logic
-    Output_logic: process(state)
-    begin
-        case state is
-            when Bit1   =>  DATA(0) <= RX;
-            when Bit2   =>  DATA(1) <= RX;
-            when Bit3   =>  DATA(2) <= RX;
-            when Bit4   =>  DATA(3) <= RX;
-            when Bit5   =>  DATA(4) <= RX;
-            when Bit6   =>  DATA(5) <= RX;
-            when Bit7   =>  DATA(6) <= RX;
-            when Stop   =>  DATA(7) <= RX;
-            when Start  =>  DATA    <= x"00";
-            when others =>  null;
-        end case;
     end process;
 end Behavioral;
