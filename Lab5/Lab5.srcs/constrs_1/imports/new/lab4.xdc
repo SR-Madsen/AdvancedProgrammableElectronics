@@ -1,0 +1,25 @@
+set_property PACKAGE_PIN L17 [get_ports CLK_I]
+set_property IOSTANDARD LVCMOS33 [get_ports CLK_I]
+create_clock -period 83.333 -name CLK_I -waveform {0.000 41.667} [get_ports CLK_I]
+
+set_property PACKAGE_PIN J17 [get_ports UART_RX_I]
+set_property IOSTANDARD LVCMOS33 [get_ports UART_RX_I]
+
+set_property PACKAGE_PIN J18 [get_ports UART_TX_O]
+set_property IOSTANDARD LVCMOS33 [get_ports UART_TX_O]
+
+set_property PACKAGE_PIN P1 [get_ports {LED_O[0]}]
+set_property PACKAGE_PIN N2 [get_ports {LED_O[1]}]
+set_property PACKAGE_PIN N1 [get_ports {LED_O[2]}]
+set_property PACKAGE_PIN M2 [get_ports {LED_O[3]}]
+set_property PACKAGE_PIN P3 [get_ports {LED_O[4]}]
+set_property PACKAGE_PIN N3 [get_ports {LED_O[5]}]
+set_property PACKAGE_PIN M1 [get_ports {LED_O[6]}]
+
+set_property IOSTANDARD LVCMOS33 [get_ports {LED_O[6]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {LED_O[5]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {LED_O[4]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {LED_O[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {LED_O[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {LED_O[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {LED_O[0]}]
