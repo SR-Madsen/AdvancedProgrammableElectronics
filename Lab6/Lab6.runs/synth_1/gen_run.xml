@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_1" LaunchPart="xc7a15tcpg236-1" LaunchTime="1647897644">
+  <File Type="VDS-TIMINGSUMMARY" Name="qltest_top_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="qltest_top.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="qltest_top_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="qltest_top_utilization_synth.rpt"/>
+  <File Type="RDS-PROPCONSTRS" Name="qltest_top_drc_synth.rpt"/>
+  <File Type="RDS-RDS" Name="qltest_top.vds"/>
+  <File Type="REPORTS-TCL" Name="qltest_top_reports.tcl"/>
+  <File Type="VDS-TIMING-PB" Name="qltest_top_timing_summary_synth.pb"/>
+  <File Type="PA-TCL" Name="qltest_top.tcl"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/Qlink_SRC_2021_03_19/QLINK/decode_serial.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../Qlink_SRC_2021_03_19/QLINK/decode_serial.vhd"/>
+        <Attr Name="ImportTime" Val="1585039505"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Qlink_SRC_2021_03_19/QLINK/encode_serial.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../Qlink_SRC_2021_03_19/QLINK/encode_serial.vhd"/>
+        <Attr Name="ImportTime" Val="1585039505"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/memory.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Qlink_SRC_2021_03_19/QLINK/mmcm48.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../Qlink_SRC_2021_03_19/QLINK/mmcm48.vhd"/>
+        <Attr Name="ImportTime" Val="1585039505"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Qlink_SRC_2021_03_19/QLINK/qlinkmaster.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../Qlink_SRC_2021_03_19/QLINK/qlinkmaster.vhd"/>
+        <Attr Name="ImportTime" Val="1585039505"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Qlink_SRC_2021_03_19/qltest_top.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../Qlink_SRC_2021_03_19/qltest_top.vhd"/>
+        <Attr Name="ImportTime" Val="1616017898"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="qltest_top"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/Qlink_SRC_2021_03_19/constraints.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../Qlink_SRC_2021_03_19/constraints.xdc"/>
+        <Attr Name="ImportTime" Val="1585040539"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a15tcpg236-1" LaunchTime="1647897644">
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="RDI-RDI" Name="qltest_top.vdi"/>
+  <File Type="BG-DRC" Name="qltest_top.drc"/>
+  <File Type="BG-BGN" Name="qltest_top.bgn"/>
+  <File Type="BITSTR-SYSDEF" Name="qltest_top.sysdef"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="qltest_top.ltx"/>
+  <File Type="RBD_FILE" Name="qltest_top.rbd"/>
+  <File Type="NPI_FILE" Name="qltest_top.npi"/>
+  <File Type="RNPI_FILE" Name="qltest_top.rnpi"/>
+  <File Type="CFI_FILE" Name="qltest_top.cfi"/>
+  <File Type="RCFI_FILE" Name="qltest_top.rcfi"/>
+  <File Type="PDI-FILE" Name="qltest_top.pdi"/>
+  <File Type="BITSTR-MMI" Name="qltest_top.mmi"/>
+  <File Type="BITSTR-BMM" Name="qltest_top_bd.bmm"/>
+  <File Type="BITSTR-NKY" Name="qltest_top.nky"/>
+  <File Type="BITSTR-RBT" Name="qltest_top.rbt"/>
+  <File Type="BITSTR-MSK" Name="qltest_top.msk"/>
+  <File Type="BG-BIN" Name="qltest_top.bin"/>
+  <File Type="BG-BIT" Name="qltest_top.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="qltest_top_bus_skew_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="qltest_top_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="qltest_top_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="qltest_top_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="qltest_top_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="qltest_top_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="qltest_top_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="qltest_top_postroute_physopt.dcp"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="qltest_top_bus_skew_routed.rpx"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="qltest_top_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW" Name="qltest_top_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="qltest_top_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-SIMILARITY" Name="qltest_top_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-TIMING-RPX" Name="qltest_top_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-TIMING-PB" Name="qltest_top_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="qltest_top_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="qltest_top_route_status.pb"/>
+  <File Type="ROUTE-STATUS" Name="qltest_top_route_status.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="qltest_top_power_routed.rpx"/>
+  <File Type="ROUTE-PWR-SUM" Name="qltest_top_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="qltest_top_power_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="qltest_top_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="qltest_top_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="qltest_top_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-RPX" Name="qltest_top_drc_routed.rpx"/>
+  <File Type="ROUTE-DRC-PB" Name="qltest_top_drc_routed.pb"/>
+  <File Type="ROUTE-DRC" Name="qltest_top_drc_routed.rpt"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="qltest_top_routed_bb.dcp"/>
+  <File Type="ROUTE-DCP" Name="qltest_top_routed.dcp"/>
+  <File Type="ROUTE-ERROR-DCP" Name="qltest_top_routed_error.dcp"/>
+  <File Type="PHYSOPT-TIMING" Name="qltest_top_timing_summary_physopted.rpt"/>
+  <File Type="PHYSOPT-DRC" Name="qltest_top_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="qltest_top_physopt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="qltest_top_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="qltest_top_postplace_pwropt.dcp"/>
+  <File Type="PLACE-TIMING" Name="qltest_top_timing_summary_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="qltest_top_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="qltest_top_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-CTRL" Name="qltest_top_control_sets_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="qltest_top_utilization_placed.pb"/>
+  <File Type="PLACE-UTIL" Name="qltest_top_utilization_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="qltest_top_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-IO" Name="qltest_top_io_placed.rpt"/>
+  <File Type="PLACE-DCP" Name="qltest_top_placed.dcp"/>
+  <File Type="PWROPT-DRC" Name="qltest_top_drc_pwropted.rpt"/>
+  <File Type="PWROPT-DCP" Name="qltest_top_pwropt.dcp"/>
+  <File Type="OPT-HWDEF" Name="qltest_top.hwdef"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="qltest_top_methodology_drc_opted.rpt"/>
+  <File Type="OPT-DRC" Name="qltest_top_drc_opted.rpt"/>
+  <File Type="OPT-DCP" Name="qltest_top_opt.dcp"/>
+  <File Type="INIT-TIMING" Name="qltest_top_timing_summary_init.rpt"/>
+  <File Type="PWROPT-TIMING" Name="qltest_top_timing_summary_pwropted.rpt"/>
+  <File Type="REPORTS-TCL" Name="qltest_top_reports.tcl"/>
+  <File Type="OPT-TIMING" Name="qltest_top_timing_summary_opted.rpt"/>
+  <File Type="PA-TCL" Name="qltest_top.tcl"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/Qlink_SRC_2021_03_19/QLINK/decode_serial.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../Qlink_SRC_2021_03_19/QLINK/decode_serial.vhd"/>
+        <Attr Name="ImportTime" Val="1585039505"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Qlink_SRC_2021_03_19/QLINK/encode_serial.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../Qlink_SRC_2021_03_19/QLINK/encode_serial.vhd"/>
+        <Attr Name="ImportTime" Val="1585039505"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/memory.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Qlink_SRC_2021_03_19/QLINK/mmcm48.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../Qlink_SRC_2021_03_19/QLINK/mmcm48.vhd"/>
+        <Attr Name="ImportTime" Val="1585039505"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Qlink_SRC_2021_03_19/QLINK/qlinkmaster.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../Qlink_SRC_2021_03_19/QLINK/qlinkmaster.vhd"/>
+        <Attr Name="ImportTime" Val="1585039505"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Qlink_SRC_2021_03_19/qltest_top.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../Qlink_SRC_2021_03_19/qltest_top.vhd"/>
+        <Attr Name="ImportTime" Val="1616017898"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="qltest_top"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/Qlink_SRC_2021_03_19/constraints.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../Qlink_SRC_2021_03_19/constraints.xdc"/>
+        <Attr Name="ImportTime" Val="1585040539"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020">
+      <Desc>Default settings for Implementation.</Desc>
+    </StratHandle>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>

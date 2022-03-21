@@ -1,0 +1,36 @@
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[20]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[25]/D|
+|                    CLK_I |                    clk48 |                                                                                    QLINK1/data32_reg[1]/D|
+|                    CLK_I |                    clk48 |                                                                                    QLINK1/data32_reg[0]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[31]/D|
+|                    CLK_I |                    clk48 |                                                                                    QLINK1/data32_reg[9]/D|
+|                    CLK_I |                    clk48 |                                                                                    QLINK1/data32_reg[4]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[27]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[11]/D|
+|                    CLK_I |                    clk48 |                                                                                    QLINK1/data32_reg[7]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[22]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[24]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[21]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[18]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[29]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[14]/D|
+|                    CLK_I |                    clk48 |                                                                                    QLINK1/data32_reg[6]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[17]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[15]/D|
+|                    CLK_I |                    clk48 |                                                                                    QLINK1/data32_reg[8]/D|
+|                    CLK_I |                    clk48 |                                                                                    QLINK1/data32_reg[5]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[16]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[23]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[26]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[28]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[19]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[10]/D|
+|                    CLK_I |                    clk48 |                                                                                    QLINK1/data32_reg[3]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[30]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[12]/D|
+|                    CLK_I |                    clk48 |                                                                                    QLINK1/data32_reg[2]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[13]/D|
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
