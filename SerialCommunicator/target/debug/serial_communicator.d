@@ -1,0 +1,1 @@
+/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/SerialCommunicator/target/debug/serial_communicator: /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/SerialCommunicator/src/main.rs
