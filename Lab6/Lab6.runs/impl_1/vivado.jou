@@ -2,8 +2,8 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Mon Mar 21 22:21:41 2022
-# Process ID: 13620
+# Start of session at: Wed Mar 23 09:40:09 2022
+# Process ID: 13377
 # Current directory: /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab6/Lab6.runs/impl_1
 # Command line: vivado -log qltest_top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source qltest_top.tcl -notrace
 # Log file: /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab6/Lab6.runs/impl_1/qltest_top.vdi

@@ -8,8 +8,8 @@
 |                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[31]/D|
 |                    CLK_I |                    clk48 |                                                                                    QLINK1/data32_reg[9]/D|
 |                    CLK_I |                    clk48 |                                                                                    QLINK1/data32_reg[4]/D|
-|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[27]/D|
 |                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[11]/D|
+|                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[27]/D|
 |                    CLK_I |                    clk48 |                                                                                    QLINK1/data32_reg[7]/D|
 |                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[22]/D|
 |                    CLK_I |                    clk48 |                                                                                   QLINK1/data32_reg[24]/D|

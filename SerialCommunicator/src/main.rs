@@ -10,7 +10,7 @@ fn main() {
     _result = uart_port.set_parity(serialport::Parity::None);
     _result = uart_port.set_stop_bits(serialport::StopBits::One);
 
-    let ten_millis = time::Duration::from_millis(500);
+    let half_second = time::Duration::from_millis(500);
 
     loop{
         // Write to address 0, then immediately read.
@@ -18,11 +18,13 @@ fn main() {
         _sent = uart_port.write(b"#r:00..........");
 
         // Read received data
-        let mut buffer: [u8; 6] = [0; 6];
+        let mut buffer: [u8; 12] = [0; 12];
         let _recv: Result<usize, std::io::Error> = uart_port.read(&mut buffer[..]);
 
-        println!("The bytes: {:?}", &buffer[..]);
+	if let Ok(string) = std::str::from_utf8(&buffer) {
+		println!("{}", string);
+	}
 
-        thread::sleep(ten_millis);
+        thread::sleep(half_second);
     }
 }
