@@ -10,21 +10,23 @@ fn main() {
     _result = uart_port.set_parity(serialport::Parity::None);
     _result = uart_port.set_stop_bits(serialport::StopBits::One);
 
-    let half_second = time::Duration::from_millis(500);
+    // Set delay for loop
+    let second = time::Duration::from_millis(1000);
 
     loop{
         // Write to address 0, then immediately read.
         let mut _sent: Result<usize, std::io::Error> = uart_port.write(b"#w:00AABBCCDD");
         _sent = uart_port.write(b"#r:00..........");
 
-        // Read received data
-        let mut buffer: [u8; 12] = [0; 12];
+        // Read received data and print to terminal
+        let mut buffer: [u8; 14] = [0; 14];
         let _recv: Result<usize, std::io::Error> = uart_port.read(&mut buffer[..]);
 
-	if let Ok(string) = std::str::from_utf8(&buffer) {
-		println!("{}", string);
-	}
+        if let Ok(string) = std::str::from_utf8(&buffer) {
+            println!("{}", string);
+        }
 
-        thread::sleep(half_second);
+        // Wait
+        thread::sleep(second);
     }
 }
