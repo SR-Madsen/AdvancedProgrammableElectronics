@@ -1,0 +1,7 @@
+set_property SRC_FILE_INFO {cfile:/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/OBUFDS_Test/OBUFDS_Test.srcs/constrs_1/new/obufds.xdc rfile:../../../OBUFDS_Test.srcs/constrs_1/new/obufds.xdc id:1} [current_design]
+set_property src_info {type:XDC file:1 line:1 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN L17 [get_ports CLK_I]
+set_property src_info {type:XDC file:1 line:7 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN N1 [get_ports DATAN_O]
+set_property src_info {type:XDC file:1 line:8 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN N2 [get_ports DATAP_O]
