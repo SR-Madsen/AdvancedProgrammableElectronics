@@ -6,5 +6,3 @@ set_property IOSTANDARD TMDS_33 [get_ports DATAN_O]
 set_property IOSTANDARD TMDS_33 [get_ports DATAP_O]
 set_property PACKAGE_PIN N2 [get_ports DATAP_O]
 set_property PACKAGE_PIN N1 [get_ports DATAN_O]
-
-set_property OFFCHIP_TERM NONE [get_ports DATAP_O]

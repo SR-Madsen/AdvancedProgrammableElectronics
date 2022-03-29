@@ -116,7 +116,7 @@ LEDS_O<=leds;
 
 
 QLINK1: QLinkMaster
-  generic map ( CLK_I_PERIOD => 40.00) -- Instantiate the QLinkMaster for 25MHz input clock   
+  generic map ( CLK_I_PERIOD => 83.33) -- Instantiate the QLinkMaster for 12MHz input clock   
   port map (
          RESET_I => '0',
          RESET_O => sys_reset,

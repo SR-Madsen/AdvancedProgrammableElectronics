@@ -19,8 +19,8 @@ set_property PACKAGE_PIN A17 [get_ports {LEDS_O[7]}]
 set_property PACKAGE_PIN C16 [get_ports {STATUSLED_O}]
 
 set_property IOSTANDARD LVCMOS33 [get_ports CLK_I]
-set_property PACKAGE_PIN A16 [get_ports CLK_I]
-create_clock -period 40.00 [get_ports CLK_I]
+set_property PACKAGE_PIN L17 [get_ports CLK_I]
+create_clock -period 83.33 [get_ports CLK_I]
 
 set_property IOSTANDARD LVCMOS33 [get_ports RX_I]
 set_property IOSTANDARD LVCMOS33 [get_ports TX_O]
