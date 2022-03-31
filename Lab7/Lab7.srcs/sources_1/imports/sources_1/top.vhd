@@ -25,20 +25,13 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
 library UNISIM;
 use UNISIM.VComponents.all;
 
 entity top is
     Port ( 
         CLK24MHZ : in STD_LOGIC;
-        --sw : in STD_LOGIC_VECTOR (3 downto 0);
         led : out STD_LOGIC_VECTOR (3 downto 0);
         hdmi_out_p : out STD_LOGIC_VECTOR(3 downto 0);
         hdmi_out_n : out STD_LOGIC_VECTOR(3 downto 0)
@@ -48,15 +41,16 @@ end top;
 architecture Behavioral of top is
     COMPONENT clocking
     generic (
-        in_mul    : natural := 10;    
-        pix_div   : natural := 30;
-        pix5x_div : natural := 10
+        clk_period : real := 41.66;
+        clk_mul    : real := 46.40;    
+        pix_div    : real := 15.0;
+        pix5x_div  : integer := 3
     );
     PORT ( 
-        I_unbuff_clk         : in  STD_LOGIC;
-        O_buff_clkpixel      : out  STD_LOGIC;
-        O_buff_clk5xpixel    : out  STD_LOGIC;
-        O_buff_clk5xpixelinv : out  STD_LOGIC
+        clk_I           : in  STD_LOGIC;
+        clkpixel_O      : out  STD_LOGIC;
+        clk5xpixel_O    : out  STD_LOGIC;
+        clk5xpixelinv_O : out  STD_LOGIC
     );
     END COMPONENT;
 
@@ -110,11 +104,11 @@ architecture Behavioral of top is
 	signal count: unsigned(31 downto 0) := X"00000000";
 	
     -- Clock engine    
-    signal cEng_pixel_720 : std_logic;
-    signal cEng_5xpixel_720 : std_logic;    
-    signal cEng_5xpixel_inv_720 : std_logic;
+    signal cEng_pixel : std_logic;
+    signal cEng_5xpixel : std_logic;    
+    signal cEng_5xpixel_inv : std_logic;
     
-    -- Vga timing
+    -- VGA timing
     signal pixel_h : STD_LOGIC_VECTOR(11 downto 0);
     signal pixel_v : STD_LOGIC_VECTOR(11 downto 0);
     signal blank   : std_logic;
@@ -131,59 +125,42 @@ architecture Behavioral of top is
     signal green_s : std_logic;
     signal blue_s  : std_logic;
     signal clock_s : std_logic;
+    
 begin
     
-    -- increment the counter each 100MHz cycle
+    -- Increment the counter each 24MHz cycle
     process(CLK24MHZ)
     begin
         if rising_edge(CLK24MHZ) then
             count <= count + 1;
         end if;
     end process;
-             
-    -- assign LEDs to bits far enough up the counter as to see
-    -- them count.
+
+    -- Assign LEDs to bits far enough up the counter as to see them count.
     led(0) <= count(24);
     led(1) <= count(25);
     led(2) <= count(26);
     led(3) <= count(27);
  
- 
- 
-    -- Gen 75Mhz pixel clock generation
-    -- Technically, 720p should be 74.25MHz. 75 generally works on monitors. YMMV.
-    clock_eng_1280_720A: clocking
+    -- Gen 74.25MHz pixel and 371.25MHz 5xpixel (+ inverted) clock generation
+    -- This is for 1280x720x60Hz - frequency must change for other resolutions
+    MMCM_clockEngine: clocking
      generic map (
-         in_mul  => 38, -- => 912 ~900 MHz    24MHZ modification
-         pix_div => 12, -- => 76 ~75 MHz
-         pix5x_div => 2 -- => 456 ~450MHz 
+         clk_period => 41.66,    -- Define 24 MHz period
+         clk_mul    => 46.40,    -- Input: 24 MHz        - Result: 1113.6 MHz
+         pix_div    => 15.0,     -- Target: 74.25 MHz    - Actual: 72.24 MHz
+         pix5x_div  => 3         -- Target: 371.25 MHz   - Actual: 371.2 MHz
      )
      port map (
-         I_unbuff_clk => CLK24MHZ,
-         O_buff_clkpixel => cEng_pixel_720,
-         O_buff_clk5xpixel => open,
-         O_buff_clk5xpixelinv => open
-     );   
-     
-    -- Gen 375Mhz 5xpixel and 5xpixel inverted clock generation
-    clock_eng_1280_720B: clocking
-    generic map (
-        in_mul  => 10,
-        pix_div => 1,
-        pix5x_div => 2
-    )
-    port map (
-        I_unbuff_clk => cEng_pixel_720,
-        O_buff_clkpixel => open,
-        O_buff_clk5xpixel => cEng_5xpixel_720,
-        O_buff_clk5xpixelinv => cEng_5xpixel_inv_720
-    );   
-              
+         clk_I              => CLK24MHZ,
+         clkpixel_O         => cEng_pixel,
+         clk5xpixel_O       => cEng_5xpixel,
+         clk5xpixelinv_O    => cEng_5xpixel_inv
+     );
+
     -- This generates controls and offsets required for a fixed resolution
-    -- We don't need the _pref 'prefetch' signals here - they can be used in
-    -- conjunction with e.g. my character generator to prefetch glyph rows.
     -- Default to 1280x720x60Hz. You can modify the below values, and clock,
-    -- to output different resolutions. 
+    -- to output different resolutions.
     Inst_vga_gen: vga_gen 
     generic map (
         hRez        => 1280,
@@ -198,12 +175,9 @@ begin
         vsyncActive => '1'
     )
     PORT MAP( 
-        pixel_clock  => cEng_pixel_720,    
+        pixel_clock  => cEng_pixel,    
         pixel_h      => pixel_h,
         pixel_v      => pixel_v,
-        pixel_h_pref => open,
-        pixel_v_pref => open,     
-        blank_pref   => open,
         blank        => blank,
         hsync        => hsync,
         vsync        => vsync
@@ -218,9 +192,9 @@ begin
     -- This takes pixel colour values and synd data, generating the
     -- 10-bit coding.
     dvid_1: dvid PORT MAP(
-        clk        => cEng_5xpixel_720,
-        clk_n      => cEng_5xpixel_inv_720, 
-        clk_pixel  => cEng_pixel_720,
+        clk        => cEng_5xpixel,
+        clk_n      => cEng_5xpixel_inv, 
+        clk_pixel  => cEng_pixel,
         red_p      => red_ram_p,
         green_p    => green_ram_p,
         blue_p     => blue_ram_p,

@@ -11,90 +11,61 @@ use UNISIM.VComponents.all;
 
 entity clocking is
  generic (
-     in_mul   : integer := 10;    
-     pix_div : natural := 30;
-     pix5x_div : natural := 10
+       clk_period : real := 41.66;
+       clk_mul    : real := 46.40;    
+       pix_div    : real := 15.0;
+       pix5x_div  : integer := 3
   );
     Port ( 
-        I_unbuff_clk : in  STD_LOGIC;
-        O_buff_clkpixel : out  STD_LOGIC;
-        O_buff_clk5xpixel : out  STD_LOGIC;
-        O_buff_clk5xpixelinv : out  STD_LOGIC;
-        O_buff_clk : out STD_LOGIC
+        clk_I           : in  STD_LOGIC;
+        clkpixel_O      : out  STD_LOGIC;
+        clk5xpixel_O    : out  STD_LOGIC;
+        clk5xpixelinv_O : out  STD_LOGIC
 	);
 end clocking;
 
 architecture Behavioral of clocking is
-    signal clock_pixel            : std_logic;
-    signal clock_pixel_unbuffered : std_logic;
-    signal clock_x5pixel            : std_logic;
-    signal clock_x5pixel_unbuffered : std_logic;
-    signal clock_x5pixelinv            : std_logic;
-    signal clock_x5pixelinv_unbuffered : std_logic;
-    signal clk_feedback   : std_logic;
-    signal clk_buffered : std_logic;
-    signal pll_locked     : std_logic;
+    signal clock_pixel      : std_logic;
+    signal clock_x5pixel    : std_logic;
+    signal clock_x5pixelinv : std_logic;
+    signal clk_feedback     : std_logic;
+
 begin
 
-    PLL_BASE_inst : PLL_BASE
+    MMCME2_BASE_inst : MMCM_BASE
     generic map (
-        CLKFBOUT_MULT => in_mul,       
+        BANDWIDTH => "OPTIMIZED",
+        CLKFBOUT_MULT_F => clk_mul,
+        
+        CLKFBOUT_PHASE => 0.0,
+        CLKIN1_PERIOD => clk_period,
+        
+        DIVCLK_DIVIDE => 1,
+        REF_JITTER1 => 0.0,
+        STARTUP_WAIT => FALSE,
          
-        CLKOUT0_DIVIDE => pix_div,    
-        CLKOUT0_PHASE => 0.0,   
+        CLKOUT0_DIVIDE_F => pix_div,
+        CLKOUT0_DUTY_CYCLE => 0.5,
+        CLKOUT0_PHASE => 0.0,
         
-        CLKOUT1_DIVIDE => pix5x_div,     
-        CLKOUT1_PHASE => 0.0,   
+        CLKOUT1_DIVIDE => pix5x_div,
+        CLKOUT1_DUTY_CYCLE => 0.5,
+        CLKOUT1_PHASE => 0.0,
         
-        CLKOUT2_DIVIDE => pix5x_div,     
-        CLKOUT2_PHASE => 180.0,  
-
-        CLK_FEEDBACK => "CLKFBOUT", 
-        CLKIN_PERIOD => 10.0,  
-        DIVCLK_DIVIDE => 1 
+        CLKOUT2_DIVIDE => pix5x_div,
+        CLKOUT2_DUTY_CYCLE => 0.5,
+        CLKOUT2_PHASE => 180.0
     )
     port map (
-      CLKFBOUT => clk_feedback, 
-      CLKOUT0  => clock_pixel_unbuffered,
-      CLKOUT1  => clock_x5pixel_unbuffered,
-      CLKOUT2  => clock_x5pixelinv_unbuffered,
-      CLKOUT3  => open,
-      CLKOUT4  => open,
-      CLKOUT5  => open,
-      LOCKED   => pll_locked,      
-      CLKFBIN  => clk_feedback,    
-      CLKIN    => clk_buffered, 
-      RST      => '0' 
+      CLKIN1   => clk_I,
+      CLKOUT0  => clkpixel_O,
+      CLKOUT1  => clk5xpixel_O,
+      CLKOUT2  => clk5xpixelinv_O,
+      CLKFBOUT => clk_feedback,
+      CLKFBIN  => clk_feedback,
+      RST      => '0',
+      PWRDWN   => '0'
     );
 
-	BUFG_clk : BUFG port map 
-	( 
-		I => I_unbuff_clk,                
-		O => clk_buffered
-	);
-
-	BUFG_pclock : BUFG port map 
-	( 
-	  I => clock_pixel_unbuffered,  
-	  O => clock_pixel
-	);
-
-	BUFG_pclockx5 : BUFG port map 
-	( 
-	  I => clock_x5pixel_unbuffered,  
-	  O => clock_x5pixel
-	);
-
-	BUFG_pclockx5_180 : BUFG port map 
-	( 
-	  I => clock_x5pixelinv_unbuffered,  
-	  O => clock_x5pixelinv
-	);
-	
-   O_buff_clk <= clk_buffered;
-   O_buff_clkpixel <= clock_pixel;
-   O_buff_clk5xpixel <= clock_x5pixel;
-   O_buff_clk5xpixelinv <= clock_x5pixelinv;
-	
 end Behavioral;
 
