@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a15tcpg236-1" LaunchTime="1648750635">
+<GenRun Id="synth_1" LaunchPart="xc7a15tcpg236-1" LaunchTime="1649164436">
   <File Type="VDS-TIMINGSUMMARY" Name="top_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="top.dcp"/>
   <File Type="RDS-UTIL-PB" Name="top_utilization_synth.pb"/>
@@ -31,6 +31,12 @@
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../../../Downloads/HDMI_mike.srcs-20220328T194332Z-001/HDMI_mike.srcs/sources_1/dvid.vhd"/>
         <Attr Name="ImportTime" Val="1648078474"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/serializer.vhd">
+      <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>

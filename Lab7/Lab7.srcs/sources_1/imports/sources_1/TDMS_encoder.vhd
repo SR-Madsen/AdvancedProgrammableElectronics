@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------------------
 -- Engineer: Mike Field <hamster@snap.net.nz>
 -- 
--- Description: TDMS Encoder 
+-- Description: TMDS Encoder 
 --     8 bits colour, 2 control bits and one blanking bits in
 --       10 bits of TDMS encoded data out
 --     Clocked at the pixel clock
@@ -11,15 +11,15 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-entity TDMS_encoder is
+entity TMDS_encoder is
     Port ( clk     : in  STD_LOGIC;
            data    : in  STD_LOGIC_VECTOR (7 downto 0);
            c       : in  STD_LOGIC_VECTOR (1 downto 0);
            blank   : in  STD_LOGIC;
            encoded : out  STD_LOGIC_VECTOR (9 downto 0));
-end TDMS_encoder;
+end TMDS_encoder;
 
-architecture Behavioral of TDMS_encoder is
+architecture Behavioral of TMDS_encoder is
    signal xored  : STD_LOGIC_VECTOR (8 downto 0);
    signal xnored : STD_LOGIC_VECTOR (8 downto 0);
    

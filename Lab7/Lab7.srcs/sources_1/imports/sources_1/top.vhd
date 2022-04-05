@@ -184,9 +184,13 @@ begin
     );
     
     -- Colour pattern generation based on horiz/vert location
-    red_ram_p <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_h(7 downto 0)));  
-    green_ram_p <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_v(7 downto 0)));  
-    blue_ram_p <= std_logic_vector(count(28 downto 21));
+    --red_ram_p <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_h(7 downto 0)));
+    --green_ram_p <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_v(7 downto 0)));
+    --blue_ram_p <= std_logic_vector(count(28 downto 21));
+
+    red_ram_p <= std_logic_vector(signed(pixel_h(7 downto 0)));
+    green_ram_p <= std_logic_vector(signed(pixel_v(7 downto 0)));
+    blue_ram_p <= std_logic_vector(signed(pixel_h(7 downto 0)) + signed(pixel_v(7 downto 0)));
 
     -- TMDS signal generation
     -- This takes pixel colour values and synd data, generating the

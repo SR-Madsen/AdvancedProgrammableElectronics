@@ -71,6 +71,7 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param xicom.use_bs_reader 1
+set_param chipscope.maxJobs 2
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a15tcpg236-1
 
@@ -91,6 +92,7 @@ read_vhdl -library xil_defaultlib {
   /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab7/Lab7.srcs/sources_1/imports/sources_1/TDMS_encoder.vhd
   /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab7/Lab7.srcs/sources_1/imports/sources_1/clocking.vhd
   /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab7/Lab7.srcs/sources_1/imports/sources_1/dvid.vhd
+  /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab7/Lab7.srcs/sources_1/new/serializer.vhd
   /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab7/Lab7.srcs/sources_1/imports/sources_1/vga_gen.vhd
   /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab7/Lab7.srcs/sources_1/imports/sources_1/top.vhd
 }

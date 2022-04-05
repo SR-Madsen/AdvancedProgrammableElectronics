@@ -1,0 +1,76 @@
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                       dvid_1/TDMS_encoder_blue/e_reg[2]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                       dvid_1/TDMS_encoder_blue/e_reg[4]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                       dvid_1/TDMS_encoder_blue/e_reg[0]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                  dvid_1/TDMS_encoder_red/dc_bias_reg[3]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                      dvid_1/TDMS_encoder_green/e_reg[3]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                  dvid_1/TDMS_encoder_red/dc_bias_reg[1]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                      dvid_1/TDMS_encoder_green/e_reg[1]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                 dvid_1/TDMS_encoder_blue/dc_bias_reg[3]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                        dvid_1/TDMS_encoder_red/e_reg[2]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                        dvid_1/TDMS_encoder_red/e_reg[5]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                        dvid_1/TDMS_encoder_red/e_reg[1]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                 dvid_1/TDMS_encoder_blue/dc_bias_reg[2]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                      dvid_1/TDMS_encoder_green/e_reg[2]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                      dvid_1/TDMS_encoder_green/e_reg[0]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                       dvid_1/TDMS_encoder_blue/e_reg[6]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                        dvid_1/TDMS_encoder_red/e_reg[9]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                        dvid_1/TDMS_encoder_red/e_reg[4]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                  dvid_1/TDMS_encoder_red/dc_bias_reg[2]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                      dvid_1/TDMS_encoder_green/e_reg[5]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                dvid_1/TDMS_encoder_green/dc_bias_reg[1]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                        dvid_1/TDMS_encoder_red/e_reg[0]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                      dvid_1/TDMS_encoder_green/e_reg[6]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                dvid_1/TDMS_encoder_green/dc_bias_reg[3]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                       dvid_1/TDMS_encoder_blue/e_reg[5]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                      dvid_1/TDMS_encoder_green/e_reg[7]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                 dvid_1/TDMS_encoder_blue/dc_bias_reg[1]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                      dvid_1/TDMS_encoder_green/e_reg[9]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                        dvid_1/TDMS_encoder_red/e_reg[6]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                        dvid_1/TDMS_encoder_red/e_reg[7]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                       dvid_1/TDMS_encoder_blue/e_reg[3]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                        dvid_1/TDMS_encoder_red/e_reg[3]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                      dvid_1/TDMS_encoder_green/e_reg[4]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                dvid_1/TDMS_encoder_green/dc_bias_reg[0]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                dvid_1/TDMS_encoder_green/dc_bias_reg[2]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                  dvid_1/TDMS_encoder_red/dc_bias_reg[0]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                dvid_1/shift_blue_reg[3]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                dvid_1/shift_blue_reg[7]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                 dvid_1/shift_red_reg[2]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                       dvid_1/TDMS_encoder_blue/e_reg[1]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                               dvid_1/shift_green_reg[3]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                       dvid_1/TDMS_encoder_blue/e_reg[9]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                dvid_1/shift_blue_reg[6]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                dvid_1/shift_blue_reg[2]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                 dvid_1/shift_red_reg[3]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                 dvid_1/TDMS_encoder_blue/dc_bias_reg[0]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                       dvid_1/TDMS_encoder_blue/e_reg[7]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                dvid_1/shift_blue_reg[1]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                               dvid_1/shift_green_reg[0]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                               dvid_1/shift_green_reg[2]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                dvid_1/shift_blue_reg[4]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                 dvid_1/shift_red_reg[1]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                 dvid_1/shift_red_reg[0]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                dvid_1/shift_blue_reg[5]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                 dvid_1/shift_red_reg[5]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                 dvid_1/shift_red_reg[4]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                               dvid_1/shift_green_reg[4]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                 dvid_1/shift_red_reg[7]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                               dvid_1/shift_green_reg[6]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                               dvid_1/shift_green_reg[5]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                               dvid_1/shift_green_reg[1]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                dvid_1/shift_blue_reg[0]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                               dvid_1/shift_green_reg[7]/D|
+| clock_x5pixel_unbuffered_1 |clock_x5pixel_unbuffered_1 |                                                                                 dvid_1/shift_red_reg[6]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                        dvid_1/TDMS_encoder_red/e_reg[8]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                      dvid_1/TDMS_encoder_green/e_reg[8]/D|
+|              sys_clk_pin |   clock_pixel_unbuffered |                                                                       dvid_1/TDMS_encoder_blue/e_reg[8]/D|
+|   clock_pixel_unbuffered |clock_x5pixel_unbuffered_1 |                                                                                dvid_1/shift_blue_reg[9]/D|
+|   clock_pixel_unbuffered |clock_x5pixel_unbuffered_1 |                                                                               dvid_1/shift_green_reg[8]/D|
+|   clock_pixel_unbuffered |clock_x5pixel_unbuffered_1 |                                                                                 dvid_1/shift_red_reg[9]/D|
+|   clock_pixel_unbuffered |clock_x5pixel_unbuffered_1 |                                                                                dvid_1/shift_blue_reg[8]/D|
+|   clock_pixel_unbuffered |clock_x5pixel_unbuffered_1 |                                                                               dvid_1/shift_green_reg[9]/D|
+|   clock_pixel_unbuffered |clock_x5pixel_unbuffered_1 |                                                                                 dvid_1/shift_red_reg[8]/D|
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
