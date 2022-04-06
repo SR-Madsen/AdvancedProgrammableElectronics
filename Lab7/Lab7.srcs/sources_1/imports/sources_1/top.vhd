@@ -40,32 +40,31 @@ end top;
 
 architecture Behavioral of top is
     COMPONENT clocking
-    generic (
+    generic (                           -- 1080p target: 148.5 MHz pixel clock (742.5 MHz 5x clock)
         clk_period : real := 41.66;
-        clk_mul    : real := 46.40;    
-        pix_div    : real := 15.0;
-        pix5x_div  : integer := 3
+        clk_mul    : real := 46.40;     -- 30.94 = 742.56 MHz
+        pix_div    : real := 15.0;      -- 5.0 = 148.512 MHz
+        pix5x_div  : integer := 3       -- 1 = 742.56 MHz
     );
     PORT ( 
         clk_I           : in  STD_LOGIC;
         clkpixel_O      : out  STD_LOGIC;
-        clk5xpixel_O    : out  STD_LOGIC;
-        clk5xpixelinv_O : out  STD_LOGIC
+        clk5xpixel_O    : out  STD_LOGIC
     );
     END COMPONENT;
 
     COMPONENT vga_gen
-    generic (
-            hRez       : natural := 1280;    
-            hStartSync : natural := 1280+72;
-            hEndSync   : natural := 1280+72+80;
-            hMaxCount  : natural := 1280+72+80+216;
+    generic (                                       -- 1080p values:
+            hRez       : natural := 1280;           -- 1920
+            hStartSync : natural := 1280+72;        -- 1920 + 88
+            hEndSync   : natural := 1280+72+80;     -- 1920 + 88 + 44
+            hMaxCount  : natural := 1280+72+80+216; -- 1920 + 88 + 44 + 148
             hsyncActive : std_logic := '0';
             
-            vRez       : natural := 720;
-            vStartSync : natural := 720+3;
-            vEndSync   : natural := 720+3+5;
-            vMaxCount  : natural := 720+3+5+22;
+            vRez       : natural := 720;            -- 1080
+            vStartSync : natural := 720+3;          -- 1080 + 4
+            vEndSync   : natural := 720+3+5;        -- 1080 + 4 + 5
+            vMaxCount  : natural := 720+3+5+22;     -- 1080 + 4 + 5 + 36
             vsyncActive : std_logic := '1';
             prefetch_idx:natural := 8
     );
@@ -85,7 +84,6 @@ architecture Behavioral of top is
     COMPONENT dvid
     PORT(
         clk      : IN std_logic;
-        clk_n    : IN std_logic;
         clk_pixel: IN std_logic;
         red_p    : IN std_logic_vector(7 downto 0);
         green_p  : IN std_logic_vector(7 downto 0);
@@ -93,10 +91,8 @@ architecture Behavioral of top is
         blank    : IN std_logic;
         hsync    : IN std_logic;
         vsync    : IN std_logic;          
-        red_s    : OUT std_logic;
-        green_s  : OUT std_logic;
-        blue_s   : OUT std_logic;
-        clock_s  : OUT std_logic
+        diff_out_p: out STD_LOGIC_VECTOR(3 downto 0);
+        diff_out_n: out STD_LOGIC_VECTOR(3 downto 0)
     );
     END COMPONENT;
 
@@ -105,15 +101,14 @@ architecture Behavioral of top is
 	
     -- Clock engine    
     signal cEng_pixel : std_logic;
-    signal cEng_5xpixel : std_logic;    
-    signal cEng_5xpixel_inv : std_logic;
+    signal cEng_5xpixel : std_logic;
     
     -- VGA timing
     signal pixel_h : STD_LOGIC_VECTOR(11 downto 0);
     signal pixel_v : STD_LOGIC_VECTOR(11 downto 0);
     signal blank   : std_logic;
     signal hsync   : std_logic;
-    signal vsync   : std_logic;    
+    signal vsync   : std_logic;
     
     -- Pixel colour data
     signal red_ram_p   : std_logic_vector(7 downto 0) := (others => '0');
@@ -154,24 +149,24 @@ begin
      port map (
          clk_I              => CLK24MHZ,
          clkpixel_O         => cEng_pixel,
-         clk5xpixel_O       => cEng_5xpixel,
-         clk5xpixelinv_O    => cEng_5xpixel_inv
+         clk5xpixel_O       => cEng_5xpixel
      );
+
 
     -- This generates controls and offsets required for a fixed resolution
     -- Default to 1280x720x60Hz. You can modify the below values, and clock,
     -- to output different resolutions.
     Inst_vga_gen: vga_gen 
-    generic map (
-        hRez        => 1280,
-        hStartSync  => 1280+72,
-        hEndSync    => 1280+72+80,
-        hMaxCount   => 1280+72+80+216,
+    generic map (                       -- 1080p values:
+        hRez        => 1280,            -- 1920
+        hStartSync  => 1280+72,         -- 1920 + 88
+        hEndSync    => 1280+72+80,      -- 1920 + 88 + 44
+        hMaxCount   => 1280+72+80+216,  -- 1920 + 88 + 44 + 148
         hsyncActive => '0',
-        vRez        => 720,
-        vStartSync  => 720+3,
-        vEndSync    => 720+3+5,
-        vMaxCount   => 720+3+5+22,
+        vRez        => 720,             -- 1080
+        vStartSync  => 720+3,           -- 1080 + 4
+        vEndSync    => 720+3+5,         -- 1080 + 4 + 5
+        vMaxCount   => 720+3+5+22,      -- 1080 + 4 + 5 + 36
         vsyncActive => '1'
     )
     PORT MAP( 
@@ -193,11 +188,10 @@ begin
     blue_ram_p <= std_logic_vector(signed(pixel_h(7 downto 0)) + signed(pixel_v(7 downto 0)));
 
     -- TMDS signal generation
-    -- This takes pixel colour values and synd data, generating the
+    -- This takes pixel colour values and sync data, generating the
     -- 10-bit coding.
     dvid_1: dvid PORT MAP(
         clk        => cEng_5xpixel,
-        clk_n      => cEng_5xpixel_inv, 
         clk_pixel  => cEng_pixel,
         red_p      => red_ram_p,
         green_p    => green_ram_p,
@@ -205,18 +199,8 @@ begin
         blank      => blank,
         hsync      => hsync,
         vsync      => vsync,
-        
-        -- outputs to TMDS drivers
-        red_s      => red_s,
-        green_s    => green_s,
-        blue_s     => blue_s,
-        clock_s    => clock_s
+        diff_out_p => hdmi_out_p,
+        diff_out_n => hdmi_out_n
     );
-    
-    -- Differential output buffers
-    OBUFDS_blue  : OBUFDS port map ( O  => hdmi_out_p(0), OB => hdmi_out_n(0), I  => blue_s );
-    OBUFDS_green   : OBUFDS port map ( O  => hdmi_out_p(1), OB => hdmi_out_n(1), I  => green_s );
-    OBUFDS_red : OBUFDS port map ( O  => hdmi_out_p(2), OB => hdmi_out_n(2), I  => red_s );
-    OBUFDS_clock : OBUFDS port map ( O  => hdmi_out_p(3), OB => hdmi_out_n(3), I  => clock_s );
 
 end Behavioral;

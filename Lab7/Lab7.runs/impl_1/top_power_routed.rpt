@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date             : Tue Apr  5 15:15:39 2022
+| Date             : Wed Apr  6 09:58:58 2022
 | Host             : Ubuntu-ZBook-15-G2 running 64-bit Ubuntu 18.04.6 LTS
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -53,14 +53,14 @@ Table of Contents
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
 | Clocks                  |     0.004 |        6 |       --- |             --- |
-| Slice Logic             |     0.002 |      510 |       --- |             --- |
-|   LUT as Logic          |     0.002 |      217 |     10400 |            2.09 |
+| Slice Logic             |     0.002 |      507 |       --- |             --- |
+|   LUT as Logic          |     0.002 |      218 |     10400 |            2.10 |
 |   CARRY4                |    <0.001 |       25 |      8150 |            0.31 |
 |   LUT as Shift Register |    <0.001 |       11 |      9600 |            0.11 |
 |   Register              |    <0.001 |      143 |     20800 |            0.69 |
 |   F7/F8 Muxes           |    <0.001 |        4 |     32600 |            0.01 |
 |   Others                |     0.000 |       27 |       --- |             --- |
-| Signals                 |     0.002 |      383 |       --- |             --- |
+| Signals                 |     0.002 |      373 |       --- |             --- |
 | MMCM                    |     0.131 |        1 |         5 |           20.00 |
 | I/O                     |     0.135 |       13 |       106 |           12.26 |
 | Static Power            |     0.072 |          |           |                 |
@@ -147,9 +147,9 @@ Table of Contents
 | Name               | Power (W) |
 +--------------------+-----------+
 | top                |     0.274 |
-|   Inst_vga_gen     |     0.005 |
+|   Inst_vga_gen     |     0.004 |
 |   MMCM_clockEngine |     0.131 |
-|   dvid_1           |     0.004 |
+|   dvid_1           |     0.137 |
 +--------------------+-----------+
 
 

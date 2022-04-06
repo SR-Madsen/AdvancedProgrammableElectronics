@@ -3,7 +3,7 @@
 
 ## Clock Signal
 set_property -dict { PACKAGE_PIN A16    IOSTANDARD LVCMOS33 } [get_ports { CLK24MHZ }]; #IO_L12P_T1_MRCC_34 Sch=ddr3_clk[200]
-create_clock -add -name sys_clk_pin -period 41.666 [get_ports { CLK24MHZ }];
+create_clock -add -name sys_clk_pin -period 41.666 -waveform {0 20.833} [get_ports { CLK24MHZ }];
 
 ## LEDs
 set_property -dict { PACKAGE_PIN V5   IOSTANDARD LVCMOS33 } [get_ports { led[0] }]; #IO_L16N_T2_A27_15 Sch=led[2]

@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Tue Apr  5 15:15:23 2022
+| Date         : Wed Apr  6 09:58:40 2022
 | Host         : Ubuntu-ZBook-15-G2 running 64-bit Ubuntu 18.04.6 LTS
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |     5 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    25 |
+| Unused register locations in slices containing registers |    17 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -58,9 +58,9 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              93 |           32 |
+| No           | No                    | No                     |              92 |           24 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              38 |           21 |
+| No           | Yes                   | No                     |              39 |           21 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
 | Yes          | Yes                   | No                     |              12 |            3 |
@@ -75,9 +75,9 @@ Table of Contents
 +---------------------+-------------------+--------------------------+------------------+----------------+--------------+
 |  cEng_pixel_BUFG    |                   | Inst_vga_gen/eqOp        |                3 |             12 |         4.00 |
 |  cEng_pixel_BUFG    | Inst_vga_gen/eqOp | Inst_vga_gen/n[vCounter] |                3 |             12 |         4.00 |
-|  cEng_pixel_BUFG    |                   | Inst_vga_gen/p_1_in[0]   |               18 |             26 |         1.44 |
+|  cEng_pixel_BUFG    |                   | Inst_vga_gen/p_1_in[0]   |               18 |             27 |         1.50 |
 |  CLK24MHZ_IBUF_BUFG |                   |                          |                7 |             28 |         4.00 |
-|  cEng_pixel_BUFG    |                   |                          |               25 |             84 |         3.36 |
+|  cEng_pixel_BUFG    |                   |                          |               17 |             83 |         4.88 |
 +---------------------+-------------------+--------------------------+------------------+----------------+--------------+
 
 
