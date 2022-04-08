@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date             : Wed Apr  6 09:58:58 2022
+| Date             : Fri Apr  8 13:12:50 2022
 | Host             : Ubuntu-ZBook-15-G2 running 64-bit Ubuntu 18.04.6 LTS
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.346        |
+| Total On-Chip Power (W)  | 0.336        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.274        |
+| Dynamic (W)              | 0.263        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 83.3         |
@@ -52,19 +52,19 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.004 |        6 |       --- |             --- |
-| Slice Logic             |     0.002 |      507 |       --- |             --- |
-|   LUT as Logic          |     0.002 |      218 |     10400 |            2.10 |
-|   CARRY4                |    <0.001 |       25 |      8150 |            0.31 |
+| Clocks                  |     0.008 |        6 |       --- |             --- |
+| Slice Logic             |     0.004 |      514 |       --- |             --- |
+|   LUT as Logic          |     0.004 |      259 |     10400 |            2.49 |
 |   LUT as Shift Register |    <0.001 |       11 |      9600 |            0.11 |
-|   Register              |    <0.001 |      143 |     20800 |            0.69 |
+|   CARRY4                |    <0.001 |       27 |      8150 |            0.33 |
+|   Register              |    <0.001 |      147 |     20800 |            0.71 |
 |   F7/F8 Muxes           |    <0.001 |        4 |     32600 |            0.01 |
 |   Others                |     0.000 |       27 |       --- |             --- |
-| Signals                 |     0.002 |      373 |       --- |             --- |
-| MMCM                    |     0.131 |        1 |         5 |           20.00 |
-| I/O                     |     0.135 |       13 |       106 |           12.26 |
+| Signals                 |     0.005 |      387 |       --- |             --- |
+| MMCM                    |     0.106 |        1 |         5 |           20.00 |
+| I/O                     |     0.140 |       15 |       106 |           14.15 |
 | Static Power            |     0.072 |          |           |                 |
-| Total                   |     0.346 |          |           |                 |
+| Total                   |     0.336 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,9 +74,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.021 |       0.011 |      0.010 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.085 |       0.072 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.041 |       0.040 |      0.001 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.032 |       0.022 |      0.010 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.071 |       0.059 |      0.013 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.042 |       0.041 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -130,8 +130,8 @@ Table of Contents
 +--------------+--------------------------------+-----------------+
 | Clock        | Domain                         | Constraint (ns) |
 +--------------+--------------------------------+-----------------+
-| cEng_5xpixel | MMCM_clockEngine/CLK_5XPIXEL_I |             2.7 |
-| cEng_pixel   | MMCM_clockEngine/cEng_pixel    |            13.5 |
+| cEng_5xpixel | MMCM_clockEngine/CLK_5XPIXEL_I |             1.3 |
+| cEng_pixel   | MMCM_clockEngine/cEng_pixel    |             6.7 |
 | clk_feedback | MMCM_clockEngine/clk_feedback  |            41.7 |
 | sys_clk_pin  | CLK24MHZ                       |            41.7 |
 +--------------+--------------------------------+-----------------+
@@ -146,10 +146,14 @@ Table of Contents
 +--------------------+-----------+
 | Name               | Power (W) |
 +--------------------+-----------+
-| top                |     0.274 |
-|   Inst_vga_gen     |     0.004 |
-|   MMCM_clockEngine |     0.131 |
-|   dvid_1           |     0.137 |
+| top                |     0.263 |
+|   Inst_vga_gen     |     0.009 |
+|   MMCM_clockEngine |     0.107 |
+|   dvid_1           |     0.146 |
+|     SERDES_blue    |     0.001 |
+|     SERDES_clock   |     0.001 |
+|     SERDES_green   |     0.001 |
+|     SERDES_red     |     0.001 |
 +--------------------+-----------+
 
 

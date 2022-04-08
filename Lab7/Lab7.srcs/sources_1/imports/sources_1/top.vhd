@@ -32,7 +32,7 @@ use UNISIM.VComponents.all;
 entity top is
     Port ( 
         CLK24MHZ : in STD_LOGIC;
-        led : out STD_LOGIC_VECTOR (3 downto 0);
+        led : out STD_LOGIC_VECTOR (5 downto 0);
         hdmi_out_p : out STD_LOGIC_VECTOR(3 downto 0);
         hdmi_out_n : out STD_LOGIC_VECTOR(3 downto 0)
     );
@@ -90,7 +90,7 @@ architecture Behavioral of top is
         blue_p   : IN std_logic_vector(7 downto 0);
         blank    : IN std_logic;
         hsync    : IN std_logic;
-        vsync    : IN std_logic;          
+        vsync    : IN std_logic;
         diff_out_p: out STD_LOGIC_VECTOR(3 downto 0);
         diff_out_n: out STD_LOGIC_VECTOR(3 downto 0)
     );
@@ -136,15 +136,17 @@ begin
     led(1) <= count(25);
     led(2) <= count(26);
     led(3) <= count(27);
+    led(4) <= count(28);
+    led(5) <= count(29);
  
-    -- Gen 74.25MHz pixel and 371.25MHz 5xpixel (+ inverted) clock generation
-    -- This is for 1280x720x60Hz - frequency must change for other resolutions
-    MMCM_clockEngine: clocking
+    -- Generate the pixel clock and 5x pixel clock
+    -- The frequency is resolution and refresh rate dependent   -- 720p target : 72.25 MHz pixel clock (371.25 MHz 5x)
+    MMCM_clockEngine: clocking                                  -- 1080p target: 184.5 MHz pixel clock (742.5 MHz 5x)
      generic map (
          clk_period => 41.66,    -- Define 24 MHz period
-         clk_mul    => 46.40,    -- Input: 24 MHz        - Result: 1113.6 MHz
-         pix_div    => 15.0,     -- Target: 74.25 MHz    - Actual: 72.24 MHz
-         pix5x_div  => 3         -- Target: 371.25 MHz   - Actual: 371.2 MHz
+         clk_mul    => 30.94,    -- Input: 24 MHz               -- 720p target: 46.40 => 1113.6 MHz, 1080p target: 30.94 => 742.56 MHz
+         pix_div    => 5.00,     --                             -- 720p target: 15.0  => 72.24 MHz , 1080p target: 5.0   => 184.512 MHz
+         pix5x_div  => 1         --                             -- 720p target: 3     => 371.2 MHz , 1080p target: 1     => 742.56 MHz
      )
      port map (
          clk_I              => CLK24MHZ,
@@ -152,21 +154,19 @@ begin
          clk5xpixel_O       => cEng_5xpixel
      );
 
-
     -- This generates controls and offsets required for a fixed resolution
-    -- Default to 1280x720x60Hz. You can modify the below values, and clock,
-    -- to output different resolutions.
+    -- Modify the values and clock to output different resolutions
     Inst_vga_gen: vga_gen 
-    generic map (                       -- 1080p values:
-        hRez        => 1280,            -- 1920
-        hStartSync  => 1280+72,         -- 1920 + 88
-        hEndSync    => 1280+72+80,      -- 1920 + 88 + 44
-        hMaxCount   => 1280+72+80+216,  -- 1920 + 88 + 44 + 148
+    generic map (                       -- 720p values:             -- 1080p values:
+        hRez        => 1920,            -- 1280                     -- 1920
+        hStartSync  => 1920+88,         -- 1280 + 72                -- 1920 + 88
+        hEndSync    => 1920+88+44,      -- 1280 + 72 + 80           -- 1920 + 88 + 44
+        hMaxCount   => 1920+88+44+148,  -- 1280 + 72 + 80 + 216     -- 1920 + 88 + 44 + 148
         hsyncActive => '0',
-        vRez        => 720,             -- 1080
-        vStartSync  => 720+3,           -- 1080 + 4
-        vEndSync    => 720+3+5,         -- 1080 + 4 + 5
-        vMaxCount   => 720+3+5+22,      -- 1080 + 4 + 5 + 36
+        vRez        => 1080,             -- 720                      -- 1080
+        vStartSync  => 1080+4,           -- 720 + 3                  -- 1080 + 4
+        vEndSync    => 1080+4+5,         -- 720 + 3 + 5              -- 1080 + 4 + 5
+        vMaxCount   => 1080+4+5+36,      -- 720 + 3 + 5 + 22         -- 1080 + 4 + 5 + 36
         vsyncActive => '1'
     )
     PORT MAP( 
