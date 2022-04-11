@@ -40,11 +40,11 @@ end top;
 
 architecture Behavioral of top is
     COMPONENT clocking
-    generic (                           -- 1080p target: 148.5 MHz pixel clock (742.5 MHz 5x clock)
+    generic (
         clk_period : real := 41.66;
-        clk_mul    : real := 46.40;     -- 30.94 = 742.56 MHz
-        pix_div    : real := 15.0;      -- 5.0 = 148.512 MHz
-        pix5x_div  : integer := 3       -- 1 = 742.56 MHz
+        clk_mul    : real := 30.94;
+        pix_div    : real := 5.0;
+        pix5x_div  : integer := 1
     );
     PORT ( 
         clk_I           : in  STD_LOGIC;
@@ -54,19 +54,19 @@ architecture Behavioral of top is
     END COMPONENT;
 
     COMPONENT vga_gen
-    generic (                                       -- 1080p values:
-            hRez       : natural := 1280;           -- 1920
-            hStartSync : natural := 1280+72;        -- 1920 + 88
-            hEndSync   : natural := 1280+72+80;     -- 1920 + 88 + 44
-            hMaxCount  : natural := 1280+72+80+216; -- 1920 + 88 + 44 + 148
-            hsyncActive : std_logic := '0';
+    generic (                                   -- 720p values:             -- 1080p values:
+        hRez       : natural := 1920;           -- 1280                     -- 1920
+        hStartSync : natural := 1920+88;        -- 1280 + 72                -- 1920 + 88
+        hEndSync   : natural := 1920+88+44;     -- 1280 + 72 + 80           -- 1920 + 88 + 44
+        hMaxCount  : natural := 1920+88+44+148; -- 1280 + 72 + 80 + 216     -- 1920 + 88 + 44 + 148
+        hsyncActive : std_logic := '0';
             
-            vRez       : natural := 720;            -- 1080
-            vStartSync : natural := 720+3;          -- 1080 + 4
-            vEndSync   : natural := 720+3+5;        -- 1080 + 4 + 5
-            vMaxCount  : natural := 720+3+5+22;     -- 1080 + 4 + 5 + 36
-            vsyncActive : std_logic := '1';
-            prefetch_idx:natural := 8
+        vRez       : natural := 1080;            -- 720                      -- 1080
+        vStartSync : natural := 1080+4;          -- 720 + 3                  -- 1080 + 4
+        vEndSync   : natural := 1080+4+5;        -- 720 + 3 + 5              -- 1080 + 4 + 5
+        vMaxCount  : natural := 1080+4+5+36;     -- 720 + 3 + 5 + 22         -- 1080 + 4 + 5 + 36
+        vsyncActive : std_logic := '1';
+        prefetch_idx:natural := 8
     );
     PORT(    
         pixel_clock  : in std_logic; 
@@ -115,12 +115,6 @@ architecture Behavioral of top is
     signal green_ram_p : std_logic_vector(7 downto 0) := (others => '0');
     signal blue_ram_p  : std_logic_vector(7 downto 0) := (others => '0');
     
-    -- TMDS
-    signal red_s   : std_logic;
-    signal green_s : std_logic;
-    signal blue_s  : std_logic;
-    signal clock_s : std_logic;
-    
 begin
     
     -- Increment the counter each 24MHz cycle
@@ -139,14 +133,14 @@ begin
     led(4) <= count(28);
     led(5) <= count(29);
  
-    -- Generate the pixel clock and 5x pixel clock
-    -- The frequency is resolution and refresh rate dependent   -- 720p target : 72.25 MHz pixel clock (371.25 MHz 5x)
-    MMCM_clockEngine: clocking                                  -- 1080p target: 184.5 MHz pixel clock (742.5 MHz 5x)
+    -- Generate the pixel clock and 5x pixel clock              -- 720p target : 72.25 MHz pixel clock (371.25 MHz 5x)
+    -- The frequency is resolution and refresh rate dependent   -- 1080p@50Hz target: 123.75 MHz pixel clock (618.75 MHz 5x)
+    MMCM_clockEngine: clocking                                  -- 1080p@60Hz target: 148.5 MHz pixel clock (742.5 MHz 5x)
      generic map (
          clk_period => 41.66,    -- Define 24 MHz period
-         clk_mul    => 30.94,    -- Input: 24 MHz               -- 720p target: 46.40 => 1113.6 MHz, 1080p target: 30.94 => 742.56 MHz
-         pix_div    => 5.00,     --                             -- 720p target: 15.0  => 72.24 MHz , 1080p target: 5.0   => 184.512 MHz
-         pix5x_div  => 1         --                             -- 720p target: 3     => 371.2 MHz , 1080p target: 1     => 742.56 MHz
+         clk_mul    => 30.94,    -- Input: 24 MHz               -- 720p: 46.40 => 1113.6 MHz, 1080p@50Hz: 25.78 => 618.72 MHz, 1080p@60Hz: 30.94 => 742.56 MHz
+         pix_div    => 5.00,     --                             -- 720p: 15.0  => 72.24 MHz , 1080p@50Hz: 5.0   => 123.74 MHz, 1080p@60Hz: 5.0   => 148.512 MHz
+         pix5x_div  => 1         --                             -- 720p: 3     => 371.2 MHz , 1080p@50Hz: 1     => 618.72 MHz, 1080p@60Hz: 1     => 742.56 MHz
      )
      port map (
          clk_I              => CLK24MHZ,
@@ -178,14 +172,27 @@ begin
         vsync        => vsync
     );
     
+    process(pixel_h, pixel_v)
+    begin
+        if unsigned(pixel_h) = 200 or unsigned(pixel_h) = 1720 then
+            red_ram_p <= x"00";
+            green_ram_p <= x"00";
+            blue_ram_p <= x"00";
+        elsif unsigned(pixel_v) = 200 or unsigned(pixel_v) = 880 then
+            red_ram_p <= x"00";
+            green_ram_p <= x"00";
+            blue_ram_p <= x"00";
+        else
+            red_ram_p <= x"FF";
+            green_ram_p <= x"FF";
+            blue_ram_p <= x"FF";
+        end if;
+    end process;
+    
     -- Colour pattern generation based on horiz/vert location
     --red_ram_p <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_h(7 downto 0)));
     --green_ram_p <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_v(7 downto 0)));
     --blue_ram_p <= std_logic_vector(count(28 downto 21));
-
-    red_ram_p <= std_logic_vector(signed(pixel_h(7 downto 0)));
-    green_ram_p <= std_logic_vector(signed(pixel_v(7 downto 0)));
-    blue_ram_p <= std_logic_vector(signed(pixel_h(7 downto 0)) + signed(pixel_v(7 downto 0)));
 
     -- TMDS signal generation
     -- This takes pixel colour values and sync data, generating the

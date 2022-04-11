@@ -23,6 +23,10 @@ entity dvid is
            vsync     : in  STD_LOGIC;
            diff_out_p: out STD_LOGIC_VECTOR(3 downto 0);
            diff_out_n: out STD_LOGIC_VECTOR(3 downto 0));
+           --blue_s    : out STD_LOGIC;
+           --red_s     : out STD_LOGIC;
+           --green_s   : out STD_LOGIC;
+           --clock_s   : out STD_LOGIC);
 end dvid;
 
 architecture Behavioral of dvid is
