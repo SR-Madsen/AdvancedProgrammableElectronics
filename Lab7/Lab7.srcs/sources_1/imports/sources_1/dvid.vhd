@@ -65,48 +65,48 @@ architecture Behavioral of dvid is
 
 begin
     
-   c_blue <= vsync & hsync;
+    c_blue <= vsync & hsync;
    
-   TMDS_encoder_red:   TMDS_encoder PORT MAP(clk => clk_pixel, data => red_p,   c => c_red,   blank => blank, encoded => encoded_red);
-   TMDS_encoder_green: TMDS_encoder PORT MAP(clk => clk_pixel, data => green_p, c => c_green, blank => blank, encoded => encoded_green);
-   TMDS_encoder_blue:  TMDS_encoder PORT MAP(clk => clk_pixel, data => blue_p,  c => c_blue,  blank => blank, encoded => encoded_blue);
+    TMDS_encoder_red:   TMDS_encoder PORT MAP(clk => clk_pixel, data => red_p,   c => c_red,   blank => blank, encoded => encoded_red);
+    TMDS_encoder_green: TMDS_encoder PORT MAP(clk => clk_pixel, data => green_p, c => c_green, blank => blank, encoded => encoded_green);
+    TMDS_encoder_blue:  TMDS_encoder PORT MAP(clk => clk_pixel, data => blue_p,  c => c_blue,  blank => blank, encoded => encoded_blue);
    
-   process(clk_pixel)
-   begin
-      if rising_edge(clk_pixel) then 
-            latched_red   <= encoded_red;
-            latched_green <= encoded_green;
-            latched_blue  <= encoded_blue;
-      end if;
-   end process;
+    process(clk_pixel)
+    begin
+       if rising_edge(clk_pixel) then 
+             latched_red   <= encoded_red;
+             latched_green <= encoded_green;
+             latched_blue  <= encoded_blue;
+       end if;
+    end process;
    
-   SERDES_red: serializer port map (
-                    CLK_PIXEL_I => clk_pixel,
-                    CLK_5XPIXEL_I => clk,
-                    RESET_I => '0',
-                    PDATA_I => latched_red,
-                    SDATA_O => red_s);
+    SERDES_red: serializer port map (
+                     CLK_PIXEL_I => clk_pixel,
+                     CLK_5XPIXEL_I => clk,
+                     RESET_I => '0',
+                     PDATA_I => latched_red,
+                     SDATA_O => red_s);
                     
-   SERDES_green: serializer port map (
+    SERDES_green: serializer port map (
                      CLK_PIXEL_I => clk_pixel,
                      CLK_5XPIXEL_I => clk,
                      RESET_I => '0',
                      PDATA_I => latched_green,
                      SDATA_O => green_s);
                      
-   SERDES_blue: serializer port map (
+    SERDES_blue: serializer port map (
                      CLK_PIXEL_I => clk_pixel,
                      CLK_5XPIXEL_I => clk,
                      RESET_I => '0',
                      PDATA_I => latched_blue,
                      SDATA_O => blue_s);
                      
-   SERDES_clock: serializer port map (
-                      CLK_PIXEL_I => clk_pixel,
-                      CLK_5XPIXEL_I => clk,
-                      RESET_I => '0',
-                      PDATA_I => shift_clock,
-                      SDATA_O => clock_s);
+    SERDES_clock: serializer port map (
+                     CLK_PIXEL_I => clk_pixel,
+                     CLK_5XPIXEL_I => clk,
+                     RESET_I => '0',
+                     PDATA_I => shift_clock,
+                     SDATA_O => clock_s);
                       
                       
     -- Differential output buffers

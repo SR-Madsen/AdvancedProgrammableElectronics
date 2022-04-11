@@ -38,13 +38,13 @@ entity top is
     );
 end top;
 
-architecture Behavioral of top is
-    COMPONENT clocking
-    generic (
-        clk_period : real := 41.66;
-        clk_mul    : real := 30.94;
-        pix_div    : real := 5.0;
-        pix5x_div  : integer := 1
+architecture Behavioral of top is                                   -- 720p target: 72.25 MHz pixel clock (371.25 MHz 5x)
+    COMPONENT clocking                                              -- 1080p@50Hz target: 123.75 MHz pixel clock (618.75 MHz 5x)
+    generic (                                                       -- 1080p@60Hz target: 148.5 MHz pixel clock (742.5 MHz 5x)
+        clk_period : real := 41.66;     -- Define 24 MHz period
+        clk_mul    : real := 30.94;     -- Input: 24 MHz            -- 720p: 46.40 => 1113.6 MHz, 1080p@50Hz: 25.78 => 618.72 MHz, 1080p@60Hz: 30.94 => 742.56 MHz
+        pix_div    : real := 5.0;       --                          -- 720p: 15.0  => 72.24 MHz , 1080p@50Hz: 5.0   => 123.74 MHz, 1080p@60Hz: 5.0   => 148.512 MHz
+        pix5x_div  : integer := 1       --                          -- 720p: 3     => 371.2 MHz , 1080p@50Hz: 1     => 618.72 MHz, 1080p@60Hz: 1     => 742.56 MHz
     );
     PORT ( 
         clk_I           : in  STD_LOGIC;
@@ -133,7 +133,7 @@ begin
     led(4) <= count(28);
     led(5) <= count(29);
  
-    -- Generate the pixel clock and 5x pixel clock              -- 720p target : 72.25 MHz pixel clock (371.25 MHz 5x)
+    -- Generate the pixel clock and 5x pixel clock              -- 720p target: 72.25 MHz pixel clock (371.25 MHz 5x)
     -- The frequency is resolution and refresh rate dependent   -- 1080p@50Hz target: 123.75 MHz pixel clock (618.75 MHz 5x)
     MMCM_clockEngine: clocking                                  -- 1080p@60Hz target: 148.5 MHz pixel clock (742.5 MHz 5x)
      generic map (
@@ -175,17 +175,17 @@ begin
     process(pixel_h, pixel_v)
     begin
         if unsigned(pixel_h) = 200 or unsigned(pixel_h) = 1720 then
-            red_ram_p <= x"00";
-            green_ram_p <= x"00";
-            blue_ram_p <= x"00";
-        elsif unsigned(pixel_v) = 200 or unsigned(pixel_v) = 880 then
-            red_ram_p <= x"00";
-            green_ram_p <= x"00";
-            blue_ram_p <= x"00";
-        else
             red_ram_p <= x"FF";
             green_ram_p <= x"FF";
             blue_ram_p <= x"FF";
+        elsif unsigned(pixel_v) = 200 or unsigned(pixel_v) = 880 then
+            red_ram_p <= x"FF";
+            green_ram_p <= x"FF";
+            blue_ram_p <= x"FF";
+        else
+            red_ram_p <= x"00";
+            green_ram_p <= x"00";
+            blue_ram_p <= x"00";
         end if;
     end process;
     

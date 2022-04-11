@@ -22,3 +22,5 @@ set_property -dict { PACKAGE_PIN V2   IOSTANDARD TMDS_33 } [get_ports { hdmi_out
 set_property -dict { PACKAGE_PIN W2   IOSTANDARD TMDS_33 } [get_ports { hdmi_out_n[2] }];
 set_property -dict { PACKAGE_PIN N2   IOSTANDARD TMDS_33 } [get_ports { hdmi_out_p[3] }];
 set_property -dict { PACKAGE_PIN N1   IOSTANDARD TMDS_33 } [get_ports { hdmi_out_n[3] }];
+
+set_property BITSTREAM.CONFIG.SPI_BUSWIDTH 4 [current_design]
