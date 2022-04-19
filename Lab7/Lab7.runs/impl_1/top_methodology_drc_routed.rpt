@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Mon Apr 11 15:05:20 2022
+| Date         : Tue Apr 19 11:15:35 2022
 | Host         : Ubuntu-ZBook-15-G2 running 64-bit Ubuntu 18.04.6 LTS
 | Command      : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
 | Design       : top
@@ -23,15 +23,232 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 6
-+-----------+----------+-------------------------------+------------+
-| Rule      | Severity | Description                   | Violations |
-+-----------+----------+-------------------------------+------------+
-| TIMING-18 | Warning  | Missing input or output delay | 6          |
-+-----------+----------+-------------------------------+------------+
+             Violations found: 49
++-----------+------------------+-----------------------------------------+------------+
+| Rule      | Severity         | Description                             | Violations |
++-----------+------------------+-----------------------------------------+------------+
+| TIMING-8  | Critical Warning | No common period between related clocks | 1          |
+| TIMING-16 | Warning          | Large setup violation                   | 42         |
+| TIMING-18 | Warning          | Missing input or output delay           | 6          |
++-----------+------------------+-----------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+TIMING-8#1 Critical Warning
+No common period between related clocks  
+The clocks sys_clk_pin and cEng_pixel are found related (timed together) but have no common (expandable) period
+Related violations: <none>
+
+TIMING-16#1 Warning
+Large setup violation  
+There is a large setup violation of -10.245 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_green/dc_bias_reg[3]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#2 Warning
+Large setup violation  
+There is a large setup violation of -10.326 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_blue/dc_bias_reg[3]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#3 Warning
+Large setup violation  
+There is a large setup violation of -3.268 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_blue/e_reg[8]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#4 Warning
+Large setup violation  
+There is a large setup violation of -5.083 ns between count_reg[23]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_red/e_reg[8]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#5 Warning
+Large setup violation  
+There is a large setup violation of -5.247 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_green/e_reg[8]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#6 Warning
+Large setup violation  
+There is a large setup violation of -8.113 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_blue/e_reg[3]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#7 Warning
+Large setup violation  
+There is a large setup violation of -8.142 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_blue/dc_bias_reg[0]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#8 Warning
+Large setup violation  
+There is a large setup violation of -8.272 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_blue/e_reg[9]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#9 Warning
+Large setup violation  
+There is a large setup violation of -8.312 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_blue/e_reg[7]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#10 Warning
+Large setup violation  
+There is a large setup violation of -8.359 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_blue/e_reg[4]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#11 Warning
+Large setup violation  
+There is a large setup violation of -8.366 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_blue/dc_bias_reg[1]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#12 Warning
+Large setup violation  
+There is a large setup violation of -8.381 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_blue/e_reg[5]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#13 Warning
+Large setup violation  
+There is a large setup violation of -8.385 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_blue/e_reg[0]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#14 Warning
+Large setup violation  
+There is a large setup violation of -8.427 ns between count_reg[23]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_red/e_reg[4]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#15 Warning
+Large setup violation  
+There is a large setup violation of -8.453 ns between count_reg[23]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_red/e_reg[0]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#16 Warning
+Large setup violation  
+There is a large setup violation of -8.468 ns between count_reg[23]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_red/e_reg[9]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#17 Warning
+Large setup violation  
+There is a large setup violation of -8.482 ns between count_reg[23]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_red/e_reg[2]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#18 Warning
+Large setup violation  
+There is a large setup violation of -8.497 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_blue/e_reg[1]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#19 Warning
+Large setup violation  
+There is a large setup violation of -8.497 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_blue/e_reg[6]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#20 Warning
+Large setup violation  
+There is a large setup violation of -8.553 ns between count_reg[23]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_red/e_reg[7]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#21 Warning
+Large setup violation  
+There is a large setup violation of -8.575 ns between count_reg[23]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_red/e_reg[3]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#22 Warning
+Large setup violation  
+There is a large setup violation of -8.579 ns between count_reg[23]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_red/e_reg[1]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#23 Warning
+Large setup violation  
+There is a large setup violation of -8.633 ns between count_reg[23]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_red/dc_bias_reg[0]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#24 Warning
+Large setup violation  
+There is a large setup violation of -8.693 ns between count_reg[23]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_red/dc_bias_reg[1]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#25 Warning
+Large setup violation  
+There is a large setup violation of -8.740 ns between count_reg[23]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_red/e_reg[5]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#26 Warning
+Large setup violation  
+There is a large setup violation of -8.795 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_blue/e_reg[2]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#27 Warning
+Large setup violation  
+There is a large setup violation of -8.800 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_green/dc_bias_reg[0]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#28 Warning
+Large setup violation  
+There is a large setup violation of -8.817 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_green/e_reg[5]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#29 Warning
+Large setup violation  
+There is a large setup violation of -8.868 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_green/e_reg[1]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#30 Warning
+Large setup violation  
+There is a large setup violation of -8.897 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_green/e_reg[3]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#31 Warning
+Large setup violation  
+There is a large setup violation of -8.912 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_green/e_reg[6]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#32 Warning
+Large setup violation  
+There is a large setup violation of -8.917 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_blue/dc_bias_reg[2]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#33 Warning
+Large setup violation  
+There is a large setup violation of -8.957 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_green/e_reg[9]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#34 Warning
+Large setup violation  
+There is a large setup violation of -8.983 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_green/e_reg[0]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#35 Warning
+Large setup violation  
+There is a large setup violation of -8.986 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_green/e_reg[2]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#36 Warning
+Large setup violation  
+There is a large setup violation of -9.019 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_green/dc_bias_reg[2]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#37 Warning
+Large setup violation  
+There is a large setup violation of -9.062 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_green/dc_bias_reg[1]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#38 Warning
+Large setup violation  
+There is a large setup violation of -9.149 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_green/e_reg[4]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#39 Warning
+Large setup violation  
+There is a large setup violation of -9.153 ns between count_reg[24]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_green/e_reg[7]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#40 Warning
+Large setup violation  
+There is a large setup violation of -9.620 ns between count_reg[23]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_red/dc_bias_reg[2]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#41 Warning
+Large setup violation  
+There is a large setup violation of -9.757 ns between count_reg[23]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_red/dc_bias_reg[3]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#42 Warning
+Large setup violation  
+There is a large setup violation of -9.933 ns between count_reg[23]/C (clocked by sys_clk_pin) and dvid_1/TMDS_encoder_red/e_reg[6]/D (clocked by cEng_pixel). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
 TIMING-18#1 Warning
 Missing input or output delay  
 An output delay is missing on led[0] relative to clock(s) sys_clk_pin

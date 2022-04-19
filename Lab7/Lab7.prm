@@ -1,0 +1,11 @@
+===================================
+Configuration Memory information
+===================================
+File Format        MCS
+Interface          SPIX4
+Size               4M
+Start Address      0x00000000
+End Address        0x003FFFFF
+
+Addr1         Addr2         Date                    File(s)
+0x00000000    0x0021728B    Apr 19 11:15:48 2022    /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/Lab7/Lab7.runs/impl_1/top.bit

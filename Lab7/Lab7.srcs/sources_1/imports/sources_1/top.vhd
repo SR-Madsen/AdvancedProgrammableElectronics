@@ -172,27 +172,27 @@ begin
         vsync        => vsync
     );
     
-    process(pixel_h, pixel_v)
-    begin
-        if unsigned(pixel_h) = 200 or unsigned(pixel_h) = 1720 then
-            red_ram_p <= x"FF";
-            green_ram_p <= x"FF";
-            blue_ram_p <= x"FF";
-        elsif unsigned(pixel_v) = 200 or unsigned(pixel_v) = 880 then
-            red_ram_p <= x"FF";
-            green_ram_p <= x"FF";
-            blue_ram_p <= x"FF";
-        else
-            red_ram_p <= x"00";
-            green_ram_p <= x"00";
-            blue_ram_p <= x"00";
-        end if;
-    end process;
+--    process(pixel_h, pixel_v)
+--    begin
+--        if unsigned(pixel_h) = 200 or unsigned(pixel_h) = 1720 then
+--            red_ram_p <= x"FF";
+--            green_ram_p <= x"FF";
+--            blue_ram_p <= x"FF";
+--        elsif unsigned(pixel_v) = 200 or unsigned(pixel_v) = 880 then
+--            red_ram_p <= x"FF";
+--            green_ram_p <= x"FF";
+--            blue_ram_p <= x"FF";
+--        else
+--            red_ram_p <= x"00";
+--            green_ram_p <= x"00";
+--            blue_ram_p <= x"00";
+--        end if;
+--    end process;
     
     -- Colour pattern generation based on horiz/vert location
-    --red_ram_p <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_h(7 downto 0)));
-    --green_ram_p <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_v(7 downto 0)));
-    --blue_ram_p <= std_logic_vector(count(28 downto 21));
+    red_ram_p <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_h(7 downto 0)));
+    green_ram_p <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_v(7 downto 0)));
+    blue_ram_p <= std_logic_vector(count(28 downto 21));
 
     -- TMDS signal generation
     -- This takes pixel colour values and sync data, generating the

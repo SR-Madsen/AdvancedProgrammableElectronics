@@ -1,0 +1,46 @@
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|              sys_clk_pin |               cEng_pixel |                                                                        dvid_1/TMDS_encoder_red/e_reg[6]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                      dvid_1/TMDS_encoder_green/e_reg[4]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                        dvid_1/TMDS_encoder_red/e_reg[5]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                      dvid_1/TMDS_encoder_green/e_reg[2]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                        dvid_1/TMDS_encoder_red/e_reg[1]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                        dvid_1/TMDS_encoder_red/e_reg[2]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                      dvid_1/TMDS_encoder_green/e_reg[3]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                      dvid_1/TMDS_encoder_green/e_reg[1]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                        dvid_1/TMDS_encoder_red/e_reg[4]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                      dvid_1/TMDS_encoder_green/e_reg[6]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                       dvid_1/TMDS_encoder_blue/e_reg[2]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                       dvid_1/TMDS_encoder_blue/e_reg[6]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                        dvid_1/TMDS_encoder_red/e_reg[0]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                      dvid_1/TMDS_encoder_green/e_reg[5]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                 dvid_1/TMDS_encoder_blue/dc_bias_reg[3]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                  dvid_1/TMDS_encoder_red/dc_bias_reg[3]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                       dvid_1/TMDS_encoder_blue/e_reg[1]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                  dvid_1/TMDS_encoder_red/dc_bias_reg[1]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                        dvid_1/TMDS_encoder_red/e_reg[7]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                        dvid_1/TMDS_encoder_red/e_reg[9]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                 dvid_1/TMDS_encoder_blue/dc_bias_reg[2]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                      dvid_1/TMDS_encoder_green/e_reg[0]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                       dvid_1/TMDS_encoder_blue/e_reg[0]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                dvid_1/TMDS_encoder_green/dc_bias_reg[1]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                 dvid_1/TMDS_encoder_blue/dc_bias_reg[1]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                  dvid_1/TMDS_encoder_red/dc_bias_reg[0]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                       dvid_1/TMDS_encoder_blue/e_reg[5]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                dvid_1/TMDS_encoder_green/dc_bias_reg[2]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                        dvid_1/TMDS_encoder_red/e_reg[3]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                dvid_1/TMDS_encoder_green/dc_bias_reg[3]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                dvid_1/TMDS_encoder_green/dc_bias_reg[0]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                  dvid_1/TMDS_encoder_red/dc_bias_reg[2]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                       dvid_1/TMDS_encoder_blue/e_reg[7]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                      dvid_1/TMDS_encoder_green/e_reg[7]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                      dvid_1/TMDS_encoder_green/e_reg[9]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                       dvid_1/TMDS_encoder_blue/e_reg[4]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                       dvid_1/TMDS_encoder_blue/e_reg[3]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                       dvid_1/TMDS_encoder_blue/e_reg[9]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                 dvid_1/TMDS_encoder_blue/dc_bias_reg[0]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                      dvid_1/TMDS_encoder_green/e_reg[8]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                        dvid_1/TMDS_encoder_red/e_reg[8]/D|
+|              sys_clk_pin |               cEng_pixel |                                                                       dvid_1/TMDS_encoder_blue/e_reg[8]/D|
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
