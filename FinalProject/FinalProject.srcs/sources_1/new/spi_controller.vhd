@@ -10,6 +10,13 @@
 -- Tool Versions: 
 -- Description: SPI controller for TX and RX slaves
 -- 
+-- The SPI data transmissions for this project are 64 bit long.
+-- The protocol is as follows:
+-- Begin image: B......
+-- Write data: WAAARGB.
+-- Read data: RAAA....
+-- End image: E.......
+-- In which AAA is the 19-bit SRAM address, RGB is red-green-blue image data, and . doesn't matter.
 ----------------------------------------------------------------------------------
 
 library IEEE;

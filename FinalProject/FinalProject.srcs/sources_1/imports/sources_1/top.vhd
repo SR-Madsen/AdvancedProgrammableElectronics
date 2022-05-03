@@ -34,7 +34,12 @@ entity top is
         spi_clk : in STD_LOGIC;
         spi_mosi : in STD_LOGIC;
         spi_miso : out STD_LOGIC;
-        spi_ss : in STD_LOGIC
+        spi_ss : in STD_LOGIC;
+        memaddr : out STD_LOGIC_VECTOR(18 downto 0);
+        memdata : inout STD_LOGIC_VECTOR(7 downto 0);
+        memoen : out STD_LOGIC := '0'; -- Output enable, always on
+        memwen : out STD_LOGIC := '0'; -- '0' = write, '1' = read
+        memcen : out STD_LOGIC := '0'  -- Chip enable, always on
     );
 end top;
 
@@ -44,12 +49,16 @@ architecture Behavioral of top is                                   -- 720p targ
         clk_period : real := 41.66;     -- Define 24 MHz period
         clk_mul    : real := 30.94;     -- Input: 24 MHz            -- 720p: 46.40 => 1113.6 MHz, 1080p@50Hz: 25.78 => 618.72 MHz, 1080p@60Hz: 30.94 => 742.56 MHz
         pix_div    : real := 5.0;       --                          -- 720p: 15.0  => 72.24 MHz , 1080p@50Hz: 5.0   => 123.74 MHz, 1080p@60Hz: 5.0   => 148.512 MHz
-        pix5x_div  : integer := 1       --                          -- 720p: 3     => 371.2 MHz , 1080p@50Hz: 1     => 618.72 MHz, 1080p@60Hz: 1     => 742.56 MHz
+        pix5x_div  : integer := 1;      --                          -- 720p: 3     => 371.2 MHz , 1080p@50Hz: 1     => 618.72 MHz, 1080p@60Hz: 1     => 742.56 MHz
+        sram_div   : integer := 7;      -- 106.08 MHz
+        spi_div    : integer := 7       -- 106.08 MHz
     );
     PORT ( 
         clk_I           : in  STD_LOGIC;
-        clkpixel_O      : out  STD_LOGIC;
-        clk5xpixel_O    : out  STD_LOGIC
+        clkpixel_O      : out STD_LOGIC;
+        clk5xpixel_O    : out STD_LOGIC;
+        clksram_O       : out STD_LOGIC;
+        clkspi_O        : out STD_LOGIC
     );
     END COMPONENT;
     
@@ -76,7 +85,9 @@ architecture Behavioral of top is                                   -- 720p targ
            DATAVALID_O : out STD_LOGIC;
            EMPTY_O     : out STD_LOGIC;
            FULL_O      : out STD_LOGIC;
-           DOUT_O      : out STD_LOGIC_VECTOR(63 downto 0)
+           DOUT_O      : out STD_LOGIC_VECTOR(63 downto 0);
+           WR_BUSY     : out STD_LOGIC;
+           RD_BUSY     : out STD_LOGIC
            );
 end Component;
 
@@ -107,6 +118,16 @@ end Component;
         vsync        : OUT std_logic
     );
     END COMPONENT;
+    
+    Component smoothening is
+    Port ( CLK_I        : in STD_LOGIC;
+           GAMMA_I      : in STD_LOGIC_VECTOR(7 downto 0);
+           GAMMANEXT_I  : in STD_LOGIC_VECTOR(7 downto 0);
+           RED_O        : out STD_LOGIC_VECTOR(7 downto 0);
+           GREEN_O      : out STD_LOGIC_VECTOR(7 downto 0);
+           BLUE_O       : out STD_LOGIC_VECTOR(7 downto 0)
+           );
+    end Component;
 
     COMPONENT dvid
     PORT(
@@ -127,8 +148,10 @@ end Component;
 	signal count: unsigned(31 downto 0) := X"00000000";
 	
     -- Clock engine    
-    signal cEng_pixel : std_logic;
+    signal cEng_pixel   : std_logic;
     signal cEng_5xpixel : std_logic;
+    signal cEng_sram    : std_logic;
+    signal cEng_spi     : std_logic;
     
     -- FIFO signals
     signal fifo_din  : STD_LOGIC_VECTOR(63 downto 0);
@@ -137,6 +160,8 @@ end Component;
     signal fifo_rden : STD_LOGIC;
     signal fifo_dv   : STD_LOGIC;
     signal fifo_empty: STD_LOGIC;
+    signal fifo_wr_busy : STD_LOGIC;
+    signal fifo_rd_busy : STD_LOGIC;
     
     -- VGA timing
     signal pixel_h : STD_LOGIC_VECTOR(11 downto 0);
@@ -145,10 +170,12 @@ end Component;
     signal hsync   : std_logic;
     signal vsync   : std_logic;
     
-    -- Pixel colour data
-    signal red_ram_p   : std_logic_vector(7 downto 0) := (others => '0');
-    signal green_ram_p : std_logic_vector(7 downto 0) := (others => '0');
-    signal blue_ram_p  : std_logic_vector(7 downto 0) := (others => '0');
+    -- Pixel data
+    signal gamma : STD_LOGIC_VECTOR(7 downto 0);
+    signal gamma_next : STD_LOGIC_VECTOR(7 downto 0);
+    signal red_val   : std_logic_vector(7 downto 0) := (others => '0');
+    signal green_val : std_logic_vector(7 downto 0) := (others => '0');
+    signal blue_val  : std_logic_vector(7 downto 0) := (others => '0');
     
 begin
     
@@ -175,19 +202,23 @@ begin
          clk_period => 41.66,    -- Define 24 MHz period
          clk_mul    => 30.94,    -- Input: 24 MHz               -- 720p: 46.40 => 1113.6 MHz, 1080p@50Hz: 25.78 => 618.72 MHz, 1080p@60Hz: 30.94 => 742.56 MHz
          pix_div    => 5.00,     --                             -- 720p: 15.0  => 72.24 MHz , 1080p@50Hz: 5.0   => 123.74 MHz, 1080p@60Hz: 5.0   => 148.512 MHz
-         pix5x_div  => 1         --                             -- 720p: 3     => 371.2 MHz , 1080p@50Hz: 1     => 618.72 MHz, 1080p@60Hz: 1     => 742.56 MHz
+         pix5x_div  => 1,        --                             -- 720p: 3     => 371.2 MHz , 1080p@50Hz: 1     => 618.72 MHz, 1080p@60Hz: 1     => 742.56 MHz
+         sram_div   => 7,        -- 106.08 MHz
+         spi_div    => 7         -- 106.08 MHz
      )
      port map (
          clk_I              => CLK24MHZ,
          clkpixel_O         => cEng_pixel,
-         clk5xpixel_O       => cEng_5xpixel
+         clk5xpixel_O       => cEng_5xpixel,
+         clksram_O          => cEng_sram,
+         clkspi_O           => cEng_spi
      );
     
     -- Top of SPI controller, containing a TX and RX module.
     -- Retrieves data from submodules and puts it into the FIFO
     spi_top: spi_controller
     Generic map ( SPI_DATA_LENGTH => 64)
-    Port map    ( CLK_I => CLK24MHZ, -- TODO: USE SAME CLOCK AS DATA CONTROLLER
+    Port map    ( CLK_I => cEng_spi,
                   SPIDATA_I => (others => '0'),
                   SPIDATA_O => fifo_din,
                   WREN_O => fifo_wren,
@@ -199,8 +230,8 @@ begin
     );
     
     fifo: async_fifo
-    Port map ( RDCLK_I => CLK24MHZ, -- TODO: USE SAME CLOCK AS DATA CONTROLLER
-               WRCLK_I => CLK24MHZ, -- TODO: USE SAME CLOCK AS SPI CONTROLLER
+    Port map ( RDCLK_I => cEng_sram,
+               WRCLK_I => cEng_spi,
                RDEN_I => fifo_rden,
                WREN_I => fifo_wren,
                DIN_I => fifo_din,
@@ -208,11 +239,7 @@ begin
                EMPTY_O => fifo_empty,
                FULL_O => open,
                DOUT_O => fifo_dout
-               );
-               
-    -- TODO: Add data controller
-    -- TODO: Add SRAM connection
-    -- TODO: Add DSP filter or similar
+    );
 
     -- This generates controls and offsets required for a fixed resolution
     -- Modify the values and clock to output different resolutions
@@ -238,10 +265,21 @@ begin
         vsync        => vsync
     );
     
+    -- TODO: Add data controller for SRAM
+    
+    color_filter: smoothening
+    Port map ( CLK_I => cEng_pixel,
+               GAMMA_I => gamma,
+               GAMMANEXT_I => gamma_next,
+               RED_O => red_val,
+               GREEN_O => green_val,
+               BLUE_O => blue_val
+             );
+    
     -- Colour pattern generation based on horiz/vert location
-    red_ram_p <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_h(7 downto 0)));
-    green_ram_p <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_v(7 downto 0)));
-    blue_ram_p <= std_logic_vector(count(28 downto 21));
+    red_val <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_h(7 downto 0)));
+    green_val <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_v(7 downto 0)));
+    blue_val <= std_logic_vector(count(28 downto 21));
 
     -- TMDS signal generation
     -- This takes pixel colour values and sync data, generating the
@@ -249,9 +287,9 @@ begin
     dvid_1: dvid PORT MAP(
         clk        => cEng_5xpixel,
         clk_pixel  => cEng_pixel,
-        red_p      => red_ram_p,
-        green_p    => green_ram_p,
-        blue_p     => blue_ram_p,
+        red_p      => red_val,
+        green_p    => green_val,
+        blue_p     => blue_val,
         blank      => blank,
         hsync      => hsync,
         vsync      => vsync,

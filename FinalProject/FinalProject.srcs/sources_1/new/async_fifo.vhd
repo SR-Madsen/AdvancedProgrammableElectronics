@@ -28,13 +28,24 @@ entity async_fifo is
            DATAVALID_O : out STD_LOGIC;
            EMPTY_O     : out STD_LOGIC;
            FULL_O      : out STD_LOGIC;
-           DOUT_O      : out STD_LOGIC_VECTOR(63 downto 0)
+           DOUT_O      : out STD_LOGIC_VECTOR(63 downto 0);
+           WR_BUSY_O   : out STD_LOGIC;
+           RD_BUSY_O   : out STD_LOGIC
            );
 end async_fifo;
 
 architecture Behavioral of async_fifo is
 
+signal reset : std_logic := '1';
+
 begin
+
+process(WRCLK_I)
+begin
+    if WRCLK_I'event and WRCLK_I = '1' then
+        reset <= '0';
+    end if;
+end process;
 
 -- xpm_fifo_async: Asynchronous FIFO
 -- Xilinx Parameterized Macro, version 2020.1
@@ -52,9 +63,9 @@ generic map (
     RD_DATA_COUNT_WIDTH => 1,   -- DECIMAL
     READ_DATA_WIDTH => 64,      -- DECIMAL
     READ_MODE => "std",         -- String
-    RELATED_CLOCKS => 0,        -- DECIMAL
-    SIM_ASSERT_CHK => 0,        -- DECIMAL
-    USE_ADV_FEATURES => "0707", -- String
+    RELATED_CLOCKS => 1,        -- DECIMAL
+    SIM_ASSERT_CHK => 1,        -- DECIMAL
+    USE_ADV_FEATURES => "1000", -- String
     WAKEUP_TIME => 0,           -- DECIMAL
     WRITE_DATA_WIDTH => 64,     -- DECIMAL
     WR_DATA_COUNT_WIDTH => 1    -- DECIMAL
@@ -103,7 +114,7 @@ port map (
     rd_data_count => open,          -- RD_DATA_COUNT_WIDTH-bit output: Read Data Count: This bus indicates
                                     -- the number of words read from the FIFO.
                                     
-    rd_rst_busy => open,            -- 1-bit output: Read Reset Busy: Active-High indicator that the FIFO
+    rd_rst_busy => RD_BUSY_O,       -- 1-bit output: Read Reset Busy: Active-High indicator that the FIFO
                                     -- read domain is currently in a reset state.
                                     
     sbiterr => open,                -- 1-bit output: Single Bit Error: Indicates that the ECC decoder
@@ -119,7 +130,7 @@ port map (
     wr_data_count => open,          -- WR_DATA_COUNT_WIDTH-bit output: Write Data Count: This bus indicates
                                     -- the number of words written into the FIFO.
                                     
-    wr_rst_busy => open,            -- 1-bit output: Write Reset Busy: Active-High indicator that the FIFO
+    wr_rst_busy => WR_BUSY_O,       -- 1-bit output: Write Reset Busy: Active-High indicator that the FIFO
                                     -- write domain is currently in a reset state.
                                     
     din => DIN_I,                   -- WRITE_DATA_WIDTH-bit input: Write Data: The input data bus used when
@@ -138,7 +149,7 @@ port map (
                                     -- signal causes data (on dout) to be read from the FIFO. Must be held
                                     -- active-low when rd_rst_busy is active high.
     
-    rst => '0',                     -- 1-bit input: Reset: Must be synchronous to wr_clk. The clock(s) can be
+    rst => reset,                   -- 1-bit input: Reset: Must be synchronous to wr_clk. The clock(s) can be
                                     -- unstable at the time of applying reset, but reset must be released
                                     -- only after the clock(s) is/are stable.
     

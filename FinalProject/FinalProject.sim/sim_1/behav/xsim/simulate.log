@@ -1,0 +1,42 @@
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. async_fifo.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst .\gen_sdpram.xpm_memory_base_inst .config_drc
+Time: 1 ps  Iteration: 0  Process: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial294_41  Scope: async_fifo.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst .\gen_sdpram.xpm_memory_base_inst .config_drc  File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+Warning: SIM_ASSERT_CHK (1) specifies simulation message reporting, messages related to potential misuse will be reported.
+Time: 1 ps  Iteration: 0  Process: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/Initial1438_70  Scope: async_fifo.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst   File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 1445
+
+Time: 1005 ns Started: 1005 ns Scope: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line:1493
+Error: [SLEEP_CHECK S-7] 'sleep' is deasserted at 1005000, but rd_en must be low for 0 rd_clk cycles after 1005000
+Time: 1005 ns  Iteration: 0  Process: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst//async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst  Scope: async_fifo.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst   File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 1496
+
+Time: 1020 ns Started: 1020 ns Scope: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line:1488
+Error: [SLEEP_CHECK S-6] 'sleep' is deasserted at 1020000, but wr_en must be low for 0 wr_clk cycles after 1020000
+Time: 1020 ns  Iteration: 0  Process: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst//async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst  Scope: async_fifo.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst   File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 1491
+
+Time: 1065 ns Started: 1055 ns Scope: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line:1476
+Error: [EMPTY_CHECK S-4] Reset is applied, but empty flag is not 1 or transitioning to 1 at 1065000.
+Time: 1065 ns  Iteration: 0  Process: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst//async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst  Scope: async_fifo.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst   File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 1479
+
+Time: 1425 ns Started: 1415 ns Scope: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line:1476
+Error: [EMPTY_CHECK S-4] Reset is applied, but empty flag is not 1 or transitioning to 1 at 1425000.
+Time: 1425 ns  Iteration: 0  Process: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst//async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst  Scope: async_fifo.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst   File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 1479
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. async_fifo.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst .\gen_sdpram.xpm_memory_base_inst .config_drc
+Time: 1 ps  Iteration: 0  Process: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial294_41  Scope: async_fifo.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst .\gen_sdpram.xpm_memory_base_inst .config_drc  File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+Warning: SIM_ASSERT_CHK (1) specifies simulation message reporting, messages related to potential misuse will be reported.
+Time: 1 ps  Iteration: 0  Process: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/Initial1438_70  Scope: async_fifo.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst   File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 1445
+
+Time: 5 ns Started: 5 ns Scope: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line:1493
+Error: [SLEEP_CHECK S-7] 'sleep' is deasserted at 5000, but rd_en must be low for 0 rd_clk cycles after 5000
+Time: 5 ns  Iteration: 0  Process: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst//async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst  Scope: async_fifo.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst   File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 1496
+
+Time: 5 ns Started: 5 ns Scope: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line:1488
+Error: [SLEEP_CHECK S-6] 'sleep' is deasserted at 5000, but wr_en must be low for 0 wr_clk cycles after 5000
+Time: 5 ns  Iteration: 0  Process: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst//async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst  Scope: async_fifo.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst   File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 1491
+
+Time: 145 ns Started: 135 ns Scope: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line:1476
+Error: [EMPTY_CHECK S-4] Reset is applied, but empty flag is not 1 or transitioning to 1 at 145000.
+Time: 145 ns  Iteration: 0  Process: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst//async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst  Scope: async_fifo.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst   File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 1479
+
+Time: 305 ns Started: 295 ns Scope: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line:1476
+Error: [EMPTY_CHECK S-4] Reset is applied, but empty flag is not 1 or transitioning to 1 at 305000.
+Time: 305 ns  Iteration: 0  Process: /async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst//async_fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst  Scope: async_fifo.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst   File: /wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 1479
