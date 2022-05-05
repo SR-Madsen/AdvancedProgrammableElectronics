@@ -238,7 +238,9 @@ begin
                DATAVALID_O => fifo_dv,
                EMPTY_O => fifo_empty,
                FULL_O => open,
-               DOUT_O => fifo_dout
+               DOUT_O => fifo_dout,
+               WR_BUSY => open,
+               RD_BUSY => open
     );
 
     -- This generates controls and offsets required for a fixed resolution
@@ -267,6 +269,8 @@ begin
     
     -- TODO: Add data controller for SRAM
     
+    
+    -- DSP module for smoothening of pixel transitions
     color_filter: smoothening
     Port map ( CLK_I => cEng_pixel,
                GAMMA_I => gamma,
