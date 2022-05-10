@@ -61,6 +61,10 @@ set_property -dict { PACKAGE_PIN P19   IOSTANDARD LVCMOS33 } [get_ports { memoen
 set_property -dict { PACKAGE_PIN R19   IOSTANDARD LVCMOS33 } [get_ports { memwen      }];
 set_property -dict { PACKAGE_PIN N19   IOSTANDARD LVCMOS33 } [get_ports { memcen      }];
 
+# Ground outputs to shorten loops on PCB
+set_property -dict { PACKAGE_PIN H1   IOSTANDARD LVCMOS33 } [get_ports { short_gnd0 }];
+set_property -dict { PACKAGE_PIN J1   IOSTANDARD LVCMOS33 } [get_ports { short_gnd1 }];
+set_property -dict { PACKAGE_PIN W6   IOSTANDARD LVCMOS33 } [get_ports { short_gnd2 }];
 
 ## Set buswidth for memory configuration file
 set_property BITSTREAM.CONFIG.SPI_BUSWIDTH 4 [current_design]

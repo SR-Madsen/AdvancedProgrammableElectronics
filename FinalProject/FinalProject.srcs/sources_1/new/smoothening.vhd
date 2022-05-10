@@ -46,8 +46,9 @@ begin
 
     -- Math to iterate from number x to number y with three steps (i.e., from 200 to 300 with steps 225, 250, 275).
     -- Delta = (y - x)/4*i for i = 1:3
-    -- Step = x + Delta
-    process(curr_gamma, next_gamma)
+    -- Step = x + Delta    
+    -- TODO: Det her virker ikke nødvendigvis med porches. Prøv at forbinde PIXEL_V i stedet, eller få mere data fra controller
+    process(CLK_I, curr_gamma, next_gamma)
     variable delta : integer;
     begin
         delta := (to_integer(next_gamma) - to_integer(curr_gamma))/4;
@@ -55,11 +56,6 @@ begin
         gamma_smooth(1) := std_logic_vector(curr_gamma + Delta);
         gamma_smooth(2) := std_logic_vector(curr_gamma + Delta*2);
         gamma_smooth(3) := std_logic_vector(curr_gamma + Delta*3);
-    end process;
-    
-    -- TODO: Det her virker ikke nødvendigvis med porches. Prøv at forbinde PIXEL_V i stedet, eller få mere data fra controller
-    process(CLK_I)
-    begin
         if CLK_I'event and CLK_I = '1' then
             gamma_smooth := gamma_smooth(1 to 3) & gamma_smooth(0);
             RED_O <= gamma_smooth(0);

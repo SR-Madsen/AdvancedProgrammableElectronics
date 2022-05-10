@@ -39,7 +39,8 @@ entity top is
         memdata : inout STD_LOGIC_VECTOR(7 downto 0);
         memoen : out STD_LOGIC := '0'; -- Output enable, always on
         memwen : out STD_LOGIC := '0'; -- '0' = write, '1' = read
-        memcen : out STD_LOGIC := '0'  -- Chip enable, always on
+        memcen : out STD_LOGIC := '0'; -- Chip enable, always on
+        short_gnd0, short_gnd1, short_gnd2 : out STD_LOGIC := '0' -- Pins set to ground to shorten loops
     );
 end top;
 
@@ -86,8 +87,8 @@ architecture Behavioral of top is                                   -- 720p targ
            EMPTY_O     : out STD_LOGIC;
            FULL_O      : out STD_LOGIC;
            DOUT_O      : out STD_LOGIC_VECTOR(63 downto 0);
-           WR_BUSY     : out STD_LOGIC;
-           RD_BUSY     : out STD_LOGIC
+           WR_BUSY_O   : out STD_LOGIC;
+           RD_BUSY_O   : out STD_LOGIC
            );
 end Component;
 
@@ -118,6 +119,24 @@ end Component;
         vsync        : OUT std_logic
     );
     END COMPONENT;
+    
+    Component data_controller is
+    Port ( CLK_I        : in STD_LOGIC;                         -- SRAM clock
+           HPIXEL_I     : in STD_LOGIC_VECTOR(11 downto 0);     -- Horizontal pixel value
+           VPIXEL_I     : in STD_LOGIC_VECTOR(11 downto 0);     -- Vertical pixel value
+           BLANK_I      : in STD_LOGIC;                         -- Indicates blank part of the screen
+           FIFODATA_I   : in STD_LOGIC_VECTOR(63 downto 0);     -- Data from FIFO
+           FIFODV_I     : in STD_LOGIC;                         -- Data valid signal from FIFO
+           FIFOEMPTY_I  : in STD_LOGIC;                         -- FIFO empty signal
+           SRAMDATA_IO  : inout STD_LOGIC_VECTOR(7 downto 0);   -- Data to and from SRAM
+           SRAMADDR_O   : out STD_LOGIC_VECTOR(18 downto 0) := (others => '0'); -- Address to read/write for SRAM
+           SRAMWEN_O    : out STD_LOGIC := '0';                 -- Write enable for SRAM
+           FIFORD_O     : out STD_LOGIC := '0';                 -- Read enable for FIFO
+           GAMMA_O      : out STD_LOGIC_VECTOR(7 downto 0) := (others => '0');  -- Current pixel's gamma value
+           GAMMANEXT_O  : out STD_LOGIC_VECTOR(7 downto 0) := (others => '0')   -- Next pixel's gamma value
+           );
+    end Component;
+         
     
     Component smoothening is
     Port ( CLK_I        : in STD_LOGIC;
@@ -239,8 +258,8 @@ begin
                EMPTY_O => fifo_empty,
                FULL_O => open,
                DOUT_O => fifo_dout,
-               WR_BUSY => open,
-               RD_BUSY => open
+               WR_BUSY_O => open,
+               RD_BUSY_O => open
     );
 
     -- This generates controls and offsets required for a fixed resolution
@@ -268,7 +287,21 @@ begin
     );
     
     -- TODO: Add data controller for SRAM
-    
+    data_cont: data_controller
+    Port map ( CLK_I => cEng_sram,
+               HPIXEL_I => pixel_h,
+               VPIXEL_I => pixel_v,
+               BLANK_I => blank,
+               FIFODATA_I => fifo_dout,
+               FIFODV_I => fifo_dv,
+               FIFOEMPTY_I => fifo_empty,
+               SRAMDATA_IO => memdata,
+               SRAMADDR_O => memaddr,
+               SRAMWEN_O => memwen,
+               FIFORD_O => fifo_rden,
+               GAMMA_O => gamma,
+               GAMMANEXT_O => gamma_next
+             );
     
     -- DSP module for smoothening of pixel transitions
     color_filter: smoothening
@@ -281,9 +314,9 @@ begin
              );
     
     -- Colour pattern generation based on horiz/vert location
-    red_val <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_h(7 downto 0)));
-    green_val <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_v(7 downto 0)));
-    blue_val <= std_logic_vector(count(28 downto 21));
+    --red_val <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_h(7 downto 0)));
+    --green_val <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_v(7 downto 0)));
+    --blue_val <= std_logic_vector(count(28 downto 21));
 
     -- TMDS signal generation
     -- This takes pixel colour values and sync data, generating the

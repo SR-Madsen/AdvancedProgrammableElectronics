@@ -49,24 +49,106 @@ end data_controller;
 
 architecture Behavioral of data_controller is
 
+type state_type is (RECEIVE, START, WRITE, RUN);
+signal state : state_type := RUN;
+
 signal hpixel : integer range 0 to 1920 := 0;
 signal vpixel : integer range 0 to 1080 := 0;
 
+signal gamma_int      : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+signal gamma_int_next : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+
+signal spi_receive : STD_LOGIC := '0';
+
+signal rdata, gdata, bdata : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+signal addr: STD_LOGIC_VECTOR(18 downto 0) := (others => '0');
+signal gamma_out : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+
+signal rdatashift1, rdatashift6 : UNSIGNED(15 downto 0) := (others => '0');
+signal gdatashift7, gdatashift0 : UNSIGNED(15 downto 0) := (others => '0');
+signal bdatashift4, bdatashift3, bdatashift0 : UNSIGNED(15 downto 0) := (others => '0');
+
+signal gamma_calc : UNSIGNED(15 downto 0) := (others => '0');
+
 begin
 
-
-    -- Assign address to be read dependent on current pixel
     hpixel <= to_integer(unsigned(HPIXEL_I));
     vpixel <= to_integer(unsigned(VPIXEL_I));
-
-    process(hpixel, vpixel)
+    GAMMA_O <= gamma_int;
+    GAMMANEXT_O <= gamma_int_next;
+    
+    -- RGB to gamma ITU-R BT.601 conversion, see https://sistenix.com/rgb2ycbcr.html
+    rdatashift1 <= "0000000" & unsigned(rdata) & "0";
+    rdatashift6 <= "00" & unsigned(rdata) & "000000";
+    gdatashift7 <= "0" & unsigned(gdata) & "0000000";
+    gdatashift0 <= "00000000" & unsigned(gdata);
+    bdatashift4 <= "0000" & unsigned(bdata) & "0000";
+    bdatashift3 <= "00000" & unsigned(bdata) & "000";
+    bdatashift0 <= "00000000" & unsigned(bdata);
+    
+    gamma_calc <= 16 + shift_right(rdatashift6 + rdatashift1 + gdatashift7 + gdatashift0 + bdatashift4 + bdatashift3 + bdatashift0, 8);
+    gamma_out <= std_logic_vector(gamma_calc(7 downto 0));
+    
+    -- Read next gamma data from SRAM, or write gamma data to SRAM
+    process(CLK_I)
     begin
-        if BLANK_I = '1' then
-            SRAMADDR_O <= (others => '0');
-        else
-            SRAMADDR_O <= std_logic_vector(to_unsigned(vpixel*480 + hpixel, 19));
+        if CLK_I'event and CLK_I = '1' then
+            if BLANK_I = '0' and spi_receive = '0' then
+                gamma_int <= gamma_int_next;
+                gamma_int_next <= SRAMDATA_IO;
+                SRAMADDR_O <= std_logic_vector(to_unsigned(vpixel*480 + hpixel + 1, 19));
+            elsif spi_receive = '1' then
+                SRAMADDR_O <= addr;
+                SRAMDATA_IO <= gamma_out;
+            end if;
         end if;
     end process;
-
-
+    
+    -- Read from the SPI FIFO if any data has been received
+    process(CLK_I)
+    begin
+        if CLK_I'event and CLK_I = '1' then
+            case state is
+                when RUN =>
+                    if FIFOEMPTY_I = '0' then
+                        FIFORD_O <= '1';
+                        state <= START;
+                    end if;
+                
+                when START =>
+                    FIFORD_O <= '0';
+                    if FIFODV_I = '1' then
+                        if FIFODATA_I(63 downto 56) = "01000010" then
+                            state <= RECEIVE;
+                            spi_receive <= '1';
+                        else
+                            state <= RUN;
+                        end if;
+                    end if;
+                
+                when RECEIVE =>
+                    SRAMWEN_O <= '0';
+                    if FIFOEMPTY_I = '0' then
+                        FIFORD_O <= '1';
+                        state <= WRITE;
+                    end if;
+                
+                when WRITE =>
+                    FIFORD_O <= '0';
+                    if FIFODV_I = '1' then
+                        if FIFODATA_I(63 downto 56) = "01000101" then
+                            state <= RUN;
+                            spi_receive <= '0';
+                        else
+                            addr <= FIFODATA_I(50 downto 32);
+                            rdata <= FIFODATA_I(31 downto 24);
+                            gdata <= FIFODATA_I(23 downto 16);
+                            bdata <= FIFODATA_I(15 downto 8);
+                            SRAMWEN_O <= '1';
+                            state <= RECEIVE;
+                        end if;
+                    end if;
+            end case;
+        end if;
+    end process;
 end Behavioral;

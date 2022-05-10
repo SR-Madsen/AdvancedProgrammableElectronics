@@ -91,6 +91,7 @@ read_vhdl -library xil_defaultlib {
   /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/TMDS_encoder.vhd
   /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/async_fifo.vhd
   /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/clocking.vhd
+  /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd
   /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/dvid.vhd
   /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/new/serializer.vhd
   /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/smoothening.vhd
