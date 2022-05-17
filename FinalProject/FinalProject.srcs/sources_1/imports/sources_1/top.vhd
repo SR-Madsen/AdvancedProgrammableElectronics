@@ -19,6 +19,11 @@
 -- University of Southern Denmark
 -- 2022 03 24
 
+-- Used as basis for further expansion with connection through SPI and SRAM
+-- By Sebastian Rud Madsen
+-- University of Southern Denmark
+-- April and May 2022
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -38,7 +43,7 @@ entity top is
         memaddr : out STD_LOGIC_VECTOR(18 downto 0);
         memdata : inout STD_LOGIC_VECTOR(7 downto 0);
         memoen : out STD_LOGIC := '0'; -- Output enable, always on
-        memwen : out STD_LOGIC := '0'; -- '0' = write, '1' = read
+        memwen : out STD_LOGIC := '1'; -- '0' = write, '1' = read
         memcen : out STD_LOGIC := '0'; -- Chip enable, always on
         short_gnd0, short_gnd1, short_gnd2 : out STD_LOGIC := '0' -- Pins set to ground to shorten loops
     );
@@ -286,7 +291,7 @@ begin
         vsync        => vsync
     );
     
-    -- TODO: Add data controller for SRAM
+    -- Data controller for communicating with SPI FIFO and SRAM
     data_cont: data_controller
     Port map ( CLK_I => cEng_sram,
                HPIXEL_I => pixel_h,

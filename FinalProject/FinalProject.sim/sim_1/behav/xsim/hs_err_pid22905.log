@@ -1,0 +1,18 @@
+#
+# An unexpected error has occurred (6)
+#
+Stack:
+/lib/x86_64-linux-gnu/libc.so.6(+0x3ef10) [0x7fe3b4135f10]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0xc7) [0x7fe3b4135e87]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0x141) [0x7fe3b41377f1]
+/lib/x86_64-linux-gnu/libc.so.6(+0x89837) [0x7fe3b4180837]
+/lib/x86_64-linux-gnu/libc.so.6(+0x908ba) [0x7fe3b41878ba]
+/lib/x86_64-linux-gnu/libc.so.6(+0x90b5e) [0x7fe3b4187b5e]
+/lib/x86_64-linux-gnu/libc.so.6(+0x94848) [0x7fe3b418b848]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_malloc+0x39a) [0x7fe3b418e3ba]
+/opt/Xilinx/Vivado/2020.1/lib/lnx64.o/Ubuntu/18/libstdc++.so.6(_Znwm+0x1c) [0x7fe3b479154c]
+/opt/Xilinx/Vivado/2020.1/lib/lnx64.o/librdi_common.so(HUTFileUtils::checkRegistry_real(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)+0xe08) [0x7fe3b368d638]
+/opt/Xilinx/Vivado/2020.1/lib/lnx64.o/librdi_common.so(HUTFileUtils::doWork()+0xe0) [0x7fe3b368e2a0]
+/opt/Xilinx/Vivado/2020.1/lib/lnx64.o/librdi_common.so(HUTFileUtils::WorkThreadProc(void*)+0x9) [0x7fe3b368e409]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0x76db) [0x7fe3b1fec6db]
+/lib/x86_64-linux-gnu/libc.so.6(clone+0x3f) [0x7fe3b421861f]

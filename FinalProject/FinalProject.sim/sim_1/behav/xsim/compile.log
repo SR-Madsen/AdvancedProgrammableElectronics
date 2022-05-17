@@ -1,2 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'data_controller'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/smoothening.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'smoothening'
