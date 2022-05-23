@@ -57,7 +57,7 @@ architecture Behavioral of top is                                   -- 720p targ
         pix_div    : real := 5.0;       --                          -- 720p: 15.0  => 72.24 MHz , 1080p@50Hz: 5.0   => 123.74 MHz, 1080p@60Hz: 5.0   => 148.512 MHz
         pix5x_div  : integer := 1;      --                          -- 720p: 3     => 371.2 MHz , 1080p@50Hz: 1     => 618.72 MHz, 1080p@60Hz: 1     => 742.56 MHz
         sram_div   : integer := 7;      -- 106.08 MHz
-        spi_div    : integer := 7       -- 106.08 MHz
+        spi_div    : integer := 35      -- 21.216 MHz
     );
     PORT ( 
         clk_I           : in  STD_LOGIC;
@@ -167,6 +167,19 @@ end Component;
         diff_out_n: out STD_LOGIC_VECTOR(3 downto 0)
     );
     END COMPONENT;
+    
+    Component ila_0 is
+    PORT ( clk : IN STD_LOGIC;
+           probe0 : IN STD_LOGIC;
+           probe1 : IN STD_LOGIC;
+           probe2 : IN STD_LOGIC;
+           probe3 : IN STD_LOGIC;
+           probe4 : IN STD_LOGIC;
+           probe5 : IN STD_LOGIC;
+           probe6 : IN STD_LOGIC;
+           probe7 : IN STD_LOGIC
+    );
+    end Component;
 
     -- Counter for LEDs
 	signal count: unsigned(31 downto 0) := X"00000000";
@@ -228,7 +241,7 @@ begin
          pix_div    => 5.00,     --                             -- 720p: 15.0  => 72.24 MHz , 1080p@50Hz: 5.0   => 123.74 MHz, 1080p@60Hz: 5.0   => 148.512 MHz
          pix5x_div  => 1,        --                             -- 720p: 3     => 371.2 MHz , 1080p@50Hz: 1     => 618.72 MHz, 1080p@60Hz: 1     => 742.56 MHz
          sram_div   => 7,        -- 106.08 MHz
-         spi_div    => 7         -- 106.08 MHz
+         spi_div    => 35        -- 21.216 MHz
      )
      port map (
          clk_I              => CLK24MHZ,
@@ -317,11 +330,6 @@ begin
                GREEN_O => green_val,
                BLUE_O => blue_val
              );
-    
-    -- Colour pattern generation based on horiz/vert location
-    --red_val <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_h(7 downto 0)));
-    --green_val <= std_logic_vector(signed( count(28 downto 21)) + signed( pixel_v(7 downto 0)));
-    --blue_val <= std_logic_vector(count(28 downto 21));
 
     -- TMDS signal generation
     -- This takes pixel colour values and sync data, generating the
@@ -337,6 +345,20 @@ begin
         vsync      => vsync,
         diff_out_p => hdmi_out_p,
         diff_out_n => hdmi_out_n
+    );
+    
+    -- Integrated Logic Analyzer
+    -- Probes unconnected for testing purposes
+    ila: ila_0
+    Port map ( clk => cEng_pixel,
+               probe0 => '1',
+               probe1 => '1',
+               probe2 => '1',
+               probe3 => '1',
+               probe4 => '1',
+               probe5 => '1',
+               probe6 => '1',
+               probe7 => '1'
     );
 
 end Behavioral;

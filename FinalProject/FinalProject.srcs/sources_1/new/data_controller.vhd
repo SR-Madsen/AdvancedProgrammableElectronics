@@ -28,6 +28,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity data_controller is
     Port ( CLK_I        : in STD_LOGIC;                         -- SRAM clock
+           CLKPIX_I     : in STD_LOGIC;                         -- Pixel clock
            HPIXEL_I     : in STD_LOGIC_VECTOR(11 downto 0);     -- Horizontal pixel value
            VPIXEL_I     : in STD_LOGIC_VECTOR(11 downto 0);     -- Vertical pixel value
            BLANK_I      : in STD_LOGIC;                         -- Indicates blank part of the screen
@@ -72,8 +73,8 @@ signal gamma_calc : UNSIGNED(15 downto 0) := (others => '0');
 
 begin
 
-    hpixel <= to_integer(unsigned(HPIXEL_I));
-    vpixel <= to_integer(unsigned(VPIXEL_I));
+    hpixel <= to_integer(unsigned(HPIXEL_I(11 downto 2)));
+    vpixel <= to_integer(unsigned(VPIXEL_I(11 downto 2)));
     GAMMA_O <= gamma_int;
     GAMMANEXT_O <= gamma_int_next;
     
@@ -90,9 +91,9 @@ begin
     gamma_out <= std_logic_vector(gamma_calc(7 downto 0));
     
     -- Read next gamma data from SRAM, or write gamma data to SRAM
-    process(CLK_I)
+    process(CLKPIX_I)
     begin
-        if CLK_I'event and CLK_I = '1' then
+        if CLKPIX_I'event and CLKPIX_I = '1' then
             if BLANK_I = '0' and spi_receive = '0' then
                 gamma_int <= gamma_int_next;
                 gamma_int_next <= SRAMDATA_IO;

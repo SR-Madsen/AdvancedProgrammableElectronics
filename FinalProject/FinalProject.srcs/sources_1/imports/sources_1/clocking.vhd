@@ -16,7 +16,7 @@ entity clocking is
        pix_div    : real := 5.0;
        pix5x_div  : integer := 1;
        sram_div   : integer := 7;
-       spi_div    : integer := 7
+       spi_div    : integer := 35
   );
     Port ( 
         clk_I           : in  STD_LOGIC;
