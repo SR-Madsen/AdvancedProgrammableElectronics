@@ -127,6 +127,7 @@ end Component;
     
     Component data_controller is
     Port ( CLK_I        : in STD_LOGIC;                         -- SRAM clock
+           CLKPIX_I     : in STD_LOGIC;                         -- Pixel clock
            HPIXEL_I     : in STD_LOGIC_VECTOR(11 downto 0);     -- Horizontal pixel value
            VPIXEL_I     : in STD_LOGIC_VECTOR(11 downto 0);     -- Vertical pixel value
            BLANK_I      : in STD_LOGIC;                         -- Indicates blank part of the screen
@@ -135,7 +136,7 @@ end Component;
            FIFOEMPTY_I  : in STD_LOGIC;                         -- FIFO empty signal
            SRAMDATA_IO  : inout STD_LOGIC_VECTOR(7 downto 0);   -- Data to and from SRAM
            SRAMADDR_O   : out STD_LOGIC_VECTOR(18 downto 0) := (others => '0'); -- Address to read/write for SRAM
-           SRAMWEN_O    : out STD_LOGIC := '0';                 -- Write enable for SRAM
+           SRAMWEN_O    : out STD_LOGIC := '1';                 -- Write enable for SRAM
            FIFORD_O     : out STD_LOGIC := '0';                 -- Read enable for FIFO
            GAMMA_O      : out STD_LOGIC_VECTOR(7 downto 0) := (others => '0');  -- Current pixel's gamma value
            GAMMANEXT_O  : out STD_LOGIC_VECTOR(7 downto 0) := (others => '0')   -- Next pixel's gamma value
@@ -170,14 +171,15 @@ end Component;
     
     Component ila_0 is
     PORT ( clk : IN STD_LOGIC;
-           probe0 : IN STD_LOGIC;
-           probe1 : IN STD_LOGIC;
-           probe2 : IN STD_LOGIC;
+           probe0 : IN STD_LOGIC_VECTOR(7 downto 0);
+           probe1 : IN STD_LOGIC_VECTOR(7 downto 0);
+           probe2 : IN STD_LOGIC_VECTOR(7 downto 0);
            probe3 : IN STD_LOGIC;
            probe4 : IN STD_LOGIC;
            probe5 : IN STD_LOGIC;
-           probe6 : IN STD_LOGIC;
-           probe7 : IN STD_LOGIC
+           probe6 : IN STD_LOGIC_VECTOR(18 downto 0);
+           probe7 : IN STD_LOGIC_VECTOR(11 downto 0);
+           probe8 : IN STD_LOGIC_VECTOR(11 downto 0)
     );
     end Component;
 
@@ -213,6 +215,10 @@ end Component;
     signal red_val   : std_logic_vector(7 downto 0) := (others => '0');
     signal green_val : std_logic_vector(7 downto 0) := (others => '0');
     signal blue_val  : std_logic_vector(7 downto 0) := (others => '0');
+    
+    -- ILA signal
+    signal sramaddr : STD_LOGIC_VECTOR(18 downto 0);
+    signal sramwen : STD_LOGIC;
     
 begin
     
@@ -307,6 +313,7 @@ begin
     -- Data controller for communicating with SPI FIFO and SRAM
     data_cont: data_controller
     Port map ( CLK_I => cEng_sram,
+               CLKPIX_I => cEng_pixel,
                HPIXEL_I => pixel_h,
                VPIXEL_I => pixel_v,
                BLANK_I => blank,
@@ -314,12 +321,14 @@ begin
                FIFODV_I => fifo_dv,
                FIFOEMPTY_I => fifo_empty,
                SRAMDATA_IO => memdata,
-               SRAMADDR_O => memaddr,
-               SRAMWEN_O => memwen,
+               SRAMADDR_O => sramaddr,
+               SRAMWEN_O => sramwen,
                FIFORD_O => fifo_rden,
                GAMMA_O => gamma,
                GAMMANEXT_O => gamma_next
              );
+    memaddr <= sramaddr;
+    memwen <= sramwen;
     
     -- DSP module for smoothening of pixel transitions
     color_filter: smoothening
@@ -348,17 +357,17 @@ begin
     );
     
     -- Integrated Logic Analyzer
-    -- Probes unconnected for testing purposes
     ila: ila_0
     Port map ( clk => cEng_pixel,
-               probe0 => '1',
-               probe1 => '1',
-               probe2 => '1',
-               probe3 => '1',
-               probe4 => '1',
-               probe5 => '1',
-               probe6 => '1',
-               probe7 => '1'
+               probe0 => red_val,
+               probe1 => green_val,
+               probe2 => blue_val,
+               probe3 => spi_clk,
+               probe4 => spi_ss,
+               probe5 => spi_mosi,
+               probe6 => sramaddr,
+               probe7 => pixel_h,
+               probe8 => pixel_v
     );
 
 end Behavioral;

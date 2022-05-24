@@ -71,7 +71,6 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 2
-set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a15tcpg236-1
 
@@ -122,8 +121,6 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/constrs_1/imports/constrs_1/cmod_a7.xdc
 set_property used_in_implementation false [get_files /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/constrs_1/imports/constrs_1/cmod_a7.xdc]
 
-read_xdc dont_touch.xdc
-set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 

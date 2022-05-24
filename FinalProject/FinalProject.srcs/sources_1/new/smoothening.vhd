@@ -51,7 +51,7 @@ begin
     -- Delta = (y - x)/4*i for i = 1:3
     -- Step = x + Delta
     process(CLK_I)
-    variable delta : integer;
+    variable delta : integer := 0;
     variable counter : integer := 0;
     begin
         if CLK_I'event and CLK_I = '1' then
@@ -77,7 +77,6 @@ begin
                         state <= CALC;
                         counter := 0;
                     end if;
-                
             end case;
         end if;
     end process;

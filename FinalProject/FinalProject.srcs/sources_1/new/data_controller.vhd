@@ -42,7 +42,7 @@ entity data_controller is
            GAMMA_O      : out STD_LOGIC_VECTOR(7 downto 0) := (others => '0');  -- Current pixel's gamma value
            GAMMANEXT_O  : out STD_LOGIC_VECTOR(7 downto 0) := (others => '0')   -- Next pixel's gamma value
          );
-         
+
     --attribute use_dsp48: string;
     --attribute use_dsp48 of data_controller: entity is "yes";
     

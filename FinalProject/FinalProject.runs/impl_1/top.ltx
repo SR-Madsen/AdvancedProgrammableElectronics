@@ -30,14 +30,40 @@
                                 "id": 0,
                                 "type": "DATA_TRIGGER",
                                 "direction": "IN",
-                                "isVector": false,
+                                "isVector": true,
                                 "leftIndex": 0,
-                                "rightIndex": 0,
+                                "rightIndex": 7,
                                 "portIndex": 0,
                                 "nets": [
                                     {
-                                        "name": "probe0",
-                                        "isBus": false
+                                        "name": "red_val",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "red_val[7]"
+                                            },
+                                            {
+                                                "name": "red_val[6]"
+                                            },
+                                            {
+                                                "name": "red_val[5]"
+                                            },
+                                            {
+                                                "name": "red_val[4]"
+                                            },
+                                            {
+                                                "name": "red_val[3]"
+                                            },
+                                            {
+                                                "name": "red_val[2]"
+                                            },
+                                            {
+                                                "name": "red_val[1]"
+                                            },
+                                            {
+                                                "name": "red_val[0]"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -46,14 +72,40 @@
                                 "id": 1,
                                 "type": "DATA_TRIGGER",
                                 "direction": "IN",
-                                "isVector": false,
+                                "isVector": true,
                                 "leftIndex": 0,
-                                "rightIndex": 0,
+                                "rightIndex": 7,
                                 "portIndex": 1,
                                 "nets": [
                                     {
-                                        "name": "probe1",
-                                        "isBus": false
+                                        "name": "green_val",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "green_val[7]"
+                                            },
+                                            {
+                                                "name": "green_val[6]"
+                                            },
+                                            {
+                                                "name": "green_val[5]"
+                                            },
+                                            {
+                                                "name": "green_val[4]"
+                                            },
+                                            {
+                                                "name": "green_val[3]"
+                                            },
+                                            {
+                                                "name": "green_val[2]"
+                                            },
+                                            {
+                                                "name": "green_val[1]"
+                                            },
+                                            {
+                                                "name": "green_val[0]"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -62,14 +114,40 @@
                                 "id": 2,
                                 "type": "DATA_TRIGGER",
                                 "direction": "IN",
-                                "isVector": false,
+                                "isVector": true,
                                 "leftIndex": 0,
-                                "rightIndex": 0,
+                                "rightIndex": 7,
                                 "portIndex": 2,
                                 "nets": [
                                     {
-                                        "name": "probe2",
-                                        "isBus": false
+                                        "name": "blue_val",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "blue_val[7]"
+                                            },
+                                            {
+                                                "name": "blue_val[6]"
+                                            },
+                                            {
+                                                "name": "blue_val[5]"
+                                            },
+                                            {
+                                                "name": "blue_val[4]"
+                                            },
+                                            {
+                                                "name": "blue_val[3]"
+                                            },
+                                            {
+                                                "name": "blue_val[2]"
+                                            },
+                                            {
+                                                "name": "blue_val[1]"
+                                            },
+                                            {
+                                                "name": "blue_val[0]"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -84,8 +162,9 @@
                                 "portIndex": 3,
                                 "nets": [
                                     {
-                                        "name": "probe3",
-                                        "isBus": false
+                                        "name": "SCLK_I",
+                                        "isBus": false,
+                                        "parentNetId": 8
                                     }
                                 ]
                             },
@@ -100,7 +179,7 @@
                                 "portIndex": 4,
                                 "nets": [
                                     {
-                                        "name": "probe4",
+                                        "name": "SS_I",
                                         "isBus": false
                                     }
                                 ]
@@ -116,7 +195,7 @@
                                 "portIndex": 5,
                                 "nets": [
                                     {
-                                        "name": "probe5",
+                                        "name": "MOSI_I",
                                         "isBus": false
                                     }
                                 ]
@@ -126,14 +205,73 @@
                                 "id": 6,
                                 "type": "DATA_TRIGGER",
                                 "direction": "IN",
-                                "isVector": false,
+                                "isVector": true,
                                 "leftIndex": 0,
-                                "rightIndex": 0,
+                                "rightIndex": 18,
                                 "portIndex": 6,
                                 "nets": [
                                     {
-                                        "name": "probe6",
-                                        "isBus": false
+                                        "name": "sramaddr",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "sramaddr[18]"
+                                            },
+                                            {
+                                                "name": "sramaddr[17]"
+                                            },
+                                            {
+                                                "name": "sramaddr[16]"
+                                            },
+                                            {
+                                                "name": "sramaddr[15]"
+                                            },
+                                            {
+                                                "name": "sramaddr[14]"
+                                            },
+                                            {
+                                                "name": "sramaddr[13]"
+                                            },
+                                            {
+                                                "name": "sramaddr[12]"
+                                            },
+                                            {
+                                                "name": "sramaddr[11]"
+                                            },
+                                            {
+                                                "name": "sramaddr[10]"
+                                            },
+                                            {
+                                                "name": "sramaddr[9]"
+                                            },
+                                            {
+                                                "name": "sramaddr[8]"
+                                            },
+                                            {
+                                                "name": "sramaddr[7]"
+                                            },
+                                            {
+                                                "name": "sramaddr[6]"
+                                            },
+                                            {
+                                                "name": "sramaddr[5]"
+                                            },
+                                            {
+                                                "name": "sramaddr[4]"
+                                            },
+                                            {
+                                                "name": "sramaddr[3]"
+                                            },
+                                            {
+                                                "name": "sramaddr[2]"
+                                            },
+                                            {
+                                                "name": "sramaddr[1]"
+                                            },
+                                            {
+                                                "name": "sramaddr[0]"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -142,14 +280,131 @@
                                 "id": 7,
                                 "type": "DATA_TRIGGER",
                                 "direction": "IN",
-                                "isVector": false,
+                                "isVector": true,
                                 "leftIndex": 0,
-                                "rightIndex": 0,
+                                "rightIndex": 11,
                                 "portIndex": 7,
                                 "nets": [
                                     {
-                                        "name": "probe7",
-                                        "isBus": false
+                                        "name": "pixel_h",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "pixel_h[11]"
+                                            },
+                                            {
+                                                "name": "pixel_h[10]"
+                                            },
+                                            {
+                                                "name": "pixel_h[9]"
+                                            },
+                                            {
+                                                "name": "pixel_h[8]"
+                                            },
+                                            {
+                                                "name": "pixel_h[7]"
+                                            },
+                                            {
+                                                "name": "pixel_h[6]"
+                                            },
+                                            {
+                                                "name": "pixel_h[5]"
+                                            },
+                                            {
+                                                "name": "pixel_h[4]"
+                                            },
+                                            {
+                                                "name": "pixel_h[3]"
+                                            },
+                                            {
+                                                "name": "pixel_h[2]"
+                                            },
+                                            {
+                                                "name": "pixel_h[1]"
+                                            },
+                                            {
+                                                "name": "pixel_h[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe8",
+                                "id": 8,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 11,
+                                "portIndex": 8,
+                                "nets": [
+                                    {
+                                        "name": "pixel_v",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "pixel_v[11]"
+                                            },
+                                            {
+                                                "name": "pixel_v[10]"
+                                            },
+                                            {
+                                                "name": "pixel_v[9]"
+                                            },
+                                            {
+                                                "name": "pixel_v[8]"
+                                            },
+                                            {
+                                                "name": "pixel_v[7]"
+                                            },
+                                            {
+                                                "name": "pixel_v[6]"
+                                            },
+                                            {
+                                                "name": "pixel_v[5]"
+                                            },
+                                            {
+                                                "name": "pixel_v[4]"
+                                            },
+                                            {
+                                                "name": "pixel_v[3]"
+                                            },
+                                            {
+                                                "name": "pixel_v[2]"
+                                            },
+                                            {
+                                                "name": "pixel_v[1]"
+                                            },
+                                            {
+                                                "name": "pixel_v[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "parent_nets": [
+                    {
+                        "id": 8,
+                        "name": "SCLK_I",
+                        "state_reg": [
+                            {
+                                "name": "spi_top/rx_module/FSM_onehot_state_reg[0]",
+                                "states": [
+                                    {
+                                        "name": "ready",
+                                        "val": "001"
+                                    },
+                                    {
+                                        "name": "receive",
+                                        "val": "010"
+                                    },
+                                    {
+                                        "name": "stop",
+                                        "val": "100"
                                     }
                                 ]
                             }

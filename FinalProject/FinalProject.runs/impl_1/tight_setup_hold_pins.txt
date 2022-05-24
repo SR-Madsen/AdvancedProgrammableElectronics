@@ -1,0 +1,42 @@
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|                cEng_sram |               cEng_pixel |                                                               data_cont/SRAMDATA_IO_reg[0]_lopt_replica/D|
+|                cEng_sram |               cEng_pixel |                                                               data_cont/SRAMDATA_IO_reg[3]_lopt_replica/D|
+|                cEng_sram |               cEng_pixel |                                                               data_cont/SRAMDATA_IO_reg[2]_lopt_replica/D|
+|                cEng_sram |               cEng_pixel |                                                                             data_cont/SRAMADDR_O_reg[8]/D|
+|                cEng_sram |               cEng_pixel |                                                                             data_cont/SRAMADDR_O_reg[3]/D|
+|                cEng_sram |               cEng_pixel |                                                                             data_cont/SRAMADDR_O_reg[5]/D|
+|                cEng_sram |               cEng_pixel |                                                                             data_cont/SRAMADDR_O_reg[9]/D|
+|                cEng_sram |               cEng_pixel |                                                                             data_cont/SRAMADDR_O_reg[7]/D|
+|                cEng_sram |               cEng_pixel |                                                                            data_cont/SRAMADDR_O_reg[12]/D|
+|                cEng_sram |               cEng_pixel |                                                                            data_cont/SRAMADDR_O_reg[13]/D|
+|                cEng_sram |               cEng_pixel |                                                                             data_cont/SRAMADDR_O_reg[6]/D|
+|                cEng_sram |               cEng_pixel |                                                                             data_cont/SRAMADDR_O_reg[4]/D|
+|                cEng_sram |               cEng_pixel |                                                                             data_cont/SRAMADDR_O_reg[1]/D|
+|                cEng_sram |               cEng_pixel |                                                                            data_cont/SRAMADDR_O_reg[16]/D|
+|                cEng_sram |               cEng_pixel |                                                                             data_cont/SRAMADDR_O_reg[0]/D|
+|                cEng_sram |               cEng_pixel |                                                                            data_cont/SRAMADDR_O_reg[10]/D|
+|                cEng_sram |               cEng_pixel |                                                                            data_cont/SRAMADDR_O_reg[15]/D|
+|                cEng_sram |               cEng_pixel |                                                                            data_cont/SRAMADDR_O_reg[18]/D|
+|                cEng_sram |               cEng_pixel |                                                                             data_cont/SRAMADDR_O_reg[2]/D|
+|                cEng_sram |               cEng_pixel |                                                                            data_cont/SRAMADDR_O_reg[14]/D|
+|                cEng_sram |               cEng_pixel |                                                                            data_cont/SRAMADDR_O_reg[11]/D|
+|                cEng_sram |               cEng_pixel |                                                                            data_cont/SRAMADDR_O_reg[17]/D|
+|                cEng_sram |               cEng_pixel |                                                                           data_cont/SRAMDATA_IO_reg[0]/CE|
+|                cEng_sram |               cEng_pixel |                                                              data_cont/SRAMDATA_IO_reg[0]_lopt_replica/CE|
+|                cEng_sram |               cEng_pixel |                                                              data_cont/SRAMDATA_IO_reg[3]_lopt_replica/CE|
+|                cEng_sram |               cEng_pixel |                                                              data_cont/SRAMDATA_IO_reg[2]_lopt_replica/CE|
+|                cEng_sram |               cEng_pixel |                                                                           data_cont/SRAMDATA_IO_reg[4]/CE|
+|                cEng_sram |               cEng_pixel |                                                              data_cont/SRAMDATA_IO_reg[6]_lopt_replica/CE|
+|                cEng_sram |               cEng_pixel |                                                                           data_cont/SRAMDATA_IO_reg[3]/CE|
+|                cEng_sram |               cEng_pixel |                                                                           data_cont/SRAMDATA_IO_reg[2]/CE|
+|                cEng_sram |               cEng_pixel |                                                              data_cont/SRAMDATA_IO_reg[7]_lopt_replica/CE|
+|                cEng_sram |               cEng_pixel |                                                                           data_cont/SRAMDATA_IO_reg[7]/CE|
+|                cEng_sram |               cEng_pixel |                                                                           data_cont/SRAMDATA_IO_reg[6]/CE|
+|                cEng_sram |               cEng_pixel |                                                              data_cont/SRAMDATA_IO_reg[5]_lopt_replica/CE|
+|                cEng_sram |               cEng_pixel |                                                                           data_cont/SRAMDATA_IO_reg[5]/CE|
+|                cEng_sram |               cEng_pixel |                                                              data_cont/SRAMDATA_IO_reg[1]_lopt_replica/CE|
+|                cEng_sram |               cEng_pixel |                                                                           data_cont/SRAMDATA_IO_reg[1]/CE|
+|                cEng_sram |               cEng_pixel |                                                              data_cont/SRAMDATA_IO_reg[4]_lopt_replica/CE|
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
