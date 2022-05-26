@@ -179,7 +179,10 @@ end Component;
            probe5 : IN STD_LOGIC;
            probe6 : IN STD_LOGIC_VECTOR(18 downto 0);
            probe7 : IN STD_LOGIC_VECTOR(11 downto 0);
-           probe8 : IN STD_LOGIC_VECTOR(11 downto 0)
+           probe8 : IN STD_LOGIC_VECTOR(11 downto 0);
+           probe9 : IN STD_LOGIC;
+           probe10 : IN STD_LOGIC;
+           probe11 : IN STD_LOGIC
     );
     end Component;
 
@@ -327,8 +330,6 @@ begin
                GAMMA_O => gamma,
                GAMMANEXT_O => gamma_next
              );
-    memaddr <= sramaddr;
-    memwen <= sramwen;
     
     -- DSP module for smoothening of pixel transitions
     color_filter: smoothening
@@ -356,18 +357,23 @@ begin
         diff_out_n => hdmi_out_n
     );
     
+    memaddr <= sramaddr;
+    memwen <= sramwen;
     -- Integrated Logic Analyzer
     ila: ila_0
     Port map ( clk => cEng_pixel,
                probe0 => red_val,
-               probe1 => green_val,
-               probe2 => blue_val,
+               probe1 => gamma,
+               probe2 => gamma_next,
                probe3 => spi_clk,
                probe4 => spi_ss,
                probe5 => spi_mosi,
                probe6 => sramaddr,
                probe7 => pixel_h,
-               probe8 => pixel_v
+               probe8 => pixel_v,
+               probe9 => fifo_empty,
+               probe10 => fifo_dv,
+               probe11 => fifo_wren
     );
 
 end Behavioral;

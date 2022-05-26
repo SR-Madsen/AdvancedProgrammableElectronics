@@ -27,10 +27,10 @@ end spi_slave_rx;
 
 architecture Behavioral of spi_slave_rx is
 
-type state_type is (READY, RECEIVE, STOP);
+type state_type is (READY, RECEIVE);
 
 signal state        : state_type := READY;
-signal rxdata_temp  : STD_LOGIC_VECTOR(DATA_LENGTH - 1 downto 0);
+signal rxdata_temp  : STD_LOGIC_VECTOR(DATA_LENGTH - 2 downto 0);
 signal index        : integer := DATA_LENGTH - 1;
 
 begin
@@ -41,7 +41,7 @@ begin
             case state is
                 when READY =>
                     if SS_I = '0' then
-                        rxdata_temp(index) <= MOSI_I;
+                        rxdata_temp(index-1) <= MOSI_I;
                         index <= index - 1;
                         BUSY_O <= '1';
                         state <= RECEIVE;
@@ -49,17 +49,20 @@ begin
                 
                 when RECEIVE =>
                     if index = 0 then
-                        state <= STOP;
+                        RXDATA_O <= rxdata_temp & MOSI_I;
+                        rxdata_temp <= (others => '0');
+                        BUSY_O <= '0';
+                        index <= DATA_LENGTH - 1;
+                        state <= READY;
+                    elsif SS_I = '1' then
+                        rxdata_temp <= (others => '0');
+                        BUSY_O <= '0';
+                        index <= DATA_LENGTH - 1;
+                        state <= READY;
+                    else
+                        rxdata_temp(index-1) <= MOSI_I;
+                        index <= index - 1;
                     end if;
-                    rxdata_temp(index) <= MOSI_I;
-                    index <= index - 1;
-                    
-                when STOP =>
-                    RXDATA_O <= rxdata_temp;
-                    rxdata_temp <= (others => '0');
-                    BUSY_O <= '0';
-                    index <= DATA_LENGTH - 1;
-                    state <= READY;
             end case;
         end if;
     end process;

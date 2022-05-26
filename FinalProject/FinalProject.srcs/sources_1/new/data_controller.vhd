@@ -71,6 +71,10 @@ signal bdatashift4, bdatashift3, bdatashift0 : UNSIGNED(15 downto 0) := (others 
 
 signal gamma_calc : UNSIGNED(15 downto 0) := (others => '0');
 
+signal wen : STD_LOGIC := '1';
+signal data_in : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+signal data_out : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+
 begin
 
     hpixel <= to_integer(unsigned(HPIXEL_I(11 downto 2)));
@@ -90,17 +94,21 @@ begin
     gamma_calc <= 16 + shift_right(rdatashift6 + rdatashift1 + gdatashift7 + gdatashift0 + bdatashift4 + bdatashift3 + bdatashift0, 8);
     gamma_out <= std_logic_vector(gamma_calc(7 downto 0));
     
+    SRAMWEN_O <= wen;
+    SRAMDATA_IO <= data_out when wen = '0' else (others => 'Z');
+    data_in <= SRAMDATA_IO;
+    
     -- Read next gamma data from SRAM, or write gamma data to SRAM
     process(CLKPIX_I)
     begin
         if CLKPIX_I'event and CLKPIX_I = '1' then
             if BLANK_I = '0' and spi_receive = '0' then
                 gamma_int <= gamma_int_next;
-                gamma_int_next <= SRAMDATA_IO;
+                gamma_int_next <= data_in;
                 SRAMADDR_O <= std_logic_vector(to_unsigned(vpixel*480 + hpixel + 1, 19));
             elsif spi_receive = '1' then
                 SRAMADDR_O <= addr;
-                SRAMDATA_IO <= gamma_out;
+                data_out <= gamma_out;
             end if;
         end if;
     end process;
@@ -128,7 +136,7 @@ begin
                     end if;
                 
                 when RECEIVE =>
-                    SRAMWEN_O <= '1';
+                    wen <= '1';
                     if FIFOEMPTY_I = '0' then
                         FIFORD_O <= '1';
                         state <= WRITE;
@@ -145,7 +153,7 @@ begin
                             rdata <= FIFODATA_I(31 downto 24);
                             gdata <= FIFODATA_I(23 downto 16);
                             bdata <= FIFODATA_I(15 downto 8);
-                            SRAMWEN_O <= '0';
+                            wen <= '0';
                             state <= RECEIVE;
                         end if;
                     end if;

@@ -78,32 +78,32 @@
                                 "portIndex": 1,
                                 "nets": [
                                     {
-                                        "name": "green_val",
+                                        "name": "gamma",
                                         "isBus": true,
                                         "subnets": [
                                             {
-                                                "name": "green_val[7]"
+                                                "name": "gamma[7]"
                                             },
                                             {
-                                                "name": "green_val[6]"
+                                                "name": "gamma[6]"
                                             },
                                             {
-                                                "name": "green_val[5]"
+                                                "name": "gamma[5]"
                                             },
                                             {
-                                                "name": "green_val[4]"
+                                                "name": "gamma[4]"
                                             },
                                             {
-                                                "name": "green_val[3]"
+                                                "name": "gamma[3]"
                                             },
                                             {
-                                                "name": "green_val[2]"
+                                                "name": "gamma[2]"
                                             },
                                             {
-                                                "name": "green_val[1]"
+                                                "name": "gamma[1]"
                                             },
                                             {
-                                                "name": "green_val[0]"
+                                                "name": "gamma[0]"
                                             }
                                         ]
                                     }
@@ -120,32 +120,32 @@
                                 "portIndex": 2,
                                 "nets": [
                                     {
-                                        "name": "blue_val",
+                                        "name": "gamma_next",
                                         "isBus": true,
                                         "subnets": [
                                             {
-                                                "name": "blue_val[7]"
+                                                "name": "gamma_next[7]"
                                             },
                                             {
-                                                "name": "blue_val[6]"
+                                                "name": "gamma_next[6]"
                                             },
                                             {
-                                                "name": "blue_val[5]"
+                                                "name": "gamma_next[5]"
                                             },
                                             {
-                                                "name": "blue_val[4]"
+                                                "name": "gamma_next[4]"
                                             },
                                             {
-                                                "name": "blue_val[3]"
+                                                "name": "gamma_next[3]"
                                             },
                                             {
-                                                "name": "blue_val[2]"
+                                                "name": "gamma_next[2]"
                                             },
                                             {
-                                                "name": "blue_val[1]"
+                                                "name": "gamma_next[1]"
                                             },
                                             {
-                                                "name": "blue_val[0]"
+                                                "name": "gamma_next[0]"
                                             }
                                         ]
                                     }
@@ -163,8 +163,7 @@
                                 "nets": [
                                     {
                                         "name": "SCLK_I",
-                                        "isBus": false,
-                                        "parentNetId": 8
+                                        "isBus": false
                                     }
                                 ]
                             },
@@ -382,29 +381,52 @@
                                         ]
                                     }
                                 ]
-                            }
-                        ]
-                    }
-                ],
-                "parent_nets": [
-                    {
-                        "id": 8,
-                        "name": "SCLK_I",
-                        "state_reg": [
+                            },
                             {
-                                "name": "spi_top/rx_module/FSM_onehot_state_reg[0]",
-                                "states": [
+                                "name": "probe9",
+                                "id": 9,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 9,
+                                "nets": [
                                     {
-                                        "name": "ready",
-                                        "val": "001"
-                                    },
+                                        "name": "fifo_empty",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe10",
+                                "id": 10,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 10,
+                                "nets": [
                                     {
-                                        "name": "receive",
-                                        "val": "010"
-                                    },
+                                        "name": "fifo_dv",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe11",
+                                "id": 11,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 11,
+                                "nets": [
                                     {
-                                        "name": "stop",
-                                        "val": "100"
+                                        "name": "fifo_wren",
+                                        "isBus": false
                                     }
                                 ]
                             }

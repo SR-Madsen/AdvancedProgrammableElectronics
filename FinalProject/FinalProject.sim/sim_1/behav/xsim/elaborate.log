@@ -1,6 +1,6 @@
 Vivado Simulator 2020.1
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: /opt/Xilinx/Vivado/2020.1/bin/unwrapped/lnx64.o/xelab -wto 604ddc9e5e814cbd8e128beed78a136a --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot smoothening_behav xil_defaultlib.smoothening xil_defaultlib.glbl -log elaborate.log 
+Running: /opt/Xilinx/Vivado/2020.1/bin/unwrapped/lnx64.o/xelab -wto 604ddc9e5e814cbd8e128beed78a136a --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot data_controller_behav xil_defaultlib.data_controller xil_defaultlib.glbl -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
@@ -13,5 +13,5 @@ Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling package ieee.numeric_std
 Compiling module xil_defaultlib.glbl
-Compiling architecture behavioral of entity xil_defaultlib.smoothening
-Built simulation snapshot smoothening_behav
+Compiling architecture behavioral of entity xil_defaultlib.data_controller
+Built simulation snapshot data_controller_behav
