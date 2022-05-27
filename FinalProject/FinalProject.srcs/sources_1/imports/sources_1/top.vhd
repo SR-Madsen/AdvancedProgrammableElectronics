@@ -53,17 +53,15 @@ architecture Behavioral of top is                                   -- 720p targ
     COMPONENT clocking                                              -- 1080p@50Hz target: 123.75 MHz pixel clock (618.75 MHz 5x)
     generic (                                                       -- 1080p@60Hz target: 148.5 MHz pixel clock (742.5 MHz 5x)
         clk_period : real := 41.66;     -- Define 24 MHz period
-        clk_mul    : real := 30.94;     -- Input: 24 MHz            -- 720p: 46.40 => 1113.6 MHz, 1080p@50Hz: 25.78 => 618.72 MHz, 1080p@60Hz: 30.94 => 742.56 MHz
+        clk_mul    : real := 31.00;     -- Input: 24 MHz            -- 720p: 46.40 => 1113.6 MHz, 1080p@50Hz: 25.78 => 618.72 MHz, 1080p@60Hz: 30.94 => 742.56 MHz
         pix_div    : real := 5.0;       --                          -- 720p: 15.0  => 72.24 MHz , 1080p@50Hz: 5.0   => 123.74 MHz, 1080p@60Hz: 5.0   => 148.512 MHz
         pix5x_div  : integer := 1;      --                          -- 720p: 3     => 371.2 MHz , 1080p@50Hz: 1     => 618.72 MHz, 1080p@60Hz: 1     => 742.56 MHz
-        sram_div   : integer := 7;      -- 106.08 MHz
         spi_div    : integer := 35      -- 21.216 MHz
     );
     PORT ( 
         clk_I           : in  STD_LOGIC;
         clkpixel_O      : out STD_LOGIC;
         clk5xpixel_O    : out STD_LOGIC;
-        clksram_O       : out STD_LOGIC;
         clkspi_O        : out STD_LOGIC
     );
     END COMPONENT;
@@ -126,8 +124,7 @@ end Component;
     END COMPONENT;
     
     Component data_controller is
-    Port ( CLK_I        : in STD_LOGIC;                         -- SRAM clock
-           CLKPIX_I     : in STD_LOGIC;                         -- Pixel clock
+    Port ( CLK_I        : in STD_LOGIC;                         -- Pixel clock
            HPIXEL_I     : in STD_LOGIC_VECTOR(11 downto 0);     -- Horizontal pixel value
            VPIXEL_I     : in STD_LOGIC_VECTOR(11 downto 0);     -- Vertical pixel value
            BLANK_I      : in STD_LOGIC;                         -- Indicates blank part of the screen
@@ -192,7 +189,6 @@ end Component;
     -- Clock engine    
     signal cEng_pixel   : std_logic;
     signal cEng_5xpixel : std_logic;
-    signal cEng_sram    : std_logic;
     signal cEng_spi     : std_logic;
     
     -- FIFO signals
@@ -246,17 +242,15 @@ begin
     MMCM_clockEngine: clocking                                  -- 1080p@60Hz target: 148.5 MHz pixel clock (742.5 MHz 5x)
      generic map (
          clk_period => 41.66,    -- Define 24 MHz period
-         clk_mul    => 30.94,    -- Input: 24 MHz               -- 720p: 46.40 => 1113.6 MHz, 1080p@50Hz: 25.78 => 618.72 MHz, 1080p@60Hz: 30.94 => 742.56 MHz
+         clk_mul    => 31.00,    -- Input: 24 MHz               -- 720p: 46.40 => 1113.6 MHz, 1080p@50Hz: 25.78 => 618.72 MHz, 1080p@60Hz: 30.94 => 742.56 MHz
          pix_div    => 5.00,     --                             -- 720p: 15.0  => 72.24 MHz , 1080p@50Hz: 5.0   => 123.74 MHz, 1080p@60Hz: 5.0   => 148.512 MHz
          pix5x_div  => 1,        --                             -- 720p: 3     => 371.2 MHz , 1080p@50Hz: 1     => 618.72 MHz, 1080p@60Hz: 1     => 742.56 MHz
-         sram_div   => 7,        -- 106.08 MHz
          spi_div    => 35        -- 21.216 MHz
      )
      port map (
          clk_I              => CLK24MHZ,
          clkpixel_O         => cEng_pixel,
          clk5xpixel_O       => cEng_5xpixel,
-         clksram_O          => cEng_sram,
          clkspi_O           => cEng_spi
      );
     
@@ -276,7 +270,7 @@ begin
     );
     
     fifo: async_fifo
-    Port map ( RDCLK_I => cEng_sram,
+    Port map ( RDCLK_I => cEng_pixel,
                WRCLK_I => cEng_spi,
                RDEN_I => fifo_rden,
                WREN_I => fifo_wren,
@@ -315,8 +309,7 @@ begin
     
     -- Data controller for communicating with SPI FIFO and SRAM
     data_cont: data_controller
-    Port map ( CLK_I => cEng_sram,
-               CLKPIX_I => cEng_pixel,
+    Port map ( CLK_I => cEng_pixel,
                HPIXEL_I => pixel_h,
                VPIXEL_I => pixel_v,
                BLANK_I => blank,
@@ -357,23 +350,23 @@ begin
         diff_out_n => hdmi_out_n
     );
     
-    memaddr <= sramaddr;
-    memwen <= sramwen;
+    --memaddr <= sramaddr;
+    --memwen <= sramwen;
     -- Integrated Logic Analyzer
-    ila: ila_0
-    Port map ( clk => cEng_pixel,
-               probe0 => red_val,
-               probe1 => gamma,
-               probe2 => gamma_next,
-               probe3 => spi_clk,
-               probe4 => spi_ss,
-               probe5 => spi_mosi,
-               probe6 => sramaddr,
-               probe7 => pixel_h,
-               probe8 => pixel_v,
-               probe9 => fifo_empty,
-               probe10 => fifo_dv,
-               probe11 => fifo_wren
-    );
+--    ila: ila_0
+--    Port map ( clk => cEng_pixel,
+--               probe0 => red_val,
+--               probe1 => gamma,
+--               probe2 => gamma_next,
+--               probe3 => spi_clk,
+--               probe4 => spi_ss,
+--               probe5 => spi_mosi,
+--               probe6 => sramaddr,
+--               probe7 => pixel_h,
+--               probe8 => pixel_v,
+--               probe9 => fifo_empty,
+--               probe10 => fifo_dv,
+--               probe11 => fifo_wren
+--    );
 
 end Behavioral;

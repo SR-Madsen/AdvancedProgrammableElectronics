@@ -12,10 +12,9 @@ use UNISIM.VComponents.all;
 entity clocking is
  generic (
        clk_period : real := 41.66;
-       clk_mul    : real := 30.94;
+       clk_mul    : real := 31.00;
        pix_div    : real := 5.0;
        pix5x_div  : integer := 1;
-       sram_div   : integer := 7;
        spi_div    : integer := 35
   );
     Port ( 
@@ -52,20 +51,15 @@ begin
         CLKOUT1_DUTY_CYCLE => 0.5,
         CLKOUT1_PHASE => 0.0,
         
-        CLKOUT2_DIVIDE => sram_div,
+        CLKOUT2_DIVIDE => spi_div,
         CLKOUT2_DUTY_CYCLE => 0.5,
-        CLKOUT2_PHASE => 0.0,
-        
-        CLKOUT3_DIVIDE => spi_div,
-        CLKOUT3_DUTY_CYCLE => 0.5,
-        CLKOUT3_PHASE => 0.0
+        CLKOUT2_PHASE => 0.0
     )
     port map (
       CLKIN1   => clk_I,
       CLKOUT0  => clkpixel_O,
       CLKOUT1  => clk5xpixel_O,
-      CLKOUT2  => clksram_O,
-      CLKOUT3  => clkspi_O,
+      CLKOUT2  => clkspi_O,
       CLKFBOUT => clk_feedback,
       CLKFBIN  => clk_feedback,
       RST      => '0',

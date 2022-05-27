@@ -27,8 +27,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity data_controller is
-    Port ( CLK_I        : in STD_LOGIC;                         -- SRAM clock
-           CLKPIX_I     : in STD_LOGIC;                         -- Pixel clock
+    Port ( CLK_I        : in STD_LOGIC;                         -- Pixel clock
            HPIXEL_I     : in STD_LOGIC_VECTOR(11 downto 0);     -- Horizontal pixel value
            VPIXEL_I     : in STD_LOGIC_VECTOR(11 downto 0);     -- Vertical pixel value
            BLANK_I      : in STD_LOGIC;                         -- Indicates blank part of the screen
@@ -100,9 +99,9 @@ begin
     data_in <= SRAMDATA_IO;
     
     -- Read next gamma data from SRAM, or write gamma data to SRAM
-    process(CLKPIX_I)
+    process(CLK_I)
     begin
-        if CLKPIX_I'event and CLKPIX_I = '1' then
+        if CLK_I'event and CLK_I = '1' then
             if BLANK_I = '0' and spi_receive = '0' then
                 gamma_int <= gamma_int_next;
                 gamma_int_next <= data_in;

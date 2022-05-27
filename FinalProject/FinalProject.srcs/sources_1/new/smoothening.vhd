@@ -8,7 +8,7 @@
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
--- Description: Filter used for smoothening of images
+-- Description: Filter used for smoothing of images
 -- 
 ----------------------------------------------------------------------------------
 
