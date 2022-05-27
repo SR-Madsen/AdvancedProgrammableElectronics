@@ -72,10 +72,11 @@ begin
                     RED_O <= gamma_smooth(0);
                     GREEN_O <= gamma_smooth(0);
                     BLUE_O <= gamma_smooth(0);
-                    counter := counter + 1;
-                    if counter = 3 then
+                    if counter >= 2 then
                         state <= CALC;
                         counter := 0;
+                    else
+                        counter := counter + 1;
                     end if;
             end case;
         end if;

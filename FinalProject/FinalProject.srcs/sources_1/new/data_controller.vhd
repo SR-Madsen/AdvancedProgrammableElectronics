@@ -94,6 +94,7 @@ begin
     gamma_calc <= 16 + shift_right(rdatashift6 + rdatashift1 + gdatashift7 + gdatashift0 + bdatashift4 + bdatashift3 + bdatashift0, 8);
     gamma_out <= std_logic_vector(gamma_calc(7 downto 0));
     
+    -- SRAM tri-state buffer
     SRAMWEN_O <= wen;
     SRAMDATA_IO <= data_out when wen = '0' else (others => 'Z');
     data_in <= SRAMDATA_IO;
