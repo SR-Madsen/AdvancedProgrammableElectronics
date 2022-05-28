@@ -216,8 +216,8 @@ end Component;
     signal blue_val  : std_logic_vector(7 downto 0) := (others => '0');
     
     -- ILA signal
-    signal sramaddr : STD_LOGIC_VECTOR(18 downto 0);
-    signal sramwen : STD_LOGIC;
+    --signal sramaddr : STD_LOGIC_VECTOR(18 downto 0);
+    --signal sramwen : STD_LOGIC;
     
 begin
     
@@ -317,8 +317,8 @@ begin
                FIFODV_I => fifo_dv,
                FIFOEMPTY_I => fifo_empty,
                SRAMDATA_IO => memdata,
-               SRAMADDR_O => sramaddr,
-               SRAMWEN_O => sramwen,
+               SRAMADDR_O => memaddr, --sramaddr -- for ILA
+               SRAMWEN_O => memwen, --sramwen -- for ILA
                FIFORD_O => fifo_rden,
                GAMMA_O => gamma,
                GAMMANEXT_O => gamma_next
@@ -350,8 +350,8 @@ begin
         diff_out_n => hdmi_out_n
     );
     
-    --memaddr <= sramaddr;
-    --memwen <= sramwen;
+--    memaddr <= sramaddr;
+--    memwen <= sramwen;
     -- Integrated Logic Analyzer
 --    ila: ila_0
 --    Port map ( clk => cEng_pixel,
@@ -365,7 +365,7 @@ begin
 --               probe7 => pixel_h,
 --               probe8 => pixel_v,
 --               probe9 => fifo_empty,
---               probe10 => fifo_dv,
+--               probe10 => sramwen,
 --               probe11 => fifo_wren
 --    );
 

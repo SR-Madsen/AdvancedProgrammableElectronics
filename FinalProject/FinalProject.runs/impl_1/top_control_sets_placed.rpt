@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Fri May 27 21:59:42 2022
+| Date         : Sat May 28 09:23:59 2022
 | Host         : Ubuntu-ZBook-15-G2 running 64-bit Ubuntu 18.04.6 LTS
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    19 |
-|    Minimum number of control sets                        |    19 |
+| Total control sets                                       |    20 |
+|    Minimum number of control sets                        |    20 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    43 |
+| Unused register locations in slices containing registers |    51 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,7 +39,7 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    19 |
+| Total control sets |    20 |
 | >= 0 to < 4        |     0 |
 | >= 4 to < 6        |     2 |
 | >= 6 to < 8        |     1 |
@@ -47,7 +47,7 @@ Table of Contents
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     3 |
 | >= 14 to < 16      |     1 |
-| >= 16              |    10 |
+| >= 16              |    11 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             198 |           68 |
+| No           | No                    | No                     |             208 |           78 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              55 |           25 |
-| Yes          | No                    | No                     |             208 |           49 |
+| No           | Yes                   | No                     |              55 |           28 |
+| Yes          | No                    | No                     |             246 |           61 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              64 |           16 |
+| Yes          | Yes                   | No                     |              64 |           17 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -74,24 +74,25 @@ Table of Contents
 |     Clock Signal    |                                     Enable Signal                                    |                                                         Set/Reset Signal                                                         | Slice Load Count | Bel Load Count | Bels / Slice |
 +---------------------+--------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
 |  cEng_spi_BUFG      |                                                                                      | fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/FSM_onehot_gen_rst_ic.curr_wrst_state[4]_i_1_n_0 |                2 |              4 |         2.00 |
-|  cEng_spi_BUFG      |                                                                                      | fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/wrst_busy                                        |                1 |              5 |         5.00 |
+|  cEng_spi_BUFG      |                                                                                      | fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/wrst_busy                                        |                2 |              5 |         2.50 |
 |  cEng_pixel_BUFG    |                                                                                      | fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/SR[0]                                            |                2 |              6 |         3.00 |
-|  cEng_pixel_BUFG    | data_cont/E[0]                                                                       |                                                                                                                                  |                2 |              8 |         4.00 |
+|  cEng_pixel_BUFG    | data_cont/data_out                                                                   |                                                                                                                                  |                3 |              8 |         2.67 |
 |  cEng_pixel_BUFG    | fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/rdpp1_inst/E[0]        | fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/SR[0]                                            |                2 |              8 |         4.00 |
-|  cEng_spi_BUFG      | fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/E[0] | fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/wrst_busy                                        |                3 |             12 |         4.00 |
 |  cEng_pixel_BUFG    | Inst_vga_gen/eqOp                                                                    | Inst_vga_gen/n[vCounter]                                                                                                         |                3 |             12 |         4.00 |
+|  cEng_spi_BUFG      | fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/E[0] | fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/wrst_busy                                        |                4 |             12 |         3.00 |
 |  cEng_pixel_BUFG    |                                                                                      | Inst_vga_gen/eqOp                                                                                                                |                3 |             12 |         4.00 |
 |  cEng_spi_BUFG      |                                                                                      |                                                                                                                                  |                6 |             14 |         2.33 |
-|  cEng_pixel_BUFG    | data_cont/gamma_int0                                                                 |                                                                                                                                  |                6 |             16 |         2.67 |
-|  cEng_pixel_BUFG    | data_cont/rdata[7]_i_1_n_0                                                           |                                                                                                                                  |                5 |             24 |         4.80 |
-|  cEng_pixel_BUFG    |                                                                                      | Inst_vga_gen/blank                                                                                                               |               17 |             28 |         1.65 |
+|  cEng_pixel_BUFG    | Inst_vga_gen/queue_reg[15][blank]_0[0]                                               |                                                                                                                                  |                7 |             16 |         2.29 |
+|  cEng_pixel_BUFG    | Inst_vga_gen/E[0]                                                                    |                                                                                                                                  |                7 |             19 |         2.71 |
+|  cEng_pixel_BUFG    |                                                                                      | Inst_vga_gen/blank                                                                                                               |               19 |             28 |         1.47 |
 |  CLK24MHZ_IBUF_BUFG |                                                                                      |                                                                                                                                  |                8 |             30 |         3.75 |
 |  cEng_pixel_BUFG    | color_filter/state                                                                   | color_filter/counter[0]_i_1_n_0                                                                                                  |                8 |             32 |         4.00 |
 |  spi_clk_IBUF_BUFG  | spi_top/rx_module/index[0]_i_1_n_0                                                   |                                                                                                                                  |                8 |             32 |         4.00 |
+|  cEng_pixel_BUFG    | data_cont/addr[18]_i_1_n_0                                                           |                                                                                                                                  |               10 |             43 |         4.30 |
 |  spi_clk_IBUF_BUFG  | spi_top/rx_module/RXDATA_O0                                                          |                                                                                                                                  |               15 |             64 |         4.27 |
-|  cEng_spi_BUFG      | spi_top/rx_module/E[0]                                                               |                                                                                                                                  |               13 |             64 |         4.92 |
-|  spi_clk_IBUF_BUFG  |                                                                                      |                                                                                                                                  |               21 |             65 |         3.10 |
-|  cEng_pixel_BUFG    |                                                                                      |                                                                                                                                  |               33 |             92 |         2.79 |
+|  cEng_spi_BUFG      | spi_top/rx_module/E[0]                                                               |                                                                                                                                  |               11 |             64 |         5.82 |
+|  spi_clk_IBUF_BUFG  |                                                                                      |                                                                                                                                  |               22 |             65 |         2.95 |
+|  cEng_pixel_BUFG    |                                                                                      |                                                                                                                                  |               44 |            122 |         2.77 |
 +---------------------+--------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
 
 

@@ -8,4 +8,4 @@ Start Address      0x00000000
 End Address        0x003FFFFF
 
 Addr1         Addr2         Date                    File(s)
-0x00000000    0x0021728B    May 26 20:40:54 2022    /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.runs/impl_1/top.bit
+0x00000000    0x0021728B    May 28 09:24:30 2022    /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.runs/impl_1/top.bit

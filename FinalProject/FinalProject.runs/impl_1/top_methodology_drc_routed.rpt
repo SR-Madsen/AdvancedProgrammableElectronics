@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Fri May 27 22:00:02 2022
+| Date         : Sat May 28 09:24:17 2022
 | Host         : Ubuntu-ZBook-15-G2 running 64-bit Ubuntu 18.04.6 LTS
 | Command      : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
 | Design       : top
@@ -23,11 +23,12 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 167
+             Violations found: 168
 +-----------+------------------+-------------------------------+------------+
 | Rule      | Severity         | Description                   | Violations |
 +-----------+------------------+-------------------------------+------------+
 | TIMING-17 | Critical Warning | Non-clocked sequential cell   | 161        |
+| SYNTH-11  | Warning          | DSP output not registered     | 1          |
 | TIMING-18 | Warning          | Missing input or output delay | 6          |
 +-----------+------------------+-------------------------------+------------+
 
@@ -836,6 +837,11 @@ Related violations: <none>
 TIMING-17#161 Critical Warning
 Non-clocked sequential cell  
 The clock pin spi_top/rx_module/state_reg/C is not reached by a timing clock
+Related violations: <none>
+
+SYNTH-11#1 Warning
+DSP output not registered  
+DSP instance data_cont/SRAMADDR_O0 is not fully pipelined on the output side. MREG/PREG are not used.
 Related violations: <none>
 
 TIMING-18#1 Warning
