@@ -67,7 +67,6 @@ signal gamma_out : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
 signal rdatashift1, rdatashift6 : UNSIGNED(15 downto 0) := (others => '0');
 signal gdatashift7, gdatashift0 : UNSIGNED(15 downto 0) := (others => '0');
 signal bdatashift4, bdatashift3, bdatashift0 : UNSIGNED(15 downto 0) := (others => '0');
-
 signal gamma_calc : UNSIGNED(15 downto 0) := (others => '0');
 
 signal wen : STD_LOGIC := '1';
@@ -99,17 +98,15 @@ begin
     data_in <= SRAMDATA_IO;
     
     -- Read next gamma data from SRAM, or write gamma data to SRAM
-    process(CLK_I)
+    process(hpixel)
     begin
-        if CLK_I'event and CLK_I = '1' then
-            if BLANK_I = '0' and spi_receive = '0' then
-                gamma_int <= gamma_int_next;
-                gamma_int_next <= data_in;
-                SRAMADDR_O <= std_logic_vector(to_unsigned(vpixel*480 + hpixel + 1, 19));
-            elsif spi_receive = '1' then
-                SRAMADDR_O <= addr;
-                data_out <= gamma_out;
-            end if;
+        if BLANK_I = '0' and spi_receive = '0' then
+            gamma_int <= gamma_int_next;
+            gamma_int_next <= data_in;
+            SRAMADDR_O <= std_logic_vector(to_unsigned(vpixel*480 + hpixel + 1, 19));
+        elsif spi_receive = '1' then
+            SRAMADDR_O <= addr;
+            data_out <= gamma_out;
         end if;
     end process;
     
