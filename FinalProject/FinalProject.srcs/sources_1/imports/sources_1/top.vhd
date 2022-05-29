@@ -353,20 +353,20 @@ begin
 --    memaddr <= sramaddr;
 --    memwen <= sramwen;
     -- Integrated Logic Analyzer
---    ila: ila_0
---    Port map ( clk => cEng_pixel,
---               probe0 => red_val,
---               probe1 => gamma,
---               probe2 => gamma_next,
---               probe3 => spi_clk,
---               probe4 => spi_ss,
---               probe5 => spi_mosi,
---               probe6 => sramaddr,
---               probe7 => pixel_h,
---               probe8 => pixel_v,
---               probe9 => fifo_empty,
---               probe10 => sramwen,
---               probe11 => fifo_wren
---    );
+    ila: ila_0
+    Port map ( clk => cEng_pixel,
+               probe0 => red_val,
+               probe1 => gamma,
+               probe2 => gamma_next,
+               probe3 => spi_clk,
+               probe4 => spi_ss,
+               probe5 => spi_mosi,
+               probe6 => (others => '0'), --sramaddr,
+               probe7 => pixel_h,
+               probe8 => pixel_v,
+               probe9 => '0', --fifo_empty,
+               probe10 => '0', --sramwen,
+               probe11 => '0' --fifo_wren
+    );
 
 end Behavioral;

@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date             : Sat May 28 21:46:13 2022
+| Date             : Sun May 29 09:54:21 2022
 | Host             : Ubuntu-ZBook-15-G2 running 64-bit Ubuntu 18.04.6 LTS
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.370        |
+| Total On-Chip Power (W)  | 0.378        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.297        |
-| Device Static (W)        | 0.072        |
+| Dynamic (W)              | 0.306        |
+| Device Static (W)        | 0.073        |
 | Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 83.2         |
-| Junction Temperature (C) | 26.8         |
+| Max Ambient (C)          | 83.1         |
+| Junction Temperature (C) | 26.9         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -49,26 +49,27 @@ Table of Contents
 1.1 On-Chip Components
 ----------------------
 
-+-------------------------+-----------+----------+-----------+-----------------+
-| On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
-+-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.009 |        7 |       --- |             --- |
-| Slice Logic             |     0.020 |     1421 |       --- |             --- |
-|   LUT as Logic          |     0.018 |      525 |     10400 |            5.05 |
-|   CARRY4                |     0.001 |       76 |      8150 |            0.93 |
-|   Register              |    <0.001 |      573 |     20800 |            2.75 |
-|   F7/F8 Muxes           |    <0.001 |       12 |     32600 |            0.04 |
-|   LUT as Shift Register |    <0.001 |       15 |      9600 |            0.16 |
-|   BUFG                  |    <0.001 |        1 |        32 |            3.13 |
-|   Others                |     0.000 |       52 |       --- |             --- |
-| Signals                 |     0.016 |     1069 |       --- |             --- |
-| Block RAM               |     0.002 |        1 |        25 |            4.00 |
-| MMCM                    |     0.094 |        1 |         5 |           20.00 |
-| DSPs                    |    <0.001 |        1 |        45 |            2.22 |
-| I/O                     |     0.156 |       52 |       106 |           49.06 |
-| Static Power            |     0.072 |          |           |                 |
-| Total                   |     0.370 |          |           |                 |
-+-------------------------+-----------+----------+-----------+-----------------+
++--------------------------+-----------+----------+-----------+-----------------+
+| On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
++--------------------------+-----------+----------+-----------+-----------------+
+| Clocks                   |     0.023 |        8 |       --- |             --- |
+| Slice Logic              |     0.016 |     6377 |       --- |             --- |
+|   LUT as Logic           |     0.015 |     1920 |     10400 |           18.46 |
+|   CARRY4                 |    <0.001 |      128 |      8150 |            1.57 |
+|   Register               |    <0.001 |     3137 |     20800 |           15.08 |
+|   LUT as Shift Register  |    <0.001 |      191 |      9600 |            1.99 |
+|   F7/F8 Muxes            |    <0.001 |       20 |     32600 |            0.06 |
+|   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
+|   LUT as Distributed RAM |    <0.001 |       24 |      9600 |            0.25 |
+|   Others                 |     0.000 |      377 |       --- |             --- |
+| Signals                  |     0.015 |     4585 |       --- |             --- |
+| Block RAM                |     0.004 |      3.5 |        25 |           14.00 |
+| MMCM                     |     0.094 |        1 |         5 |           20.00 |
+| DSPs                     |    <0.001 |        1 |        45 |            2.22 |
+| I/O                      |     0.153 |       52 |       106 |           49.06 |
+| Static Power             |     0.073 |          |           |                 |
+| Total                    |     0.378 |          |           |                 |
++--------------------------+-----------+----------+-----------+-----------------+
 
 
 1.2 Power Supply Summary
@@ -77,9 +78,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.063 |       0.052 |      0.010 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.073 |       0.063 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.065 |       0.052 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.047 |       0.046 |      0.001 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.046 |       0.045 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -100,7 +101,7 @@ Table of Contents
 | User Input Data             | Confidence | Details                                                | Action                                                                                                             |
 +-----------------------------+------------+--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
 | Design implementation state | High       | Design is routed                                       |                                                                                                                    |
-| Clock nodes activity        | Low        | User specified less than 75% of clocks                 | Provide missing clock activity with a constraint file, simulation results or by editing the "By Clock Domain" view |
+| Clock nodes activity        | Medium     | More than 5% of clocks are missing user specification  | Provide missing clock activity with a constraint file, simulation results or by editing the "By Clock Domain" view |
 | I/O nodes activity          | Low        | More than 75% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view           |
 | Internal nodes activity     | Medium     | User specified less than 25% of internal nodes         | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views         |
 | Device models               | High       | Device models are Production                           |                                                                                                                    |
@@ -130,15 +131,16 @@ Table of Contents
 2.2 Clock Constraints
 ---------------------
 
-+--------------+-------------------------------+-----------------+
-| Clock        | Domain                        | Constraint (ns) |
-+--------------+-------------------------------+-----------------+
-| cEng_5xpixel | MMCM_clockEngine/cEng_5xpixel |             1.3 |
-| cEng_pixel   | MMCM_clockEngine/cEng_pixel   |             6.7 |
-| cEng_spi     | MMCM_clockEngine/cEng_spi     |            47.0 |
-| clk_feedback | MMCM_clockEngine/clk_feedback |            41.7 |
-| sys_clk_pin  | CLK24MHZ                      |            41.7 |
-+--------------+-------------------------------+-----------------+
++--------------------------------------------------------------------------------------------+----------------------------------------------------------------------+-----------------+
+| Clock                                                                                      | Domain                                                               | Constraint (ns) |
++--------------------------------------------------------------------------------------------+----------------------------------------------------------------------+-----------------+
+| cEng_5xpixel                                                                               | MMCM_clockEngine/clk                                                 |             1.3 |
+| cEng_pixel                                                                                 | MMCM_clockEngine/rd_clk                                              |             6.7 |
+| cEng_spi                                                                                   | MMCM_clockEngine/cEng_spi                                            |            47.0 |
+| clk_feedback                                                                               | MMCM_clockEngine/clk_feedback                                        |            41.7 |
+| dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/TCK | dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/tck_bs |            33.0 |
+| sys_clk_pin                                                                                | CLK24MHZ                                                             |            41.7 |
++--------------------------------------------------------------------------------------------+----------------------------------------------------------------------+-----------------+
 
 
 3. Detailed Reports
@@ -150,26 +152,34 @@ Table of Contents
 +--------------------------------------------+-----------+
 | Name                                       | Power (W) |
 +--------------------------------------------+-----------+
-| top                                        |     0.297 |
-|   Inst_vga_gen                             |     0.001 |
+| top                                        |     0.306 |
 |   MMCM_clockEngine                         |     0.095 |
-|   color_filter                             |     0.014 |
-|   data_cont                                |     0.002 |
-|   dvid_1                                   |     0.145 |
+|   color_filter                             |     0.006 |
+|   data_cont                                |     0.009 |
+|     SRAMDATA_IO_IOBUF[0]_inst              |     0.001 |
+|     SRAMDATA_IO_IOBUF[1]_inst              |     0.001 |
+|     SRAMDATA_IO_IOBUF[2]_inst              |     0.001 |
+|     SRAMDATA_IO_IOBUF[3]_inst              |     0.001 |
+|     SRAMDATA_IO_IOBUF[5]_inst              |     0.001 |
+|   dbg_hub                                  |     0.004 |
+|     inst                                   |     0.004 |
+|       BSCANID.u_xsdbm_id                   |     0.004 |
+|   dvid_1                                   |     0.157 |
 |     SERDES_blue                            |     0.001 |
 |     SERDES_clock                           |     0.001 |
 |     SERDES_green                           |     0.001 |
 |     SERDES_red                             |     0.001 |
-|   fifo                                     |     0.003 |
-|     xpm_fifo_async_inst                    |     0.003 |
-|       gnuram_async_fifo.xpm_fifo_base_inst |     0.003 |
-|   memdata_IOBUF[0]_inst                    |     0.001 |
-|   memdata_IOBUF[1]_inst                    |     0.001 |
-|   memdata_IOBUF[2]_inst                    |     0.001 |
-|   memdata_IOBUF[3]_inst                    |     0.001 |
-|   memdata_IOBUF[5]_inst                    |     0.001 |
-|   spi_top                                  |     0.018 |
-|     rx_module                              |     0.018 |
+|     TMDS_encoder_blue                      |     0.005 |
+|     TMDS_encoder_green                     |     0.005 |
+|     TMDS_encoder_red                       |     0.004 |
+|   fifo                                     |     0.002 |
+|     xpm_fifo_async_inst                    |     0.002 |
+|       gnuram_async_fifo.xpm_fifo_base_inst |     0.002 |
+|   ila                                      |     0.017 |
+|     U0                                     |     0.017 |
+|       ila_core_inst                        |     0.017 |
+|   spi_top                                  |     0.008 |
+|     rx_module                              |     0.007 |
 +--------------------------------------------+-----------+
 
 

@@ -67,7 +67,6 @@ signal gamma_out : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
 signal rdatashift1, rdatashift6 : UNSIGNED(15 downto 0) := (others => '0');
 signal gdatashift7, gdatashift0 : UNSIGNED(15 downto 0) := (others => '0');
 signal bdatashift4, bdatashift3, bdatashift0 : UNSIGNED(15 downto 0) := (others => '0');
-
 signal gamma_calc : UNSIGNED(15 downto 0) := (others => '0');
 
 signal wen : STD_LOGIC := '1';
