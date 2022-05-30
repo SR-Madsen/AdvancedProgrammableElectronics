@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date             : Sun May 29 09:54:21 2022
+| Date             : Mon May 30 09:10:01 2022
 | Host             : Ubuntu-ZBook-15-G2 running 64-bit Ubuntu 18.04.6 LTS
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -33,7 +33,7 @@ Table of Contents
 | Total On-Chip Power (W)  | 0.378        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.306        |
+| Dynamic (W)              | 0.305        |
 | Device Static (W)        | 0.073        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 83.1         |
@@ -54,7 +54,7 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.023 |        8 |       --- |             --- |
 | Slice Logic              |     0.016 |     6377 |       --- |             --- |
-|   LUT as Logic           |     0.015 |     1920 |     10400 |           18.46 |
+|   LUT as Logic           |     0.015 |     1913 |     10400 |           18.39 |
 |   CARRY4                 |    <0.001 |      128 |      8150 |            1.57 |
 |   Register               |    <0.001 |     3137 |     20800 |           15.08 |
 |   LUT as Shift Register  |    <0.001 |      191 |      9600 |            1.99 |
@@ -62,7 +62,7 @@ Table of Contents
 |   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
 |   LUT as Distributed RAM |    <0.001 |       24 |      9600 |            0.25 |
 |   Others                 |     0.000 |      377 |       --- |             --- |
-| Signals                  |     0.015 |     4585 |       --- |             --- |
+| Signals                  |     0.014 |     4589 |       --- |             --- |
 | Block RAM                |     0.004 |      3.5 |        25 |           14.00 |
 | MMCM                     |     0.094 |        1 |         5 |           20.00 |
 | DSPs                     |    <0.001 |        1 |        45 |            2.22 |
@@ -78,7 +78,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.073 |       0.063 |      0.010 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.072 |       0.062 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.065 |       0.052 |      0.013 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.046 |       0.045 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -152,7 +152,7 @@ Table of Contents
 +--------------------------------------------+-----------+
 | Name                                       | Power (W) |
 +--------------------------------------------+-----------+
-| top                                        |     0.306 |
+| top                                        |     0.305 |
 |   MMCM_clockEngine                         |     0.095 |
 |   color_filter                             |     0.006 |
 |   data_cont                                |     0.009 |
@@ -164,13 +164,13 @@ Table of Contents
 |   dbg_hub                                  |     0.004 |
 |     inst                                   |     0.004 |
 |       BSCANID.u_xsdbm_id                   |     0.004 |
-|   dvid_1                                   |     0.157 |
+|   dvid_1                                   |     0.156 |
 |     SERDES_blue                            |     0.001 |
 |     SERDES_clock                           |     0.001 |
 |     SERDES_green                           |     0.001 |
 |     SERDES_red                             |     0.001 |
-|     TMDS_encoder_blue                      |     0.005 |
-|     TMDS_encoder_green                     |     0.005 |
+|     TMDS_encoder_blue                      |     0.004 |
+|     TMDS_encoder_green                     |     0.004 |
 |     TMDS_encoder_red                       |     0.004 |
 |   fifo                                     |     0.002 |
 |     xpm_fifo_async_inst                    |     0.002 |

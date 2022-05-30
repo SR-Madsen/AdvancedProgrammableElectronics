@@ -49,26 +49,35 @@ end data_controller;
 
 architecture Behavioral of data_controller is
 
+-- State
 type state_type is (RECEIVE, START, WRITE, RUN);
 signal state : state_type := RUN;
 
+-- Conversion of current pixel coordinate
 signal hpixel : integer range 0 to 1920 := 0;
 signal vpixel : integer range 0 to 1080 := 0;
 
+-- Pixel gamma value shifting
+type gamma_array is array (1 downto 0) of STD_LOGIC_VECTOR(7 downto 0);
+shared variable shift_reg: gamma_array := (others => (others => '0'));
 signal gamma_int      : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
 signal gamma_int_next : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
 
+-- SPI indicator signal
 signal spi_receive : STD_LOGIC := '0';
 
+-- Received FIFO data
 signal rdata, gdata, bdata : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
 signal addr: STD_LOGIC_VECTOR(18 downto 0) := (others => '0');
 signal gamma_out : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
 
+-- Shifted data for gamma calculation
 signal rdatashift1, rdatashift6 : UNSIGNED(15 downto 0) := (others => '0');
 signal gdatashift7, gdatashift0 : UNSIGNED(15 downto 0) := (others => '0');
 signal bdatashift4, bdatashift3, bdatashift0 : UNSIGNED(15 downto 0) := (others => '0');
 signal gamma_calc : UNSIGNED(15 downto 0) := (others => '0');
 
+-- SRAM signals
 signal wen : STD_LOGIC := '1';
 signal data_in : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
 signal data_out : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
@@ -77,6 +86,7 @@ begin
 
     hpixel <= to_integer(unsigned(HPIXEL_I(11 downto 2)));
     vpixel <= to_integer(unsigned(VPIXEL_I(11 downto 2)));
+    
     GAMMA_O <= gamma_int;
     GAMMANEXT_O <= gamma_int_next;
     
@@ -101,8 +111,9 @@ begin
     process(hpixel)
     begin
         if BLANK_I = '0' and spi_receive = '0' then
-            gamma_int <= gamma_int_next;
-            gamma_int_next <= data_in;
+            shift_reg := data_in & shift_reg(1);
+            gamma_int <= shift_reg(0);
+            gamma_int_next <= shift_reg(1);
             SRAMADDR_O <= std_logic_vector(to_unsigned(vpixel*480 + hpixel + 1, 19));
         elsif spi_receive = '1' then
             SRAMADDR_O <= addr;

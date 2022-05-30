@@ -11,7 +11,7 @@ May 27 2020
 /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/vga_gen.vhd,1648078470,vhdl,,,,vga_gen,,,,,,,,
 /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/TMDS_encoder.vhd,1650959398,vhdl,,,,tmds_encoder,,,,,,,,
 /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/async_fifo.vhd,1651562153,vhdl,,,,async_fifo,,,,,,,,
-/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd,1653766456,vhdl,,,,data_controller,,,,,,,,
+/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd,1653894260,vhdl,,,,data_controller,,,,,,,,
 /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/smoothening.vhd,1653376357,vhdl,,,,smoothening,,,,,,,,
 /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/spi_controller.vhd,1651564161,vhdl,,,,spi_controller,,,,,,,,
 /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/spi_slave_rx.vhd,1653589568,vhdl,,,,spi_slave_rx,,,,,,,,

@@ -2,8 +2,8 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Sun May 29 09:51:38 2022
-# Process ID: 7656
+# Start of session at: Mon May 30 09:07:20 2022
+# Process ID: 8451
 # Current directory: /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.runs/synth_1
 # Command line: vivado -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: /home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.runs/synth_1/top.vds
@@ -17,9 +17,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a15t
 INFO: [Device 21-403] Loading part xc7a15tcpg236-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 7704
+INFO: [Synth 8-7075] Helper process launched with PID 8880
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2146.234 ; gain = 0.000 ; free physical = 7862 ; free virtual = 12677
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 2146.234 ; gain = 0.000 ; free physical = 9586 ; free virtual = 14380
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'top' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/top.vhd:52]
 WARNING: [Synth 8-5640] Port 'clksram_o' is missing in component declaration [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/top.vhd:53]
@@ -324,13 +324,13 @@ INFO: [Synth 8-638] synthesizing module 'vga_gen' [/home/sebastian/Desktop/Git/A
 INFO: [Synth 8-256] done synthesizing module 'vga_gen' (14#1) [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/vga_gen.vhd:46]
 INFO: [Synth 8-3491] module 'data_controller' declared at '/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:29' bound to instance 'data_cont' of component 'data_controller' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/top.vhd:311]
 INFO: [Synth 8-638] synthesizing module 'data_controller' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:50]
-WARNING: [Synth 8-614] signal 'BLANK_I' is read in the process but is not in the sensitivity list [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:101]
-WARNING: [Synth 8-614] signal 'spi_receive' is read in the process but is not in the sensitivity list [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:101]
-WARNING: [Synth 8-614] signal 'gamma_int_next' is read in the process but is not in the sensitivity list [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:101]
-WARNING: [Synth 8-614] signal 'data_in' is read in the process but is not in the sensitivity list [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:101]
-WARNING: [Synth 8-614] signal 'vpixel' is read in the process but is not in the sensitivity list [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:101]
-WARNING: [Synth 8-614] signal 'addr' is read in the process but is not in the sensitivity list [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:101]
-WARNING: [Synth 8-614] signal 'gamma_out' is read in the process but is not in the sensitivity list [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:101]
+WARNING: [Synth 8-613] shared variable will be implemented as local to architecture [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:62]
+WARNING: [Synth 8-614] signal 'BLANK_I' is read in the process but is not in the sensitivity list [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:111]
+WARNING: [Synth 8-614] signal 'spi_receive' is read in the process but is not in the sensitivity list [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:111]
+WARNING: [Synth 8-614] signal 'data_in' is read in the process but is not in the sensitivity list [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:111]
+WARNING: [Synth 8-614] signal 'vpixel' is read in the process but is not in the sensitivity list [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:111]
+WARNING: [Synth 8-614] signal 'addr' is read in the process but is not in the sensitivity list [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:111]
+WARNING: [Synth 8-614] signal 'gamma_out' is read in the process but is not in the sensitivity list [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:111]
 INFO: [Synth 8-256] done synthesizing module 'data_controller' (15#1) [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:50]
 INFO: [Synth 8-3491] module 'smoothening' declared at '/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/smoothening.vhd:20' bound to instance 'color_filter' of component 'smoothening' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/top.vhd:328]
 INFO: [Synth 8-638] synthesizing module 'smoothening' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/smoothening.vhd:34]
@@ -418,8 +418,8 @@ INFO: [Synth 8-113] binding component instance 'OBUFDS_red' to cell 'OBUFDS' [/h
 	Parameter SLEW bound to: SLOW - type: string 
 INFO: [Synth 8-113] binding component instance 'OBUFDS_clock' to cell 'OBUFDS' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/dvid.vhd:110]
 INFO: [Synth 8-256] done synthesizing module 'dvid' (19#1) [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/dvid.vhd:28]
-INFO: [Synth 8-3491] module 'ila_0' declared at '/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.runs/synth_1/.Xil/Vivado-7656-Ubuntu-ZBook-15-G2/realtime/ila_0_stub.vhdl:5' bound to instance 'ila' of component 'ila_0' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/top.vhd:356]
-INFO: [Synth 8-638] synthesizing module 'ila_0' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.runs/synth_1/.Xil/Vivado-7656-Ubuntu-ZBook-15-G2/realtime/ila_0_stub.vhdl:24]
+INFO: [Synth 8-3491] module 'ila_0' declared at '/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.runs/synth_1/.Xil/Vivado-8451-Ubuntu-ZBook-15-G2/realtime/ila_0_stub.vhdl:5' bound to instance 'ila' of component 'ila_0' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/top.vhd:356]
+INFO: [Synth 8-638] synthesizing module 'ila_0' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.runs/synth_1/.Xil/Vivado-8451-Ubuntu-ZBook-15-G2/realtime/ila_0_stub.vhdl:24]
 INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'color_filter'. This will prevent further optimization [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/top.vhd:328]
 INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'dvid_1'. This will prevent further optimization [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/top.vhd:340]
 INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'data_cont'. This will prevent further optimization [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/top.vhd:311]
@@ -427,18 +427,18 @@ INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance '
 INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'Inst_vga_gen'. This will prevent further optimization [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/top.vhd:288]
 INFO: [Synth 8-256] done synthesizing module 'top' (20#1) [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/imports/sources_1/top.vhd:52]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2146.234 ; gain = 0.000 ; free physical = 7965 ; free virtual = 12781
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 2146.234 ; gain = 0.000 ; free physical = 9537 ; free virtual = 14339
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 2160.980 ; gain = 14.746 ; free physical = 7961 ; free virtual = 12776
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 2160.980 ; gain = 14.746 ; free physical = 9520 ; free virtual = 14322
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 2160.980 ; gain = 14.746 ; free physical = 7961 ; free virtual = 12776
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 2160.980 ; gain = 14.746 ; free physical = 9520 ; free virtual = 14322
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2174.855 ; gain = 0.000 ; free physical = 7954 ; free virtual = 12770
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2174.855 ; gain = 0.000 ; free physical = 9535 ; free virtual = 14337
 INFO: [Netlist 29-17] Analyzing 5 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -462,23 +462,23 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2334.668 ; gain = 0.000 ; free physical = 7861 ; free virtual = 12677
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2334.668 ; gain = 0.000 ; free physical = 9419 ; free virtual = 14241
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 5 instances were transformed.
   MMCM_BASE => MMCME2_ADV: 1 instance 
   OBUFDS => OBUFDS_DUAL_BUF (INV, OBUFDS(x2)): 4 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2334.668 ; gain = 0.000 ; free physical = 7861 ; free virtual = 12676
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2334.668 ; gain = 0.000 ; free physical = 9419 ; free virtual = 14241
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'ila' at clock pin 'clk' is different from the actual clock period '6.720', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7963 ; free virtual = 12779
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9485 ; free virtual = 14317
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a15tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7963 ; free virtual = 12779
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9484 ; free virtual = 14317
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -488,7 +488,7 @@ Applied set_property DONT_TOUCH = true for fifo/xpm_fifo_async_inst/\gnuram_asyn
 Applied set_property DONT_TOUCH = true for fifo/xpm_fifo_async_inst/\gnuram_async_fifo.xpm_fifo_base_inst /xpm_fifo_rst_inst/\gen_rst_ic.wrst_rd_inst . (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for fifo/xpm_fifo_async_inst. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7963 ; free virtual = 12779
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9494 ; free virtual = 14326
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'spi_slave_tx'
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'spi_controller'
@@ -532,12 +532,12 @@ INFO: [Synth 8-5552] Implemented safe state 'default_state' for state register '
                  iSTATE2 |                               11 |                               01
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'gen_rst_ic.curr_rrst_state_reg' using encoding 'sequential' in module 'xpm_fifo_rst'
-WARNING: [Synth 8-327] inferring latch for variable 'SRAMADDR_O_reg' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:106]
-WARNING: [Synth 8-327] inferring latch for variable 'gamma_int_reg' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:80]
-WARNING: [Synth 8-327] inferring latch for variable 'gamma_int_next_reg' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:81]
-WARNING: [Synth 8-327] inferring latch for variable 'data_out_reg' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:109]
+WARNING: [Synth 8-327] inferring latch for variable 'SRAMADDR_O_reg' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:117]
+WARNING: [Synth 8-327] inferring latch for variable 'gamma_int_reg' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:90]
+WARNING: [Synth 8-327] inferring latch for variable 'shift_reg_reg[1]' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:91]
+WARNING: [Synth 8-327] inferring latch for variable 'data_out_reg' [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/data_controller.vhd:120]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7953 ; free virtual = 12770
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:18 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9506 ; free virtual = 14338
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -611,7 +611,7 @@ DSP Report: Generating DSP SRAMADDR_O0, operation Mode is: C+A*(B:0x1e0)+1.
 DSP Report: operator SRAMADDR_O0 is absorbed into DSP SRAMADDR_O0.
 DSP Report: operator SRAMADDR_O2 is absorbed into DSP SRAMADDR_O0.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7935 ; free virtual = 12756
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:25 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9497 ; free virtual = 14334
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -641,13 +641,13 @@ Finished ROM, RAM, DSP and Shift Register Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:33 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7549 ; free virtual = 12386
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9338 ; free virtual = 14186
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:34 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7548 ; free virtual = 12386
+Finished Timing Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9334 ; free virtual = 14183
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -668,7 +668,7 @@ Start Technology Mapping
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-7052] The timing for the instance fifo/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:30 ; elapsed = 00:00:34 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7543 ; free virtual = 12380
+Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:00:34 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9338 ; free virtual = 14182
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -687,37 +687,37 @@ Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.srcs/sources_1/new/spi_slave_rx.vhd:52]
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7561 ; free virtual = 12398
+Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9342 ; free virtual = 14186
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7561 ; free virtual = 12398
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9342 ; free virtual = 14186
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7561 ; free virtual = 12398
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9342 ; free virtual = 14186
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7561 ; free virtual = 12398
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9342 ; free virtual = 14186
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7561 ; free virtual = 12398
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9342 ; free virtual = 14186
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7561 ; free virtual = 12398
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9342 ; free virtual = 14186
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -774,18 +774,18 @@ Report Cell Usage:
 |24    |OBUFDS     |     4|
 +------+-----------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7561 ; free virtual = 12398
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9342 ; free virtual = 14186
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:31 ; elapsed = 00:00:35 . Memory (MB): peak = 2334.668 ; gain = 14.746 ; free physical = 7631 ; free virtual = 12467
-Synthesis Optimization Complete : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 7631 ; free virtual = 12467
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:29 ; elapsed = 00:00:34 . Memory (MB): peak = 2334.668 ; gain = 14.746 ; free physical = 9411 ; free virtual = 14255
+Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:37 . Memory (MB): peak = 2334.668 ; gain = 188.434 ; free physical = 9411 ; free virtual = 14255
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2334.668 ; gain = 0.000 ; free physical = 7704 ; free virtual = 12541
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2334.668 ; gain = 0.000 ; free physical = 9404 ; free virtual = 14249
 INFO: [Netlist 29-17] Analyzing 137 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2342.676 ; gain = 0.000 ; free physical = 7648 ; free virtual = 12484
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2342.676 ; gain = 0.000 ; free physical = 9877 ; free virtual = 14703
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 56 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 8 instances
@@ -796,11 +796,9 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 108 Infos, 15 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 2342.676 ; gain = 196.539 ; free physical = 7791 ; free virtual = 12628
-INFO: [Common 17-600] The following parameters have non-default value.
-tcl.collectionResultDisplayLimit
+synth_design: Time (s): cpu = 00:00:41 ; elapsed = 00:00:50 . Memory (MB): peak = 2342.676 ; gain = 196.539 ; free physical = 10020 ; free virtual = 14847
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint '/home/sebastian/Desktop/Git/AdvancedProgrammableElectronics/FinalProject/FinalProject.runs/synth_1/top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun May 29 09:52:34 2022...
+INFO: [Common 17-206] Exiting Vivado at Mon May 30 09:08:21 2022...
